@@ -1,4 +1,36 @@
-<div>
-  <h1 class="font-bold text-4xl">Tops#index</h1>
-  <p>Find me in app/views/tops/index.html.erb</p>
+<div class="flex w-full h-screen">
+  <!-- 左側の列 -->
+  <div class="flex-col w-1/2">
+    <div class="chat chat-start mb-4">
+      <div class="chat-bubble chat-bubble-info">スケジュールの管理って難しくない？</div>
+    </div>
+    <div class="chat chat-start mb-4">
+      <div class="chat-bubble chat-bubble-info">継続したいこともなかなか続かないし...</div>
+    </div>
+    <div class="chat chat-start mb-4">
+      <div class="chat-bubble chat-bubble-info">推しが応援してくれたら...頑張れる気がする..かも！</div>
+    </div>
+  </div>
+
+  <!-- 右側の列 -->
+  <div class="flex-col w-1/2">
+    <div class="chat chat-end mb-4">
+      <div class="chat-bubble chat-bubble-success">こんなのはどう？</div>
+    </div>
+    <div class="chat chat-end mb-4">
+      <div class="chat-bubble chat-bubble-success">BetterMe</div>
+    </div>
+    <div class="chat chat-end mb-4">
+      <div class="chat-bubble chat-bubble-success">推しがあなたのスケジュールを応援、だって!!</div>
+    </div>
+    <div class="chat chat-end mb-4">
+      <div class="chat-bubble chat-bubble-success">推しとちょっと、頑張ってみない？</div>
+    </div>
+  </div>
+</div>
+<div class="container mx-auto">
+  <div class="flex justify-center items-center h-screen">
+    <button class="btn btn-info sm:btn-sm md:btn-md lg:btn-lg"><%= link_to "はじめる", sign_up_path %></button>
+    <button class="btn btn-success sm:btn-sm md:btn-md lg:btn-lg"><%= link_to "ログイン", login_path %></button>
+  </div>
 </div>
