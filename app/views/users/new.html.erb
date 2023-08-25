@@ -1,39 +1,40 @@
-<div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
-  <div class="sm:mx-auto sm:w-full sm:max-w-sm">
-    <h2 class="mt-10 text-center text-2xl font-sans leading-9 tracking-tight text-gray-900">ユーザー登録</h2>
+<main class="container mx-auto flex justify-center">
+  <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+    <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+      <h2 class="mt-10 text-center text-2xl font-sans leading-9 tracking-tight text-gray-900">ユーザー登録</h2>
+    </div>
+
+    <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+      <%= form_with model: @user, local: true, class: "space-y-6" do |f| %>
+        <%= render 'shared/error_messages', object: @user %>
+        <div>
+          <%= f.label :name, User.human_attribute_name(:name), class: "leading-7 text-sm text-gray-600" %>
+          <%= f.text_field :name, class: "w-full bg-white rounded border border-gray-300  focus:ring-2 focus:ring-indigo-60 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" %>
+        </div>
+
+        <div>
+          <%= f.label :email, User.human_attribute_name(:email), class: "leading-7 text-sm text-gray-600" %>
+          <%= f.email_field :email, class: "w-full bg-white rounded border border-gray-300  focus:ring-2 focus:ring-indigo-60 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" %>
+        </div>
+
+        <div>
+          <%= f.label :password, User.human_attribute_name(:password), class: "leading-7 text-sm text-gray-600" %>
+          <%= f.password_field :password, class: "w-full bg-white rounded border border-gray-300  focus:ring-2 focus:ring-indigo-60 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" %>
+        </div>
+
+        <div>
+          <%= f.label :password_confirmation, User.human_attribute_name(:password_confirmation), class: "leading-7 text-sm text-gray-600" %>
+          <%= f.password_field :password_confirmation, class: "w-full bg-white rounded border border-gray-300  focus:ring-2 focus:ring-indigo-60 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" %>
+        </div>
+
+        <div class="flex justify-center p-7">
+          <%= f.submit "登録する", class: " w-full bg-indigo-600 shadow-xl hover:bg-indigo-500 text-white font-bold rounded-full p-4 w-48" %>
+        </div>
+
+        <div class="flex justify-center underline">
+          <%= link_to "ログインページへ", login_path %>
+        </div>
+      <% end %>
+    </div>
   </div>
-
-  <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-    <%= form_with model: @user, local: true, class: "space-y-6" do |f| %>
-      <%= render 'shared/error_messages', object: @user %>
-      <div>
-        <%= f.label :name, User.human_attribute_name(:name), class: "leading-7 text-sm text-gray-600" %>
-        <%= f.text_field :name, class: "w-full bg-white rounded border border-gray-300  focus:ring-2 focus:ring-indigo-60 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" %>
-      </div>
-
-      <div>
-        <%= f.label :email, User.human_attribute_name(:email), class: "leading-7 text-sm text-gray-600" %>
-        <%= f.email_field :email, class: "w-full bg-white rounded border border-gray-300  focus:ring-2 focus:ring-indigo-60 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" %>
-      </div>
-
-      <div>
-        <%= f.label :password, User.human_attribute_name(:password), class: "leading-7 text-sm text-gray-600" %>
-        <%= f.password_field :password, class: "w-full bg-white rounded border border-gray-300  focus:ring-2 focus:ring-indigo-60 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" %>
-      </div>
-
-      <div>
-        <%= f.label :password_confirmation, User.human_attribute_name(:password_confirmation), class: "leading-7 text-sm text-gray-600" %>
-        <%= f.password_field :password_confirmation, class: "w-full bg-white rounded border border-gray-300  focus:ring-2 focus:ring-indigo-60 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" %>
-      </div>
-
-      <div class="flex justify-center p-7">
-        <%= f.submit "登録する", class: " w-full bg-indigo-600 shadow-xl hover:bg-indigo-500 text-white font-bold rounded-full p-4 w-48" %>
-      </div>
-
-      <div class="flex justify-center underline">
-        <%= link_to "ログインページへ", login_path %>
-      </div>
-    <% end %>
-  </div>
-</div>
-
+</main>
