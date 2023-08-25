@@ -23,11 +23,11 @@
     </nav>
   <% else %>
     <nav>
-      <ul>
-        <li><%= link_to 'ユーザー登録', sign_up_path, class: 'nav-link' %></li>
-        <li><%= link_to 'ログイン', login_path, class: 'btn btn-square btn-ghost whitespace-nowrap w-24' %></li>
-        <li><%= link_to 'お問い合わせ', "#", class: 'nav-link' %></li>
-      </ul>
+      <div>
+        <a><%= link_to 'ユーザー登録', sign_up_path, class: 'p-3' %></a>
+        <a><%= link_to 'ログイン', login_path, class: 'p-3' %></a>
+        <a><%= link_to 'お問い合わせ', "#", class: 'p-3' %></a>
+      </div>
     </nav>
   <% end %>
   </header>
