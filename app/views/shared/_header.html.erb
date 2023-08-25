@@ -1,51 +1,44 @@
-<header class="navbar bg-orange-100">
+<header class="flex justify-between items-center h-20 p-6 border-y-2">
   <% if logged_in? %>
-    <div class="flex-1">
-      <span class="ml-3 text-4xl text-blue-600 font-extrabold">
-        <%= link_to "BetterMe", "#" %>
-      </span>
-    </div>
+    <h1 class="text-2xl">
+      <%= link_to "BetterMe", "#" %>
+    </h1>
   <% else %>
-    <div class="flex-1">
-      <span class="ml-3 text-4xl text-blue-600 font-extrabold">
-        <%= link_to "BetterMe", root_path %>
-      </span>
-    </div>
+    <h1 class="text-2xl">
+      <%= link_to "BetterMe", root_path %>
+    </h1>
   <% end %>
-
-    <div class="flex-none">
-    <% if logged_in? %>
-      <i class="fa-solid fa-bars"></i>
-        <summary tabindex="0" class="btn btn-ghost m-1" id="header-menu"><i class="fa-solid fa-bars fa-lg"></i></summary>
-          <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 outline-dashed outline-gray-400 text-secondary divide-y divide-dashed divide-gray-400 whitespace-nowrap rounded-box w-60">
-            <li class="hover:text-gray-500"><%= link_to 'スケジュールを作る', "#" %></li>
-            <li class="hover:text-gray-500"><%= link_to 'スケジュールの確認・編集', "#" %></li>
-            <li class="hover:text-gray-500"><%= link_to 'マイページ', "#" %></li>
-            <li class="hover:text-gray-500"><%= button_to 'ログアウト', logout_path, class: 'nav-link', data: { turbo_method: :delete ,turbo_confirm: 'ログアウトします' } %></li>
-          </ul>
-        </details>
-    <% else %>
-      <%= link_to 'ログイン', login_path, class: 'btn btn-square btn-ghost whitespace-nowrap w-24' %>
-    <% end %>
-      <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
-      <a class="mr-5 hover:text-gray-900">
-        <font style="vertical-align: inherit;">
-          <font style="vertical-align: inherit;"><%= link_to 'ユーザー登録', sign_up_path, class: 'nav-link' %></font>
-        </font>
-      </a>
-      <a class="mr-5 hover:text-gray-900">
-        <font style="vertical-align: inherit;">
-          <font style="vertical-align: inherit;"><%= link_to 'ログイン', login_path, class: 'nav-link' %></font>
-        </font>
-      </a>
-      <a class="mr-5 hover:text-gray-900">
-        <font style="vertical-align: inherit;">
-          <font style="vertical-align: inherit;"><%= link_to 'お問い合わせ', "#", class: 'nav-link' %></font>
-        </font>
-      </a>
+  <% if logged_in? %>
+    <nav>
+      <button id="button" type="button" class="fixed z-10 top-6 right-4">
+        <i id="bars" class="fa-solid fa-bars fa-2x "></i>
+        <i id="xmark" class="fa-solid fa-xmark fa-2x hidden"></i>
+      </button>
+        <ul id="menu" class="z-0 fixed top-0 left-0 w-full text-center bg-orange-300 font-bold translate-x-full transition ease-linear">
+          <li class="p-3"><%= link_to 'スケジュールを作る', "#" %></li>
+          <li class="p-3"><%= link_to 'スケジュールの確認・編集', "#" %></li>
+          <li class="p-3"><%= link_to 'マイページ', "#" %></li>
+          <li class="p-3"><%= link_to 'ログアウト', logout_path, class: 'nav-link', data: { turbo_method: :delete ,turbo_confirm: 'ログアウトします' } %></li>
+        </ul>
     </nav>
-  </div>
+  <% else %>
+    <nav>
+      <div>
+        <a><%= link_to 'ユーザー登録', sign_up_path, class: 'p-3' %></a>
+        <a><%= link_to 'ログイン', login_path, class: 'p-3' %></a>
+        <a><%= link_to 'お問い合わせ', "#", class: 'p-3' %></a>
+      </div>
+    </nav>
+  <% end %>
+  </header>
+  <main>
+    <script>
+      button.addEventListener('click', event => {
+        bars.classList.toggle('hidden');
+        xmark.classList.toggle('hidden');
+        menu.classList.toggle('translate-x-full');
+      })
+    </script>
+  </main>
 </header>
-
-
 
