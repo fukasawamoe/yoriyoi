@@ -1,36 +1,37 @@
-<div class="flex w-full h-screen">
-  <!-- 左側の列 -->
-  <div class="flex-col w-1/2">
-    <div class="chat chat-start mb-4">
-      <div class="chat-bubble chat-bubble-info">スケジュールの管理って難しくない？</div>
+<main class="container flex justify-center bg-blue-300">
+  <div class="flex mt-28">
+
+    <div class="w-auto text-xl">
+      <div class="chat chat-start mb-4">
+        <div class="chat-bubble chat-bubble-secondary">スケジュールの管理って難しくない？</div>
+      </div>
+      <div class="chat chat-start mb-4">
+        <div class="chat-bubble chat-bubble-secondary">継続したいこともなかなか続かないし...</div>
+      </div>
+      <div class="chat chat-end mt-4">
+        <div class="chat-bubble chat-bubble-primary">こんなのはどう？</div>
+      </div>
+      <div class="chat chat-end mt-4">
+        <div class="chat-bubble chat-bubble-primary">BetterMe</div>
+      </div>
+      <div class="chat chat-end mt-4">
+        <div class="chat-bubble chat-bubble-primary">推しがあなたのスケジュールを応援、だって!!</div>
+      </div>
+      <div class="chat chat-start mt-4">
+        <div class="chat-bubble chat-bubble-secondary">推しが応援してくれたら...頑張れる気がする..かも！</div>
+      </div>
+      <div class="chat chat-end mt-4">
+        <div class="chat-bubble chat-bubble-primary">推しとちょっと、頑張ってみない？</div>
+      </div>
+        <div class="flex justify-center h-screen mt-20">
+      <button class="btn btn-info sm:btn-sm md:btn-md lg:btn-lg mr-10"><%= link_to "はじめる", sign_up_path %></button>
+      <button class="btn btn-success sm:btn-sm md:btn-md lg:btn-lg ml-10"><%= link_to "ログイン", login_path %></button>
     </div>
-    <div class="chat chat-start mb-4">
-      <div class="chat-bubble chat-bubble-info">継続したいこともなかなか続かないし...</div>
+
     </div>
-    <div class="chat chat-start mb-4">
-      <div class="chat-bubble chat-bubble-info">推しが応援してくれたら...頑張れる気がする..かも！</div>
-    </div>
+
   </div>
 
-  <!-- 右側の列 -->
-  <div class="flex-col w-1/2">
-    <div class="chat chat-end mb-4">
-      <div class="chat-bubble chat-bubble-success">こんなのはどう？</div>
-    </div>
-    <div class="chat chat-end mb-4">
-      <div class="chat-bubble chat-bubble-success">BetterMe</div>
-    </div>
-    <div class="chat chat-end mb-4">
-      <div class="chat-bubble chat-bubble-success">推しがあなたのスケジュールを応援、だって!!</div>
-    </div>
-    <div class="chat chat-end mb-4">
-      <div class="chat-bubble chat-bubble-success">推しとちょっと、頑張ってみない？</div>
-    </div>
-  </div>
-</div>
-<div class="container mx-auto">
-  <div class="flex justify-center items-center h-screen">
-    <button class="btn btn-info sm:btn-sm md:btn-md lg:btn-lg"><%= link_to "はじめる", sign_up_path %></button>
-    <button class="btn btn-success sm:btn-sm md:btn-md lg:btn-lg"><%= link_to "ログイン", login_path %></button>
-  </div>
-</div>
+
+
+</main>
