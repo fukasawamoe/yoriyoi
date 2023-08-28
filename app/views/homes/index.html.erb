@@ -1,10 +1,20 @@
-<main class="container w-full">
-    <section class="text-gray-600 body-font">
-      <div class="container px-5 py-24 mx-auto flex flex-wrap">
-        <%= render "ouen" %>
-        <%= render "schedule" %>
+<main class="w-full">
+  <div class="px-5 py-24 mx-auto flex flex-wrap">
+    <div class="mx-auto">
+      <%= render "ai_message" %>
+      <div class="flex flex-wrap -mx-2">
         <%= render "mokuhyou" %>
-        <%= render "achievement" %>
+        <div class="px-2 w-1/2">
+          <div class="flex flex-wrap w-full bg-gray-100  py-16 sm:px-10 px-6 relative">
+            <div class="w-full">
+              <h2 class="text-xl text-gray-900 font-medium title-font mb-2">あなたのスケジュール</h2>
+              <%= render "schedule" %>
+            </div>
+          </div>
+        </div>
+        <div class="mt-4 w-full">
+          <%= render "achievement" %>
       </div>
-    </section>
+    </div>
+  </div>
 </main>
