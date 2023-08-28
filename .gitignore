@@ -31,4 +31,5 @@
 /config/master.key
 
 /app/assets/builds/*
+/app/assets/images/*
 !/app/assets/builds/.keep
