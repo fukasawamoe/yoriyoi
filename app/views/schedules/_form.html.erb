@@ -1,0 +1,44 @@
+<main class="w-full flex justify-center">
+
+  <%= form_with model: @schedule, url: schedules_path, local: true do |form| %>
+    <div class="form-container rounded">
+      <div class="form-group mt-8">
+        <div class="mr-5">
+          <%= form.check_box :goal_select, class: 'rounded mr-10 p-6' %>
+          <%= form.select :hour, (0..23).map { |h| [format('%02d', h), h] }, {}, class: 'rounded' %>
+          <%= form.select :minute, [0, 15, 30, 45].map { |m| [format('%02d', m), m] }, {}, class: 'rounded' %>
+          <%= form.text_field :task, placeholder: "タスク", class: 'rounded' %>
+          <%= form.text_field :task, placeholder: "メモ", class: 'rounded' %>
+        
+          <button class="add-btn rounded ml-10 font-bold" type="button">+</button>
+          <button class="remove-btn rounded font-bold" type="button" style="display: none;">-</button>
+        </div>
+      </div>
+    </div>
+    <div class="flex justify-center p-8">
+      <button class="btn btn-accent" type="submit">スケジュールを保存する</button>
+    </div>
+  <% end %>
+</main>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- jQueryを読み込む -->
+<script>
+  $(document).ready(function() {
+    // +ボタンをクリックした時の処理
+    $('.add-btn').click(function() {
+      var $clone = $(this).closest('.form-group').clone(true);
+      $clone.find('input').val(''); // 入力値をクリア
+      $clone.find('.add-btn').removeClass('fa-plus').addClass('fa-minus'); // +ボタンを-ボタンに変更
+      $clone.find('.remove-btn').show(); // 新しい行の-ボタンを表示
+      $('.form-container').append($clone);
+    });
+
+    // -ボタンをクリックした時の処理
+    $(document).on('click', '.remove-btn', function() {
+      $(this).closest('.form-group').remove();
+    });
+  });
+</script>
+
+
+
