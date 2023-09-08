@@ -1,0 +1,25 @@
+<div class="nested-fields">
+  <!-- CategorySchedule fields here -->
+
+  <%= f.fields_for :schedule do |schedule| %>
+    <%= schedule.check_box :goal_select, class: 'rounded mr-10 p-6' %>
+    <%= schedule.time_select :schedule_time, { minute_step: 15, prompt: '--' }, class:'rounded' %>
+    <%= schedule.text_field :task, placeholder: "タスク", class: 'rounded' %>
+    <%= schedule.text_field :memo, placeholder: "メモ", class: 'rounded' %>
+  <% end %>
+
+  <%= link_to_remove_association 'Remove Schedule', f %>
+</div>
+
+
+
+<div class="nested-fields field">
+  <div class="col-md-6">
+  <%= f.check_box :goal_select, class: 'rounded mr-10 p-6' %>
+  <%= f.time_select :schedule_time, { minute_step: 15, prompt: '--' }, class:'rounded' %>
+  <%= f.text_field :task, placeholder: "タスク", class: 'rounded' %>
+  <%= f.text_field :memo, placeholder: "メモ", class: 'rounded' %>
+  </div>
+  <%= link_to_remove_association '削除', f, class: 'btn btn-danger' %>
+</div>
+

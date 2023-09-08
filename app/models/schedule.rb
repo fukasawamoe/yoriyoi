@@ -1,10 +1,11 @@
 class Schedule < ApplicationRecord
-  has_many :schedule, through: :category_schedule
-  has_many :category_schedule
+  has_many :category_schedules
+  has_many :categories, through: :category_schedules
 
   validate :custom_validation_for_schedule_time
 
   enum goal_select: { not_selected: 0, selected: 1 }
+
 
   def custom_validation_for_schedule_time
     if schedule.present? && schedule_time.blank?

@@ -1,16 +1,10 @@
 class SchedulesController < ApplicationController
   def new
+    @schedule = Schedule.new
   end
 
   def create
-    # フォームから送信されたパラメータを取得
-    hour = params[:hour].to_i
-    minute = params[:minute].to_i
-  binding.pry
-    # hourとminuteをフォーマットしてtime型に変換
-    schedule_time = format('%02d:%02d', hour, minute)
-    # time_str = format('%02d:%02d', hour, minute)
-    # schedule_time = Time.parse(time_str)
+    schedule_time = Time.parse(time_str)
   binding.pry
     # スケジュールを保存
     @schedule = Schedule.new(schedule_params)

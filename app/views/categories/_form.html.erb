@@ -1,0 +1,9 @@
+<%= form_with model: @category do |f| %>
+  <%= f.text_field :name, placeholder: "スケジュール名", class: 'rounded' %>
+
+  <%= f.fields_for :category_schedules do |category_schedule| %>
+    <%= render 'category_schedule_fields', f: category_schedule %>
+  <% end %>
+
+  <%= link_to_add_association 'Add Schedule', f, :category_schedules %>
+<% end %>

@@ -1,4 +1,4 @@
 class CategorySchedule < ApplicationRecord
-  belongs_to :schedule
   belongs_to :category
+  belongs_to :schedule
 end
