@@ -1,5 +1,5 @@
 <main class="w-full flex justify-center">
-  <%= form_with model: @form, url: schedules_path, method: :post do |f| %>
+  <%= form_with model: @form, url: schedules_path, method: :post, local: true do |f| %>
     <div class="form-container rounded">
       <div class="form-group m-8">
         <div class="mr-5">

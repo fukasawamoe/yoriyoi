@@ -8,7 +8,7 @@ class Schedule < ApplicationRecord
 
   validate :custom_validation_for_schedule_time
 
-  enum goal_select: { not_selected: 0, selected: 1 }
+  enum goal_select: { off: 0, on: 1 }
 
 
   def custom_validation_for_schedule_time

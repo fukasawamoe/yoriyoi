@@ -27,6 +27,7 @@ class SchedulesController < ApplicationController
 
   private
   def schedule_collection_params
-    params.require(:form_schedule_collection).permit(schedule_attributes: [:schedule_time, :task, :memo, :goal_select])
+    params.require(:form_schedule_collection)
+    .permit(schedules_attributes: [:schedule_time, :task, :memo, :goal_select])
   end
 end
