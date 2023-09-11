@@ -1,9 +1,22 @@
-<%= form_with model: @category do |f| %>
-  <%= f.text_field :name, placeholder: "スケジュール名", class: 'rounded' %>
+<main class="w-full flex justify-center">
+  <%= form_with model: @category do |f| %>
+    <%= render 'shared/error_messages', object: @category %>
+    <div class="form-container rounded">
+      <div class="form-group p-8">
 
-  <%= f.fields_for :category_schedules do |category_schedule| %>
-    <%= render 'category_schedule_fields', f: category_schedule %>
+        <%= f.text_field :name, placeholder: "スケジュール名", class: 'rounded' %>
+
+        <%= f.fields_for :category_schedules do |category_schedule| %>
+          <%= render 'category_schedule_fields', f: category_schedule %>
+        <% end %>
+
+      </div>
+    </div>
+    <div class="flex justify-center p-8">
+    <%= link_to_add_association 'スケジュールを追加', f, :category_schedules, class:"btn btn-accent" %>
+    <div class="flex justify-center p-8">
+      <button class="btn btn-accent" type="submit">スケジュールを保存する</button>
+    </div>
+    </div>
   <% end %>
-
-  <%= link_to_add_association 'Add Schedule', f, :category_schedules %>
-<% end %>
+</main>

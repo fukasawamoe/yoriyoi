@@ -1,12 +1,12 @@
-<div class="nested-fields">
+<div class="nested-fields flex justify-center items-center p-1">
   <%= f.fields_for :schedule do |schedule| %>
-    <%= schedule.check_box :goal_select, class: 'rounded mr-10 p-6' %>
-    <%= schedule.time_select :schedule_time, { minute_step: 15, prompt: '--' }, class:'rounded' %>
-    <%= schedule.text_field :task, placeholder: "タスク", class: 'rounded' %>
-    <%= schedule.text_field :memo, placeholder: "メモ", class: 'rounded' %>
+    <div class="form-group">
+      <%= schedule.check_box :goal_select, class: 'rounded mr-10 p-6' %>
+      <%= schedule.time_select :schedule_time, { minute_step: 15, prompt: '--' }, class:'rounded' %>
+      <%= schedule.text_field :task, placeholder: "タスク", class: 'rounded' %>
+      <%= schedule.text_field :memo, placeholder: "メモ", class: 'rounded' %>
+    </div>
   <% end %>
-
-  <%= link_to_remove_association 'Remove Schedule', f %>
 </div>
 
 

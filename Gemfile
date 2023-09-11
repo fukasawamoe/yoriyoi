@@ -35,7 +35,7 @@ gem "sorcery"
 
 #フォーム複製機能・jQuery読み込み
 gem 'jquery-rails'
-gem 'cocoon'
+
 
 
 

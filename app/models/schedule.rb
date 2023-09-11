@@ -2,6 +2,10 @@ class Schedule < ApplicationRecord
   has_many :category_schedules
   has_many :categories, through: :category_schedules
 
+  validates :schedule_time, presence: true
+  validates :task, presence: true
+  validates :memo, presence: true
+
   validate :custom_validation_for_schedule_time
 
   enum goal_select: { not_selected: 0, selected: 1 }

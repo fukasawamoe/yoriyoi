@@ -1,14 +1,13 @@
 <main class="w-full flex justify-center">
-
-  <%= form_with model: @category, url: schedules_path do |form| %>
+  <%= form_with model: @form, url: schedules_path, method: :post do |f| %>
     <div class="form-container rounded">
-      <div class="form-group mt-8">
+      <div class="form-group m-8">
         <div class="mr-5">
-        <%= form.fields_for :schedules do |task_form| %>
-          <%= task_form.check_box :goal_select, class: 'rounded mr-10 p-6' %>
-          <%= task_form.time_select :schedule_time, { minute_step: 15, prompt: '--' }, class:'rounded' %>
-          <%= task_form.text_field :task, placeholder: "タスク", class: 'rounded' %>
-          <%= task_form.text_field :memo, placeholder: "メモ", class: 'rounded' %>
+        <%= f.fields_for :schedules do |i| %>
+          <%= i.check_box :goal_select, class: 'rounded mr-10 p-6' %>
+          <%= i.time_select :schedule_time, { minute_step: 15, prompt: '--' }, class:'rounded' %>
+          <%= i.text_field :task, placeholder: "タスク", class: 'rounded' %>
+          <%= i.text_field :memo, placeholder: "メモ", class: 'rounded' %>
         <% end %>
           <button class="add-btn rounded ml-10 font-bold" type="button">+</button>
           <button class="remove-btn rounded font-bold" type="button" style="display: none;">-</button>
@@ -39,45 +38,3 @@
     });
   });
 </script>
-
-
-
-
-
-
-
-
-
-
-<main class="w-full flex justify-center">
-  <%= form_for @category do |f| %>
-    <div class="form-container rounded">
-      <div class="form-group mt-8">
-        <div id="schedules" class="mr-5">
-          <%= f.fields_for :schedules do |schedule| %>
-            <%= render 'schedule_fields', f: schedule %>
-          <% end %>
-          <div class='links'>
-            <%= link_to_add_association 'フォームを追加', f, :schedule %>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="flex justify-center p-8">
-      <button class="btn btn-accent" type="submit">スケジュールを保存する</button>
-    </div>
-  <% end %>
-</main>
-
-
-
-
-
-
-        <div class='nested-fields'>
-          <%= f.check_box :goal_select, class: 'rounded mr-10 p-6' %>
-          <%= f.time_select :schedule_time, { minute_step: 15, prompt: '--' }, class:'rounded' %>
-          <%= f.text_field :task, placeholder: "タスク", class: 'rounded' %>
-          <%= f.text_field :memo, placeholder: "メモ", class: 'rounded' %>
-
-        </div>
