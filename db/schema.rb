@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_04_104347) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_31_092729) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -22,22 +22,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_04_104347) do
     t.index ["user_id"], name: "index_categories_on_user_id"
   end
 
-  create_table "category_schedules", force: :cascade do |t|
+  create_table "tasks", force: :cascade do |t|
     t.bigint "category_id", null: false
-    t.bigint "schedule_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["category_id"], name: "index_category_schedules_on_category_id"
-    t.index ["schedule_id"], name: "index_category_schedules_on_schedule_id"
-  end
-
-  create_table "schedules", force: :cascade do |t|
-    t.time "schedule_time"
-    t.string "task"
+    t.time "task_time"
+    t.string "to_do"
     t.text "memo"
     t.boolean "goal_select"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_tasks_on_category_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -51,6 +44,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_04_104347) do
   end
 
   add_foreign_key "categories", "users"
-  add_foreign_key "category_schedules", "categories"
-  add_foreign_key "category_schedules", "schedules"
+  add_foreign_key "tasks", "categories"
 end

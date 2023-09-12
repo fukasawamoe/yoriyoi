@@ -1,11 +1,11 @@
 <main class="w-full flex justify-center">
-  <%= form_with model: @form, url: schedules_path, method: :post, local: true do |f| %>
+  <%= form_with model: @form, url: tasks_path, method: :post, local: true do |f| %>
     <div class="form-container rounded">
       <div class="form-group m-8">
         <div class="mr-5">
-        <%= f.fields_for :schedules do |i| %>
+        <%= f.fields_for :tasks do |i| %>
           <%= i.check_box :goal_select, class: 'rounded mr-10 p-6' %>
-          <%= i.time_select :schedule_time, { minute_step: 15, prompt: '--' }, class:'rounded' %>
+          <%= i.time_select :task_time, { minute_step: 15, prompt: '--' }, class:'rounded' %>
           <%= i.text_field :task, placeholder: "タスク", class: 'rounded' %>
           <%= i.text_field :memo, placeholder: "メモ", class: 'rounded' %>
         <% end %>

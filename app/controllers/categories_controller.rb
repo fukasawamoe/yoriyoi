@@ -10,7 +10,7 @@ class CategoriesController < ApplicationController
   end
 
   def create
-  #   schedule_time = Time.parse(time_str)
+  #   task_time = Time.parse(time_str)
   # binding.pry
     # スケジュールを保存
     @category = Form::Category.new(category_params)
@@ -29,6 +29,6 @@ class CategoriesController < ApplicationController
   def category_params
     params.require(:form_category).permit(
                                     Form::Category::REGISTRABLE_ATTRIBUTES +
-                                    [category_schedules_attributes: Form::CategorySchedule::REGISTRABLE_ATTRIBUTES])
+                                    [category_tasks_attributes: Form::Categorytask::REGISTRABLE_ATTRIBUTES])
   end
 end
