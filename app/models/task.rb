@@ -1,5 +1,5 @@
 class task < ApplicationRecord
-  belongs_to :category
+  belongs_to :Schedule
 
   validates :task_time, presence: true
   validates :task, presence: true

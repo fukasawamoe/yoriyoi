@@ -1,11 +1,11 @@
-class CategoriesController < ApplicationController
+class SchedulesController < ApplicationController
 
   def index
-    @categories = Category.all
+    @schedules = Schedule.all
   end
 
   def new
-    @category = Form::Category.new
+    @schedule = Form::Schedule.new
 
   end
 
@@ -13,12 +13,12 @@ class CategoriesController < ApplicationController
   #   task_time = Time.parse(time_str)
   # binding.pry
     # スケジュールを保存
-    @category = Form::Category.new(category_params)
+    @schedule = Form::Schedule.new(schedule_params)
 
   binding.pry
-    if @category.save
+    if @schedule.save
       # スケジュールの保存が成功した場合の処理
-      redirect_to category_path, notice: 'スケジュールが作成されました。'
+      redirect_to schedule_path, notice: 'スケジュールが作成されました。'
     else
       # スケジュールの保存が失敗した場合の処理
       render :new, status: :unprocessable_entity
@@ -26,9 +26,9 @@ class CategoriesController < ApplicationController
   end
 
   private
-  def category_params
-    params.require(:form_category).permit(
-                                    Form::Category::REGISTRABLE_ATTRIBUTES +
-                                    [category_tasks_attributes: Form::Categorytask::REGISTRABLE_ATTRIBUTES])
+  def schedule_params
+    params.require(:form_schedule).permit(
+                                    Form::Schedule::REGISTRABLE_ATTRIBUTES +
+                                    [schedule_tasks_attributes: Form::Scheduletask::REGISTRABLE_ATTRIBUTES])
   end
 end

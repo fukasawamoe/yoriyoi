@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :users
   resources :homes
   resources :tasks
-  resources :categories
+  resources :schedules
 
 end
 

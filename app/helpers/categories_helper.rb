@@ -1,2 +1,2 @@
-module CategoriesHelper
+module SchedulesHelper
 end
