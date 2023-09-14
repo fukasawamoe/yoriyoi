@@ -30,7 +30,14 @@ gem "tailwindcss-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
+#会員登録・ログイン機能
 gem "sorcery"
+
+#フォーム複製機能・jQuery読み込み
+gem 'jquery-rails'
+gem 'cocoon'
+
+
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
