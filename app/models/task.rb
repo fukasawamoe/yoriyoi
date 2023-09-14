@@ -1,5 +1,5 @@
-class task < ApplicationRecord
-  belongs_to :Schedule
+class Task < ApplicationRecord
+  belongs_to :schedule
 
   validates :task_time, presence: true
   validates :task, presence: true
