@@ -1,0 +1,21 @@
+  <p>
+    <strong>スケジュール名:</strong>
+    <%= schedule.name %>
+  </p>
+
+  <p>
+    <strong>一日の予定</strong>
+  </p>
+
+  <% schedule.tasks.each do |i| %>
+  <tr>
+    <td><%= i.task_time %></td>
+    <td><%= i.to_do %></td>
+    <td><%= i.memo %></td>
+    <td><%= i.goal_select %></td>
+
+  </tr>
+    
+  <% end %>
+
+

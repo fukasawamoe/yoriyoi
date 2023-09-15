@@ -27,7 +27,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_31_092729) do
     t.time "task_time"
     t.string "to_do"
     t.text "memo"
-    t.boolean "goal_select"
+    t.boolean "goal_select", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["schedule_id"], name: "index_tasks_on_schedule_id"

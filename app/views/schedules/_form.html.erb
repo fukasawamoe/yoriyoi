@@ -1,12 +1,13 @@
 <main class="w-full flex justify-center">
-  <%= form_with model: @schedule, local: true do |f| %>
-    <%= render 'shared/error_messages', object: @schedule %>
+  <%= form_with(model: @schedule, local: true) do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
     <div class="form-container rounded">
       <div class="field p-8">
         <%= f.text_field :name, placeholder: "スケジュール名", class: 'rounded' %>
       </div>
       <div class="form-group">
         <%= f.fields_for :tasks do |task| %>
+        
           <%= render 'task_fields', f: task %>
         
         <% end %>
