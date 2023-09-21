@@ -17,6 +17,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_31_092729) do
   create_table "schedules", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "name"
+    t.integer "day_of_week", default: [], null: false, array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_schedules_on_user_id"

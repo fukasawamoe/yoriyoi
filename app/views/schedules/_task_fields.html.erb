@@ -1,13 +1,12 @@
 <div class="nested-fields">
 
   <div class="form-group flex justify-center items-center p-1">
-    <%= f.check_box :goal_select, {class: 'rounded mr-10 p-6'} %>
-    <%= f.time_select :task_time, { minute_step: 15, prompt: '--' }, class:'rounded' %>
+    <%= f.time_select :task_time, { minute_step: 15, include_blank: true }, class:'rounded' %>
     <%= f.text_field :to_do, placeholder: "タスク", class: 'rounded' %>
     <%= f.text_field :memo, placeholder: "メモ", class: 'rounded' %>
     <%= link_to_remove_association "削除", f, class: "btn btn-accent" %>
   </div>
-  
+
 </div>
 
 

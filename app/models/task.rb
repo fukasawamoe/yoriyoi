@@ -3,6 +3,5 @@ class Task < ApplicationRecord
 
   validates :task_time, presence: true
   validates :to_do, presence: true
-  validates :memo, presence: true
 
 end

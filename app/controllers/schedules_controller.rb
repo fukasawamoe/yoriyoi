@@ -10,9 +10,15 @@ class SchedulesController < ApplicationController
   end
 
   def create
+    params[:schedule][:tasks_attributes].each do |_, task_attributes|
+      if task_attributes["task_time(4i)"].blank? && task_attributes["task_time(5i)"].blank?
+        task_attributes.delete("task_time(1i)")
+        task_attributes.delete("task_time(2i)")
+        task_attributes.delete("task_time(3i)")
+      end
+    end
 
     @schedule = current_user.schedules.build(schedule_params)
-    binding.pry
     if @schedule.save
       redirect_to schedule_path(@schedule), notice: 'スケジュールが作成されました。'
     else
@@ -20,23 +26,28 @@ class SchedulesController < ApplicationController
     end
   end
 
-  def show
-    binding.pry
-  end
+  def show; end
 
-  def edit
-  end
+  def edit; end
 
   def update
+    params[:schedule][:tasks_attributes].each do |_, task_attributes|
+      if task_attributes["task_time(4i)"].blank? && task_attributes["task_time(5i)"].blank?
+        task_attributes.delete("task_time(1i)")
+        task_attributes.delete("task_time(2i)")
+        task_attributes.delete("task_time(3i)")
+      end
+    end
+
     if @schedule.update(schedule_params)
-      redirect_to homes_path
+      redirect_to schedule_path(@schedule)
     else
       render :edit
     end
   end
 
   def destroy
-    @schedule = Schedule.find(params[:id])
+    @schedule.tasks.destroy_all
     @schedule.destroy
     redirect_to schedules_path
   end
@@ -48,7 +59,7 @@ class SchedulesController < ApplicationController
   end
 
   def schedule_params
-    params.require(:schedule).permit(:name,
+    params.require(:schedule).permit(:name, {day_of_week: []},
                                     tasks_attributes:[:id, :task_time, :to_do, :memo, :goal_select, :_destroy])
   end
 end

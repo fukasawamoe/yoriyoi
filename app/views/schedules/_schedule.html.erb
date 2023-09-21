@@ -8,14 +8,12 @@
   </p>
 
   <% schedule.tasks.each do |i| %>
-  <tr>
-    <td><%= i.task_time %></td>
+  <ul>
+    <td><%= i.task_time.strftime("%H:%M") %></td>
     <td><%= i.to_do %></td>
     <td><%= i.memo %></td>
     <td><%= i.goal_select %></td>
-
-  </tr>
-    
+  </ul>
   <% end %>
 
 

@@ -1,14 +1,13 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Schedules</h1>
+<h1>あなたのスケジュール</h1>
 
 <div id="projects">
   <% @schedules.each do |schedule| %>
-    <%= render schedule %>
     <p>
-      <%= link_to "Show this project", schedule %>
+      <%= link_to schedule.name , schedule %>
     </p>
   <% end %>
 </div>
 
-<%= link_to "New project", new_schedule_path %>
+<%= link_to "新しくスケジュールを作成する", new_schedule_path %>
