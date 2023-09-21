@@ -1,0 +1,13 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>あなたのスケジュール</h1>
+
+<div id="projects">
+  <% @schedules.each do |schedule| %>
+    <p>
+      <%= link_to schedule.name , schedule %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "新しくスケジュールを作成する", new_schedule_path %>

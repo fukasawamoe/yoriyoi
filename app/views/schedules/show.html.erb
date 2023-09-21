@@ -1,1 +1,10 @@
-カテゴリ名：<%= @schedule.name %>
+<p style="color: green"><%= notice %></p>
+
+<%= render 'schedule', {schedule: @schedule, tasks: @tasks} %>
+
+<div>
+  <%= link_to "編集", edit_schedule_path(@schedule) %> |
+  <%= link_to "ホームにもどる", homes_path %>
+
+  <%= button_to "スケジュールを削除する", @schedule, method: :delete %>
+</div>

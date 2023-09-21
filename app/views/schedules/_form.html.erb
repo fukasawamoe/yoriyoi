@@ -1,14 +1,21 @@
 <main class="w-full flex justify-center">
-  <%= form_with model: @schedule, local: true do |f| %>
-    <%= render 'shared/error_messages', object: @schedule %>
+  <%= form_with(model: schedule, local: true) do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
     <div class="form-container rounded">
       <div class="field p-8">
         <%= f.text_field :name, placeholder: "スケジュール名", class: 'rounded' %>
+        <% ['月', '火', '水', '木', '金', '土', '日'].each_with_index do |day, index| %>
+          <%= check_box_tag 'schedule[day_of_week][]', index, schedule.day_of_week.include?(index), class: 'rounded' %>
+          <%= day %>
+        <% end %>
+        <%= button_tag 'すべてに適用する', type: 'button', id: 'select-all', class: 'rounded' %>
+        <%= button_tag 'すべて解除する', type: 'button', id: 'deselect-all', class: 'rounded' %>
       </div>
       <div class="form-group">
         <%= f.fields_for :tasks do |task| %>
+
           <%= render 'task_fields', f: task %>
-        
+
         <% end %>
         <div class="flex justify-center p-8">
           <%= link_to_add_association '追加', f, :tasks, class:"btn btn-accent" %>
@@ -20,4 +27,23 @@
       <button class="btn btn-accent" type="submit">スケジュールを保存する</button>
     </div>
   <% end %>
+  <script>
+    document.getElementById('select-all').addEventListener('click', function() {
+      var checkboxes = document.querySelectorAll('input[type=checkbox]');
+      for (var i = 0; i < checkboxes.length; i++) {
+        if (checkboxes[i].id != 'schedule_tasks_attributes_0_goal_select') {
+          checkboxes[i].checked = true;
+        }
+      }
+    });
+    document.getElementById('deselect-all').addEventListener('click', function() {
+      var checkboxes = document.querySelectorAll('input[type=checkbox]');
+      for (var i = 0; i < checkboxes.length; i++) {
+        if (checkboxes[i].id != 'schedule_tasks_attributes_0_goal_select') {
+          checkboxes[i].checked = false;
+        }
+      }
+    });
+  </script>
+
 </main>
