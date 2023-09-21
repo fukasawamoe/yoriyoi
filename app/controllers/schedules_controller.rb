@@ -19,6 +19,7 @@ class SchedulesController < ApplicationController
     end
 
     @schedule = current_user.schedules.build(schedule_params)
+    binding.pry
     if @schedule.save
       redirect_to schedule_path(@schedule), notice: 'スケジュールが作成されました。'
     else

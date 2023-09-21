@@ -4,7 +4,7 @@
     <div class="form-container rounded">
       <div class="field p-8">
         <%= f.text_field :name, placeholder: "スケジュール名", class: 'rounded' %>
-        <% ['月', '火', '水', '木', '金', '土', '日'].each_with_index do |day, index| %>
+        <% ['日', '月', '火', '水', '木', '金', '土'].each_with_index do |day, index| %>
           <%= check_box_tag 'schedule[day_of_week][]', index, schedule.day_of_week.include?(index), class: 'rounded' %>
           <%= day %>
         <% end %>
