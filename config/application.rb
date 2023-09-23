@@ -27,7 +27,7 @@ module Yoriyoi
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.yml').to_s]
 
     #time_zone
-    config.time_zone = 'Tokyo'
+    config.time_zone = 'Asia/Tokyo'
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files

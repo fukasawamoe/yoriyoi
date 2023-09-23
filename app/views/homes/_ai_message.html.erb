@@ -4,10 +4,27 @@
       <h2 class="text-2xl text-gray-900 font-medium title-font mb-2">AIからの一言</h2>
       <div class="avatar">
         <div class="w-24 rounded-full ring ring-info ring-offset-base-100 ring-offset-2">
-          
+
         </div>
       </div>
-      <p class="leading-relaxed">ちばりよ〜〜〜!</p>
+      <p class="leading-relaxed">
+        <% if @next_task.nil? %>
+          <p>次の曜日のスケジュールはまだ作成されていません。</p>
+        <% else %>
+          <p>次は<%= task.task_time.strftime("%H:%M") %>に<%= task.to_do %>をするんだね！がんばって！</p>
+        <% end %>
+        </p>
     </div>
   </div>
 </div>
+<script>
+  document.addEventListener('DOMContentLoaded', (event) => {
+    setInterval(updateNextTask, 60000); // 1分ごとに次のタスクを更新
+  });
+
+  function updateNextTask() {
+    fetch('/homes/index.js').then(response => response.text()).then(html => {
+      document.getElementById('next-task').innerHTML = html;
+    });
+  }
+</script>

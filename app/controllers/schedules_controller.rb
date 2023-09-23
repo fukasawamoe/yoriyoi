@@ -15,8 +15,17 @@ class SchedulesController < ApplicationController
         task_attributes.delete("task_time(1i)")
         task_attributes.delete("task_time(2i)")
         task_attributes.delete("task_time(3i)")
+      else
+        year = task_attributes["task_time(1i)"].to_i
+        month = task_attributes["task_time(2i)"].to_i
+        day = task_attributes["task_time(3i)"].to_i
+        hour = task_attributes["task_time(4i)"].to_i
+        minute = task_attributes["task_time(5i)"].to_i
+
+        task_time = Time.zone.local(year, month, day, hour, minute)
       end
     end
+    
 
     @schedule = current_user.schedules.build(schedule_params)
     binding.pry
