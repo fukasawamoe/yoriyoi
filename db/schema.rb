@@ -25,7 +25,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_31_092729) do
 
   create_table "tasks", force: :cascade do |t|
     t.bigint "schedule_id", null: false
-    t.time "task_time"
+    t.datetime "task_time"
     t.string "to_do"
     t.text "memo"
     t.boolean "goal_select", default: false
