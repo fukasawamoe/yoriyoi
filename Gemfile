@@ -37,6 +37,8 @@ gem "sorcery"
 gem 'jquery-rails'
 gem 'cocoon'
 
+#タスクを時間順に並べ替える
+gem 'acts_as_list'
 
 
 # Use Redis adapter to run Action Cable in production

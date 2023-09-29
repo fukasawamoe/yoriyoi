@@ -7,7 +7,7 @@
     <strong>一日の予定</strong>
   </p>
 
-  <% schedule.tasks.each do |i| %>
+  <% tasks.each do |i| %>
   <ul>
     <td><%= i.task_time.strftime("%H:%M") %></td>
     <td><%= i.to_do %></td>

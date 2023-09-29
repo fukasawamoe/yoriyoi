@@ -11,19 +11,20 @@
         <%= button_tag 'すべてに適用する', type: 'button', id: 'select-all', class: 'rounded' %>
         <%= button_tag 'すべて解除する', type: 'button', id: 'deselect-all', class: 'rounded' %>
       </div>
-      <div class="form-group">
-        <%= f.fields_for :tasks do |task| %>
+      <div class="form-group" id="tasks-container">
+        <%= f.fields_for :tasks, @tasks do |task| %>
 
           <%= render 'task_fields', f: task %>
 
         <% end %>
-        <div class="flex justify-center p-8">
-          <%= link_to_add_association '追加', f, :tasks, class:"btn btn-accent" %>
-        </div>
+      </div>
+      <div class="flex justify-center p-8">
+        <%= link_to_add_association '追加', f, :tasks, class:"btn btn-accent" %>
       </div>
     </div>
 
     <div class="flex justify-center p-8">
+      <button class="btn btn-accent" type="button" id="sort-tasks-button">時間順に並び替える</button>
       <button class="btn btn-accent" type="submit">スケジュールを保存する</button>
     </div>
   <% end %>
@@ -43,6 +44,21 @@
           checkboxes[i].checked = false;
         }
       }
+    });
+
+    document.getElementById('sort-tasks-button').addEventListener('click', function() {
+      // タスクのフォームフィールドを時間順に並び替え
+      var sortedTasks = Array.from(document.querySelectorAll('.nested-fields')).sort(function(a, b) {
+        var timeA = a.querySelector('select[name$="[task_time(4i)]"]').value + ':' + a.querySelector('select[name$="[task_time(5i)]"]').value;
+        var timeB = b.querySelector('select[name$="[task_time(4i)]"]').value + ':' + b.querySelector('select[name$="[task_time(5i)]"]').value;
+        return timeA > timeB ? 1 : -1;
+      });
+
+      // 並び替えたタスクのフォームフィールドを挿入
+      var tasksContainer = document.getElementById('tasks-container');
+      sortedTasks.forEach(function(taskFields) {
+        tasksContainer.appendChild(taskFields);
+      });
     });
   </script>
 
