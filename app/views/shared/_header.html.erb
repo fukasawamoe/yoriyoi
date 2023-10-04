@@ -1,7 +1,7 @@
 <header class="flex justify-between items-center h-20 p-6 border-y-2">
   <% if logged_in? %>
     <h1 class="text-2xl">
-      <%= link_to "BetterMe", homes_path %>
+      <%= link_to "BetterMe", home_path(current_user.id) %>
     </h1>
   <% else %>
     <h1 class="text-2xl">
@@ -17,7 +17,7 @@
         <ul id="menu" class="z-0 fixed top-0 left-0 w-full text-center bg-purple-200 translate-x-full transition ease-linear">
           <li class="p-3"><%= link_to 'スケジュールを作る', new_schedule_path %></li>
           <li class="p-3"><%= link_to 'スケジュールの確認・編集', schedules_path %></li>
-          <li class="p-3"><%= link_to 'マイページ', "#" %></li>
+          <li class="p-3"><%= link_to 'マイページ', profiles_path %></li>
           <li class="p-3"><%= link_to 'ログアウト', logout_path, class: 'nav-link', data: { turbo_method: :delete ,turbo_confirm: 'ログアウトします' } %></li>
         </ul>
     </nav>

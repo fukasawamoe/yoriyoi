@@ -9,6 +9,12 @@ Rails.application.routes.draw do
   resources :homes
   resources :tasks
   resources :schedules
+  resources :profiles
+  resources :goals do
+    collection do
+      post :skip  # 新たなルートを追加します。
+    end
+  end
 
 end
 
