@@ -63,7 +63,7 @@ class HomesController < ApplicationController
       format.html
       format.js { render partial: 'next_task', locals: { task: @next_task } }
     end
-  @goals = current_user.goals
+    @goal = Goal.find_by(user_id: current_user.id)
   end
 
   def edit

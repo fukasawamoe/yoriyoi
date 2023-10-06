@@ -37,7 +37,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_30_073933) do
 
   create_table "goals", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.string "ideal_self"
+    t.string "ideal_self_1"
+    t.string "ideal_self_2"
+    t.string "ideal_self_3"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_goals_on_user_id"

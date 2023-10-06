@@ -42,6 +42,6 @@ class GoalsController < ApplicationController
     @goal = Goal.find(params[:id])
   end
   def goal_params
-    params.require(:goal).permit(:ideal_self) # 必要に応じてパラメータを調整します。
+    params.require(:goal).permit(:ideal_self_1, :ideal_self_2, :ideal_self_3) # 必要に応じてパラメータを調整します。
   end
 end
