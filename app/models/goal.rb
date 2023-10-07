@@ -1,4 +1,4 @@
 class Goal < ApplicationRecord
   belongs_to :user
-  has_many :actions
+  has_many :steps
 end

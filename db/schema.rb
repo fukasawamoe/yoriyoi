@@ -15,7 +15,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_30_073933) do
   enable_extension "plpgsql"
 
   create_table "achievements", force: :cascade do |t|
-    t.bigint "action_id", null: false
+    t.bigint "step_id", null: false
     t.boolean "completed"
     t.integer "day_of_week"
     t.integer "week_number"
@@ -23,23 +23,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_30_073933) do
     t.date "completed_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["action_id"], name: "index_achievements_on_action_id"
-  end
-
-  create_table "actions", force: :cascade do |t|
-    t.bigint "goal_id", null: false
-    t.string "content"
-    t.integer "times_set"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["goal_id"], name: "index_actions_on_goal_id"
+    t.index ["step_id"], name: "index_achievements_on_step_id"
   end
 
   create_table "goals", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.string "ideal_self_1"
-    t.string "ideal_self_2"
-    t.string "ideal_self_3"
+    t.string "ideal_self"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_goals_on_user_id"
@@ -52,6 +41,19 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_30_073933) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_schedules_on_user_id"
+  end
+
+  create_table "steps", force: :cascade do |t|
+    t.bigint "goal_id", null: false
+    t.string "action_1"
+    t.string "action_2"
+    t.string "action_3"
+    t.integer "times_set_1"
+    t.integer "times_set_2"
+    t.integer "times_set_3"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["goal_id"], name: "index_steps_on_goal_id"
   end
 
   create_table "tasks", force: :cascade do |t|
@@ -77,9 +79,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_30_073933) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
-  add_foreign_key "achievements", "actions"
-  add_foreign_key "actions", "goals"
+  add_foreign_key "achievements", "steps"
   add_foreign_key "goals", "users"
   add_foreign_key "schedules", "users"
+  add_foreign_key "steps", "goals"
   add_foreign_key "tasks", "schedules"
 end

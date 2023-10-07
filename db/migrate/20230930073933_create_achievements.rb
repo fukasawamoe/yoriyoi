@@ -1,7 +1,7 @@
 class CreateAchievements < ActiveRecord::Migration[7.0]
   def change
     create_table :achievements do |t|
-      t.references :action, null: false, foreign_key: true
+      t.references :step, null: false, foreign_key: true
       t.boolean :completed
       t.integer :day_of_week
       t.integer :week_number

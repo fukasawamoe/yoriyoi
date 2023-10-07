@@ -15,6 +15,6 @@ Rails.application.routes.draw do
       post :skip  # 新たなルートを追加します。
     end
   end
-
+  resources :steps
 end
 

@@ -1,4 +1,22 @@
-<div>
-  <h1 class="font-bold text-4xl">Goals#show</h1>
-  <p>Find me in app/views/goals/show.html.erb</p>
+<div class="px-2 w-2/3">
+  <div class="flex flex-wrap w-full bg-lime-50 relative">
+    <div class="text-right relative z-0 m-10">
+      <%= link_to '目標の編集', edit_goal_path(current_user.id)%>
+    </div>
+    <div class="text-left relative z-0 m-10">
+      <h2 class="text-xl text-gray-900 font-medium title-font mb-2">理想のあなた</h2>
+        <ul class="list-disc list-inside">
+          <li class="p-3"><%= goal.ideal_self_1 %></li>
+          <li class="p-3"><%= goal.ideal_self_2 %></li>
+          <li class="p-3"><%= goal.ideal_self_3 %></li>
+        </ul>
+    </div>
+    <div class="text-left relative z-0 m-10">
+      <h2 class="text-xl text-gray-900 font-medium title-font mb-2">あなたの目標</h2>
+      <ul class="list-disc list-inside">
+        <li class="p-3">早寝早起き</li>
+        <li class="p-3">破滅思考にならない</li>
+      </ul>
+    </div>
+  </div>
 </div>

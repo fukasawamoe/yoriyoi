@@ -1,0 +1,6 @@
+<%= form_with model: step, local: true do |f| %>
+  <li><%= f.text_field :action_1 %>を週に<%= f.number_field :times_set_1 %>回がんばる</li>
+  <li><%= f.text_field :action_2 %>を週に<%= f.number_field :times_set_2 %>回がんばる</li>
+  <li><%= f.text_field :action_3 %>を週に<%= f.number_field :times_set_3 %>回がんばる</li>
+  <%= f.submit "登録" %>
+<% end %>

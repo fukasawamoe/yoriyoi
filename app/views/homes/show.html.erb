@@ -4,7 +4,7 @@
 
       <%= render "ai_message", task: @next_task %>
       <div class="flex flex-wrap ">
-        <%= render "goal", goal: @goal %>
+        <%= render template: "goals/show", locals: { goal: @goal } %>
         <div class="px-2 w-1/3">
           <div class="flex flex-wrap w-full bg-gray-100  py-16 sm:px-10 px-6 relative">
             <div class="w-full">
