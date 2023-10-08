@@ -14,13 +14,15 @@
     </div>
     <div class="text-left relative z-0 m-10">
       <h2 class="text-xl text-gray-900 font-medium title-font mb-2">理想に向けてすること</h2>
-        <ul class="list-disc list-inside">
-          <% [[step.action_1, step.times_set_1], [step.action_2, step.times_set_2], [step.action_3, step.times_set_3]].each do |action, times_set| %>
-            <% if action.present? && times_set.present? %>
-              <li class="p-3"><%= action %>を週<%= times_set %>回行う</li>
-            <% end %>
+      <ul class="list-disc list-inside">
+        <% (1..3).each do |i| %>
+          <% action = step.send("action_#{i}") %>
+          <% times_set = step.send("times_set_#{i}") %>
+          <% if action.present? && times_set.present? %>
+            <li class="p-3"><%= action %>を週<%= times_set %>回行う</li>
           <% end %>
-        </ul>
+        <% end %>
+      </ul>
     </div>
   </div>
 </div>
