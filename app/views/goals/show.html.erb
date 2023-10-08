@@ -1,22 +1,26 @@
 <div class="px-2 w-2/3">
   <div class="flex flex-wrap w-full bg-lime-50 relative">
     <div class="text-right relative z-0 m-10">
-      <%= link_to '目標の編集', edit_goal_path(current_user.id)%>
+      <%= link_to '理想の自分の編集', edit_goal_path(current_user.id)%>
     </div>
     <div class="text-left relative z-0 m-10">
       <h2 class="text-xl text-gray-900 font-medium title-font mb-2">理想のあなた</h2>
         <ul class="list-disc list-inside">
-          <li class="p-3"><%= goal.ideal_self_1 %></li>
-          <li class="p-3"><%= goal.ideal_self_2 %></li>
-          <li class="p-3"><%= goal.ideal_self_3 %></li>
+          <li class="p-3"><%= goal.ideal_self %></li>
         </ul>
     </div>
     <div class="text-left relative z-0 m-10">
-      <h2 class="text-xl text-gray-900 font-medium title-font mb-2">あなたの目標</h2>
-      <ul class="list-disc list-inside">
-        <li class="p-3">早寝早起き</li>
-        <li class="p-3">破滅思考にならない</li>
-      </ul>
+      <%= link_to 'ステップの編集', edit_step_path(goal.id)%>
+    </div>
+    <div class="text-left relative z-0 m-10">
+      <h2 class="text-xl text-gray-900 font-medium title-font mb-2">理想に向けてすること</h2>
+        <ul class="list-disc list-inside">
+          <% [[step.action_1, step.times_set_1], [step.action_2, step.times_set_2], [step.action_3, step.times_set_3]].each do |action, times_set| %>
+            <% if action.present? && times_set.present? %>
+              <li class="p-3"><%= action %>を週<%= times_set %>回行う</li>
+            <% end %>
+          <% end %>
+        </ul>
     </div>
   </div>
 </div>

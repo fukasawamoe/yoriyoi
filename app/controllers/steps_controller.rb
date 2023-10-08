@@ -1,4 +1,4 @@
-class StepController < ApplicationController
+class StepsController < ApplicationController
   before_action :set_step, only: %i[show edit update destroy ]
 
   def new

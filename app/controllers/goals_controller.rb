@@ -34,16 +34,16 @@ class GoalsController < ApplicationController
 
   def skip
     @goal = Goal.new(user_id: current_user.id)
-    @step = Step.new(goal_id: current_user.goal.id) # ここで新しいActionを作成します
+    @step = Step.new(goal_id: @goal.id)
 
     Goal.transaction do
       @goal.save!
-      @step = @goal.steps.create! # ここで新しいStepを作成します
+      @step = @goal.steps.create!
     end
 
-    redirect_to home_path(current_user.id) # 保存が成功した後にリダイレクトするパス
+    redirect_to home_path(current_user.id)
   rescue ActiveRecord::RecordInvalid
-    render :new# 保存が失敗した場合の処理
+    render :new
   end
 
 

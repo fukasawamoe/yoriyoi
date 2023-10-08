@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :profiles
   resources :goals do
     collection do
-      post :skip  # 新たなルートを追加します。
+      post :skip
     end
   end
   resources :steps
