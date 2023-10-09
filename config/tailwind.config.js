@@ -13,11 +13,8 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        sans: ['Inter var', ...defaultTheme.fontFamily.sans],
-      },
-      spacing: {
-        '30': '7.5rem',
-        '9': '2.25rem',
+        'zenmaru': ['Zen Maru Gothic', 'sans-serif'],
+        
       },
     },
   },
