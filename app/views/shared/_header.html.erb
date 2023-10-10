@@ -1,16 +1,12 @@
-<header class="flex justify-between items-center h-20 border-y-2">
+<header class="flex flex-col <%= logged_in? ? 'h-20' : 'sm:h-20 h-28' %> sm:flex-row justify-between items-center border-y-2">
   <% if logged_in? %>
-    <div class="">
       <%= link_to home_path(current_user.id) do %>
-        <%= image_tag 'yoriyoi_logo.png', class: 'scale-50' %>
+        <%= image_tag 'yoriyoi_logo.png', class: 'object-contain h-16' %>
       <% end %>
-    </div>
   <% else %>
-    <div class="logo">
       <%= link_to root_path do %>
-        <%= image_tag 'yoriyoi_logo.png', class: 'scale-50' %>
+        <%= image_tag 'yoriyoi_logo.png', class: 'object-contain h-16' %>
       <% end %>
-    </div>
   <% end %>
   <% if logged_in? %>
     <nav class="z-10">
@@ -45,11 +41,5 @@
       })
     </script>
   </main>
-  <style>
-    .logo {
-      width: 198px;
-      height: 55px;
-    }
-  </style>
 </header>
 
