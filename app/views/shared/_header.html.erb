@@ -1,12 +1,12 @@
-<header class="flex justify-between items-center h-20 p-6 border-y-2">
+<header class="flex flex-col <%= logged_in? ? 'h-20' : 'sm:h-20 h-28' %> sm:flex-row justify-between items-center border-y-2">
   <% if logged_in? %>
-    <h1 class="text-2xl">
-      <%= link_to "BetterMe", homes_path %>
-    </h1>
+      <%= link_to home_path(current_user.id) do %>
+        <%= image_tag 'yoriyoi_logo.png', class: 'object-contain h-16' %>
+      <% end %>
   <% else %>
-    <h1 class="text-2xl">
-      <%= link_to "BetterMe", root_path %>
-    </h1>
+      <%= link_to root_path do %>
+        <%= image_tag 'yoriyoi_logo.png', class: 'object-contain h-16' %>
+      <% end %>
   <% end %>
   <% if logged_in? %>
     <nav class="z-10">
@@ -14,16 +14,16 @@
         <i id="bars" class="fa-solid fa-bars fa-2x "></i>
         <i id="xmark" class="fa-solid fa-xmark fa-2x hidden"></i>
       </button>
-        <ul id="menu" class="z-0 fixed top-0 left-0 w-full text-center bg-purple-200 translate-x-full transition ease-linear">
+        <ul id="menu" class="z-0 fixed top-0 left-0 w-full text-center bg-gray-100 translate-x-full transition ease-linear font-zenmaru">
           <li class="p-3"><%= link_to 'スケジュールを作る', new_schedule_path %></li>
           <li class="p-3"><%= link_to 'スケジュールの確認・編集', schedules_path %></li>
-          <li class="p-3"><%= link_to 'マイページ', "#" %></li>
+          <li class="p-3"><%= link_to 'マイページ', profiles_path %></li>
           <li class="p-3"><%= link_to 'ログアウト', logout_path, class: 'nav-link', data: { turbo_method: :delete ,turbo_confirm: 'ログアウトします' } %></li>
         </ul>
     </nav>
   <% else %>
     <nav>
-      <div>
+      <div class="font-zenmaru">
         <a><%= link_to 'ユーザー登録', sign_up_path, class: 'p-3' %></a>
         <a><%= link_to 'ログイン', login_path, class: 'p-3' %></a>
         <a><%= link_to 'お問い合わせ', "#", class: 'p-3' %></a>

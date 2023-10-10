@@ -1,0 +1,4 @@
+あなたの理想の自分についておしえてほしいにゃ！
+<%= render "form", { goal: @goal } %>
+
+<%= link_to "あとで設定する", skip_goals_path, data: { "turbo-method": :post }%>

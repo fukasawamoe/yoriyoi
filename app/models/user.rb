@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   authenticates_with_sorcery!
   has_many :schedules
+  has_many :goals
 
   validates :password, length: { minimum: 3 }, if: -> { new_record? || changes[:crypted_password] }
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
@@ -9,4 +10,11 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
   validates :email, presence: true
   validates :name, presence: true, length: { maximum: 15 }
+
+  after_create :set_first_login
+
+  def set_first_login
+    self.first_login = true
+    self.save
+  end
 end

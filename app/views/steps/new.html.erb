@@ -1,0 +1,11 @@
+ふむふむ...あなたの理想の自分は
+<ul class="list-disc list-inside">
+  <li class="p-3"><%= @goal.ideal_self_1 %></li>
+  <li class="p-3"><%= @goal.ideal_self_2 %></li>
+  <li class="p-3"><%= @goal.ideal_self_3 %></li>
+</ul>
+にゃんだね〜〜！
+
+理想の自分に近づくには具体的に何をしたらいいのかにゃ...？
+<%= render "form", { step: @step } %>
+

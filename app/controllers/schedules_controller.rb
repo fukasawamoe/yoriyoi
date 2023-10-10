@@ -10,37 +10,39 @@ class SchedulesController < ApplicationController
   end
 
   def create
+    #formが空であれば年月日を削除してnilになる
     params[:schedule][:tasks_attributes].each do |_, task_attributes|
       if task_attributes["task_time(4i)"].blank? && task_attributes["task_time(5i)"].blank?
         task_attributes.delete("task_time(1i)")
         task_attributes.delete("task_time(2i)")
         task_attributes.delete("task_time(3i)")
-      # else
-      # # 現在の年月日を取得
-      #   year = Time.zone.now.year
-      #   month = Time.zone.now.month
-      #   day = Time.zone.now.day
-      #   hour = task_attributes["task_time(4i)"].to_i
-      #   minute = task_attributes["task_time(5i)"].to_i
-
-      #   task_time = Time.zone.local(year, month, day, hour, minute)
-      #   task_attributes[:task_time] = task_time # この行を追加
       end
     end
+    # タスクを時間順に並び替え
+    sorted_tasks_attributes = params[:schedule][:tasks_attributes].values.sort_by do |task_attributes|
+      task_attributes["task_time(4i)"].to_i * 60 + task_attributes["task_time(5i)"].to_i
+    end
+    
+    # ストロングパラメータに変換
+    sorted_tasks_attributes = ActionController::Parameters.new(tasks: sorted_tasks_attributes).permit!
 
-    @schedule = current_user.schedules.build(schedule_params)
+    # 並び替えたタスクのパラメータを使用してスケジュールを作成
+    @schedule = current_user.schedules.build(schedule_params.merge(tasks_attributes: sorted_tasks_attributes[:tasks]))
 
     if @schedule.save
-    binding.pry
       redirect_to schedule_path(@schedule), notice: 'スケジュールが作成されました。'
     else
       render :new, status: :unprocessable_entity
     end
   end
 
-  def show; end
+  def show
+    @tasks = @schedule.tasks.order(:task_time)
+  end
 
-  def edit; end
+  def edit
+    @tasks = @schedule.tasks.order(:task_time)
+  end
 
   def update
     params[:schedule][:tasks_attributes].each do |_, task_attributes|
@@ -52,6 +54,10 @@ class SchedulesController < ApplicationController
     end
 
     if @schedule.update(schedule_params)
+      # task_time順で並び替えてpositionカラムを更新
+      @schedule.tasks.order(:task_time).each.with_index(1) do |task, index|
+        task.update_column(:position, index)
+      end
       redirect_to schedule_path(@schedule)
     else
       render :edit
@@ -64,6 +70,7 @@ class SchedulesController < ApplicationController
     redirect_to schedules_path
   end
 
+
   private
 
   def set_schedule
@@ -72,6 +79,6 @@ class SchedulesController < ApplicationController
 
   def schedule_params
     params.require(:schedule).permit(:name, {day_of_week: []},
-                                    tasks_attributes:[:id, :task_time, :to_do, :memo, :goal_select, :_destroy])
+                                    tasks_attributes:[:id, :task_time, :to_do, :memo, :goal_select, :position, :_destroy])
   end
 end

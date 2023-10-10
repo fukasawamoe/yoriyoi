@@ -1,0 +1,15 @@
+<ul>
+  <li>ユーザーネーム <%= current_user.name %></li>
+  <li>メールアドレス <%= current_user.email %></li>
+
+  <% if current_user.goals.any? %>
+    <li>理想の私<%= current_user.goals.first.content %></li>
+  <% else %>
+    <li>理想の私: まだ設定されていません</li>
+  <% end %>
+</ul>
+
+<ul>
+  <li>AIアシスタントについての設定</li>
+
+</ul>
