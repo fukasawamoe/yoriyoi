@@ -1,14 +1,14 @@
-<header class="flex justify-between items-center h-20 p-6 border-y-2">
+<header class="flex justify-between items-center h-20 border-y-2">
   <% if logged_in? %>
-    <div class="logo">
+    <div class="">
       <%= link_to home_path(current_user.id) do %>
-        <%= image_tag 'yoriyoi_logo.png' %>
+        <%= image_tag 'yoriyoi_logo.png', class: 'scale-50' %>
       <% end %>
     </div>
   <% else %>
     <div class="logo">
       <%= link_to root_path do %>
-        <%= image_tag 'yoriyoi_logo.png' %>
+        <%= image_tag 'yoriyoi_logo.png', class: 'scale-50' %>
       <% end %>
     </div>
   <% end %>
