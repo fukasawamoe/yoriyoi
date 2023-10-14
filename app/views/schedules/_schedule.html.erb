@@ -1,19 +1,30 @@
-  <p>
+<div class="w-2/3 mx-auto m-10 text-3xl" style=" background: #ffe6e8; padding: 20px; border: 2px dashed #ffb6c1; box-shadow: 0 0 0 5px #ffe6e8; -moz-box-shadow: 0 0 0 5px #ffe6e8; -webkit-box-shadow: 0 0 0 5px #ffe6e8; font-size: 100%;">
+  <p class="leading-relaxed text-xl">
     <strong>スケジュール名:</strong>
-    <%= schedule.name %>
+      <%= schedule.name %>
   </p>
-
-  <p>
+  <span class="inline-block h-1 w-full rounded bg-red-300 mt-8 mb-6"></span>
+  <p class="text-xl">
     <strong>一日の予定</strong>
   </p>
+  <div class="container w-1/3  mx-auto text-left">
+    <% tasks.each do |i| %>
+      <ul>
+        <td><%= i.task_time.strftime("%H:%M") %></td>
+        <td><%= i.to_do %></td>
+        <td><%= i.memo %></td>
+        <td><%= i.goal_select %></td>
+      </ul>
+    <% end %>
+  </div>
+</div>
 
-  <% tasks.each do |i| %>
-  <ul>
-    <td><%= i.task_time.strftime("%H:%M") %></td>
-    <td><%= i.to_do %></td>
-    <td><%= i.memo %></td>
-    <td><%= i.goal_select %></td>
-  </ul>
-  <% end %>
+
+
+
+
+
+
+
 
 
