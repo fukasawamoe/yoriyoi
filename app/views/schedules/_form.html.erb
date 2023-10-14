@@ -11,7 +11,7 @@
         <%= button_tag '全選択', type: 'button', id: 'select-all', class: 'rounded bg-lime-200 px-4' %>
         <%= button_tag '全解除', type: 'button', id: 'deselect-all', class: 'rounded bg-red-200 px-4' %>
       </div>
-      <div class="form-group flex justify-center" id="tasks-container">
+      <div class="form-group justify-center" id="tasks-container">
         <%= f.fields_for :tasks, @tasks do |task| %>
           <%= render 'task_fields', f: task %>
         <% end %>
