@@ -8,22 +8,22 @@
           <%= check_box_tag 'schedule[day_of_week][]', index, schedule.day_of_week.include?(index), class: 'rounded' %>
           <%= day %>
         <% end %>
-        <%= button_tag 'すべてに適用する', type: 'button', id: 'select-all', class: 'rounded' %>
-        <%= button_tag 'すべて解除する', type: 'button', id: 'deselect-all', class: 'rounded' %>
+        <%= button_tag '全選択', type: 'button', id: 'select-all', class: 'rounded bg-lime-200 px-4' %>
+        <%= button_tag '全解除', type: 'button', id: 'deselect-all', class: 'rounded bg-red-200 px-4' %>
       </div>
-      <div class="form-group flex justify-center" id="tasks-container">
+      <div class="form-group justify-center" id="tasks-container">
         <%= f.fields_for :tasks, @tasks do |task| %>
           <%= render 'task_fields', f: task %>
         <% end %>
       </div>
       <div class="flex justify-center p-8">
-        <%= link_to_add_association '追加', f, :tasks, class:"btn btn-accent" %>
+        <%= link_to_add_association raw('<i class="fa-solid fa-circle-plus"></i> 追加'), f, :tasks, class:"bg-lime-300 py-3 p-6 rounded-lg" %>
       </div>
     </div>
 
     <div class="flex justify-center p-8">
-      <button class="btn btn-accent" type="button" id="sort-tasks-button">時間順に並び替える</button>
-      <button class="btn btn-accent" type="submit">スケジュールを保存する</button>
+      <button class="bg-gray-500 py-3 px-4 rounded-lg text-white m-3" type="button" id="sort-tasks-button"><i class="fa-solid fa-arrow-right-arrow-left fa-rotate-90"></i> 時間順に並び替える</button>
+      <button class="bg-blue-400 py-3 px-4 rounded-lg text-white m-3" type="submit"><i class="fa-solid fa-check"></i> スケジュールを保存する</button>
     </div>
   <% end %>
 </main>
