@@ -13,8 +13,7 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        'zenmaru': ['Zen Maru Gothic', 'sans-serif'],
-        
+        'sans': ['Zen Maru Gothic', 'sans-serif'],
       },
     },
   },

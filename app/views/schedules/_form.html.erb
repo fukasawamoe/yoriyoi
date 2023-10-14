@@ -1,4 +1,4 @@
-<main class="w-full flex justify-center font-zenmaru">
+<main class="w-full flex justify-center">
   <%= form_with(model: schedule, local: true) do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
     <div class="form-container rounded">
@@ -11,11 +11,9 @@
         <%= button_tag 'すべてに適用する', type: 'button', id: 'select-all', class: 'rounded' %>
         <%= button_tag 'すべて解除する', type: 'button', id: 'deselect-all', class: 'rounded' %>
       </div>
-      <div class="form-group" id="tasks-container">
+      <div class="form-group flex justify-center" id="tasks-container">
         <%= f.fields_for :tasks, @tasks do |task| %>
-
           <%= render 'task_fields', f: task %>
-
         <% end %>
       </div>
       <div class="flex justify-center p-8">
@@ -28,38 +26,52 @@
       <button class="btn btn-accent" type="submit">スケジュールを保存する</button>
     </div>
   <% end %>
-  <script>
-    document.getElementById('select-all').addEventListener('click', function() {
-      var checkboxes = document.querySelectorAll('input[type=checkbox]');
-      for (var i = 0; i < checkboxes.length; i++) {
-        if (checkboxes[i].id != 'schedule_tasks_attributes_0_goal_select') {
-          checkboxes[i].checked = true;
-        }
-      }
-    });
-    document.getElementById('deselect-all').addEventListener('click', function() {
-      var checkboxes = document.querySelectorAll('input[type=checkbox]');
-      for (var i = 0; i < checkboxes.length; i++) {
-        if (checkboxes[i].id != 'schedule_tasks_attributes_0_goal_select') {
-          checkboxes[i].checked = false;
-        }
-      }
-    });
-
-    document.getElementById('sort-tasks-button').addEventListener('click', function() {
-      // タスクのフォームフィールドを時間順に並び替え
-      var sortedTasks = Array.from(document.querySelectorAll('.nested-fields')).sort(function(a, b) {
-        var timeA = a.querySelector('select[name$="[task_time(4i)]"]').value + ':' + a.querySelector('select[name$="[task_time(5i)]"]').value;
-        var timeB = b.querySelector('select[name$="[task_time(4i)]"]').value + ':' + b.querySelector('select[name$="[task_time(5i)]"]').value;
-        return timeA > timeB ? 1 : -1;
-      });
-
-      // 並び替えたタスクのフォームフィールドを挿入
-      var tasksContainer = document.getElementById('tasks-container');
-      sortedTasks.forEach(function(taskFields) {
-        tasksContainer.appendChild(taskFields);
-      });
-    });
-  </script>
-
 </main>
+<script>
+  document.getElementById('select-all').addEventListener('click', function() {
+    var checkboxes = document.querySelectorAll('input[type=checkbox]');
+    for (var i = 0; i < checkboxes.length; i++) {
+      if (checkboxes[i].id != 'schedule_tasks_attributes_0_goal_select') {
+        checkboxes[i].checked = true;
+      }
+    }
+  });
+  document.getElementById('deselect-all').addEventListener('click', function() {
+    var checkboxes = document.querySelectorAll('input[type=checkbox]');
+    for (var i = 0; i < checkboxes.length; i++) {
+      if (checkboxes[i].id != 'schedule_tasks_attributes_0_goal_select') {
+        checkboxes[i].checked = false;
+      }
+    }
+  });
+
+  document.getElementById('sort-tasks-button').addEventListener('click', function() {
+    // タスクのフォームフィールドを時間順に並び替え
+    var sortedTasks = Array.from(document.querySelectorAll('.nested-fields')).sort(function(a, b) {
+      var timeA = a.querySelector('select[name$="[task_time(4i)]"]').value + ':' + a.querySelector('select[name$="[task_time(5i)]"]').value;
+      var timeB = b.querySelector('select[name$="[task_time(4i)]"]').value + ':' + b.querySelector('select[name$="[task_time(5i)]"]').value;
+      return timeA > timeB ? 1 : -1;
+    });
+
+    // 並び替えたタスクのフォームフィールドを挿入
+    var tasksContainer = document.getElementById('tasks-container');
+    sortedTasks.forEach(function(taskFields) {
+      tasksContainer.appendChild(taskFields);
+    });
+  });
+</script>
+
+<script>
+// $(document).ready(function() {
+//   $(document).on('cocoon:after-insert', function(e, insertedItem) {
+//     $(".task").sortable();
+//     $(".task").sortable('refresh');
+//   });
+// });
+</script>
+
+<!--jQueryを読み込み-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!--jQuery UIを読み込み-->
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
