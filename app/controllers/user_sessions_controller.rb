@@ -10,7 +10,7 @@ class UserSessionsController < ApplicationController
         @user.update(first_login: false)
         redirect_to new_goal_path # 初回ログイン時のみ目標設定画面へリダイレクト
       else
-        redirect_to home_path(current_user.id) # 2回目以降のログイン時はホーム画面へリダイレクト
+        redirect_to home_path(current_user.id), flash: { success: 'ログインしました' } # 2回目以降のログイン時はホーム画面へリダイレクト
       end
     else
       flash.now[:alert] = 'Login failed'
@@ -20,6 +20,6 @@ class UserSessionsController < ApplicationController
 
   def destroy
     logout
-    redirect_to root_path, notice: 'ログアウトしました'
+    redirect_to root_path, flash: { notice: 'ログアウトしました' }
   end
 end
