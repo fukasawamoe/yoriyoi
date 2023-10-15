@@ -1,7 +1,6 @@
-<section>
-  <div class="container px-5 py-24 mx-auto">
-    <div class="w-full mx-auto text-center">
-      <%= render 'schedule', {schedule: @schedule, tasks: @tasks} %>
+<p style="color: green"><%= notice %></p>
+
+<%= render 'schedule', {schedule: @schedule, tasks: @tasks} %>
 
       <div class="p-5 flex flex-col sm:flex-row justify-center items-center">
         <%= link_to raw('<i class="fa-solid fa-pencil"></i> 編集する'), edit_schedule_path(@schedule), class: 'bg-lime-200 py-3 p-6 m-3 rounded-lg my-2 sm:my-0' %> |
