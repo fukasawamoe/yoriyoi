@@ -58,7 +58,8 @@ class SchedulesController < ApplicationController
       @schedule.tasks.order(:task_time).each.with_index(1) do |task, index|
         task.update_column(:position, index)
       end
-      redirect_to schedule_path(@schedule),flash: { success: 'スケジュールを更新しました' }
+      
+      redirect_to schedule_path(@schedule), flash: { success: 'スケジュールを更新しました' }
     else
       render :edit
     end
