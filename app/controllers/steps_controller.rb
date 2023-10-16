@@ -20,7 +20,11 @@ class StepsController < ApplicationController
 
   def update
     if @step.update(step_params)
-      redirect_to home_path(current_user.id)
+      if params[:home]
+        redirect_to home_path(current_user.id)
+      elsif params[:goal]
+        redirect_to edit_goal_path(current_user.id)
+      end
     else
       render :edit
     end

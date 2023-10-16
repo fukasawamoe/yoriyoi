@@ -1,6 +1,34 @@
-<%= form_with model: step, local: true do |f| %>
-  <li><%= f.text_field :action_1 %>を週に<%= f.number_field :times_set_1 %>回がんばる</li>
-  <li><%= f.text_field :action_2 %>を週に<%= f.number_field :times_set_2 %>回がんばる</li>
-  <li><%= f.text_field :action_3 %>を週に<%= f.number_field :times_set_3 %>回がんばる</li>
-  <%= f.submit "登録" %>
-<% end %>
+
+<section>
+  <div class="container mx-auto">
+    <div class="text-center">
+      <div class="w-2/3 mx-auto m-10 text-3xl" style=" background: #ffe6e8; padding: 20px; border: 2px dashed #ffb6c1; box-shadow: 0 0 0 5px #ffe6e8; -moz-box-shadow: 0 0 0 5px #ffe6e8; -webkit-box-shadow: 0 0 0 5px #ffe6e8; font-size: 100%;">
+        <h1 class="text-xl">
+          理想のためにはにゃに（何）を頑張ればいいかにゃ〜？
+        </h1>
+        <div class="justify-center p-10">
+          <%= form_with model: step, local: true do |f| %>
+            <% 3.times do |i| %>
+              <li>
+                <%= f.text_field "action_#{i+1}", class:'rounded justify-center text-center' %>を週に
+                <%= f.number_field "times_set_#{i+1}",max: 7,class:'rounded justify-center text-center' %>回がんばる
+              </li>
+            <% end %>
+            <div class="p-5 flex flex-col sm:flex-row justify-center items-center">
+              <button class="bg-blue-400 py-1 px-5 w-auto rounded-lg text-white m-2" type="submit" name="home"><i class="fa-solid fa-check"></i> 登録</button> |
+              <button class="bg-orange-500 py-1 px-5 w-auto rounded-lg text-white m-2" type="submit" name="goal"><i class="fa-regular fa-gem"></i></i> 目標の編集</button>
+            </div>
+          <% end %>
+
+
+
+
+
+        </div>
+      </div>
+      <div class="p-5 flex flex-col sm:flex-row justify-center items-center">
+        <%= link_to raw('<i class="fa-solid fa-house"></i> ホームへ'), home_path(current_user.id), class: 'bg-yellow-200 py-3 p-6 m-3 rounded-lg my-2' %>
+      </div>
+    </div>
+  </div>
+</section>
