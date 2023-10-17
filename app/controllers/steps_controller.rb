@@ -11,7 +11,7 @@ class StepsController < ApplicationController
     if @step.save
       redirect_to home_path(current_user.id)  # 目標の詳細ページへリダイレクト
     else
-      render 'new'
+      render 'new', status: :unprocessable_entity
     end
   end
 
@@ -26,7 +26,7 @@ class StepsController < ApplicationController
         redirect_to edit_goal_path(current_user.id)
       end
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 

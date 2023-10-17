@@ -8,10 +8,11 @@
         </h1>
         <div class="justify-center p-10">
           <%= form_with model: step, local: true do |f| %>
+            <%= render 'shared/error_messages', object: step %>
             <% 3.times do |i| %>
               <li>
                 <%= f.text_field "action_#{i+1}", class:'rounded justify-center text-center' %>を週に
-                <%= f.number_field "times_set_#{i+1}",max: 7,class:'rounded justify-center text-center' %>回がんばる
+                <%= f.number_field "times_set_#{i+1}", min: 1, max: 7,class:'rounded justify-center text-center' %>回がんばる
               </li>
             <% end %>
             <div class="p-5 flex flex-col sm:flex-row justify-center items-center">
