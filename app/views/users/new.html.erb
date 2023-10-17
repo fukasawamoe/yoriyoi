@@ -9,22 +9,22 @@
         <%= render 'shared/error_messages', object: @user %>
         <div>
           <%= f.label :name, User.human_attribute_name(:name), class: "leading-7 text-sm text-gray-600" %>
-          <%= f.text_field :name, class: "w-full bg-white rounded border border-gray-300  focus:ring-2 focus:ring-indigo-60 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" %>
+          <%= f.text_field :name, required: true, class: "w-full bg-white rounded border border-gray-300  focus:ring-2 focus:ring-indigo-60 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" %>
         </div>
 
         <div>
           <%= f.label :email, User.human_attribute_name(:email), class: "leading-7 text-sm text-gray-600" %>
-          <%= f.email_field :email, class: "w-full bg-white rounded border border-gray-300  focus:ring-2 focus:ring-indigo-60 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" %>
+          <%= f.email_field :email, required: true, class: "w-full bg-white rounded border border-gray-300  focus:ring-2 focus:ring-indigo-60 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" %>
         </div>
 
         <div>
           <%= f.label :password, User.human_attribute_name(:password), class: "leading-7 text-sm text-gray-600" %>
-          <%= f.password_field :password, class: "w-full bg-white rounded border border-gray-300  focus:ring-2 focus:ring-indigo-60 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" %>
+          <%= f.password_field :password, required: true, class: "w-full bg-white rounded border border-gray-300  focus:ring-2 focus:ring-indigo-60 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" %>
         </div>
 
         <div>
           <%= f.label :password_confirmation, User.human_attribute_name(:password_confirmation), class: "leading-7 text-sm text-gray-600" %>
-          <%= f.password_field :password_confirmation, class: "w-full bg-white rounded border border-gray-300  focus:ring-2 focus:ring-indigo-60 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" %>
+          <%= f.password_field :password_confirmation, required: true, class: "w-full bg-white rounded border border-gray-300  focus:ring-2 focus:ring-indigo-60 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" %>
         </div>
 
         <div class="flex justify-center p-7">
