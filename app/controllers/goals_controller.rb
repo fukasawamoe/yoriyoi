@@ -9,11 +9,7 @@ class GoalsController < ApplicationController
     @goal = Goal.new(goal_params)
     @goal.user_id = current_user.id
     if @goal.save
-      if params[:home]
-        redirect_to home_path(current_user.id)
-      elsif params[:step]
-        redirect_to edit_step_path(current_user.id)
-      end
+      redirect_to home_path(current_user.id)
     else
       render 'new'
     end
@@ -43,12 +39,10 @@ class GoalsController < ApplicationController
   def skip
     @goal = Goal.new(user_id: current_user.id)
     @step = Step.new(goal_id: @goal.id)
-
     Goal.transaction do
       @goal.save!
       @step = @goal.steps.create!
     end
-
     redirect_to home_path(current_user.id)
   rescue ActiveRecord::RecordInvalid
     render :new

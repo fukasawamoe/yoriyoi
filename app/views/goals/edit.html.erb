@@ -1,1 +1,23 @@
-<%= render "form", { goal: @goal } %>
+<section>
+  <div class="container mx-auto">
+    <div class="text-center">
+      <div class="w-2/3 mx-auto m-10 text-3xl" style=" background: #ffe6e8; padding: 20px; border: 2px dashed #ffb6c1; box-shadow: 0 0 0 5px #ffe6e8; -moz-box-shadow: 0 0 0 5px #ffe6e8; -webkit-box-shadow: 0 0 0 5px #ffe6e8; font-size: 100%;">
+        <h1 class="text-xl">
+          あなたがなりたい理想の自分を教えてくださいにゃ！
+        </h1>
+        <div class="justify-center">
+        <%= form_with model: @goal, local: true do |f| %>
+          <%= f.text_field :ideal_self, class: 'rounded block w-full justify-center text-center mt-10' %>
+        <% end %>
+        <div class="p-5 flex flex-col sm:flex-row justify-center items-center">
+            <button class="bg-blue-400 py-1 px-5 w-auto rounded-lg text-white m-2" type="submit" name="home"><i class="fa-solid fa-check"></i> 登録</button> |
+            <button class="whitespace-nowrap bg-orange-500 py-1 px-5 w-auto rounded-lg text-white m-2" type="submit" name="step"><i class="fa-solid fa-fire"></i> 頑張ることリストの作成</button>
+          </div>
+        </div>
+      </div>
+      <div class="p-5 flex flex-col sm:flex-row justify-center items-center">
+        <%= link_to raw('<i class="fa-solid fa-house"></i> ホームへ'), home_path(current_user.id), class: 'bg-yellow-200 py-3 p-6 m-3 rounded-lg my-2' %>
+      </div>
+    </div>
+  </div>
+</section>
