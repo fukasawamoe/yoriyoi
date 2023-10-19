@@ -3,11 +3,13 @@ class StepsController < ApplicationController
 
   def new
     @step = Step.new
+    @goal = Goal.find_by(user_id: current_user.id)
   end
 
   def create
+    binding.pry
     @step = Step.new(step_params)
-    @step.user_id = current_user.id
+    @step.goal_id = current_user.goals.id
     if @step.save
       redirect_to home_path(current_user.id)  # 目標の詳細ページへリダイレクト
     else
