@@ -3,15 +3,17 @@ class StepsController < ApplicationController
 
   def new
     @step = Step.new
+    @goal = Goal.find_by(user_id: current_user.id)
   end
 
   def create
+    binding.pry
     @step = Step.new(step_params)
-    @step.user_id = current_user.id
+    @step.goal_id = current_user.goals.id
     if @step.save
       redirect_to home_path(current_user.id)  # 目標の詳細ページへリダイレクト
     else
-      render 'new'
+      render 'new', status: :unprocessable_entity
     end
   end
 
@@ -20,9 +22,13 @@ class StepsController < ApplicationController
 
   def update
     if @step.update(step_params)
-      redirect_to home_path(current_user.id)
+      if params[:home]
+        redirect_to home_path(current_user.id)
+      elsif params[:goal]
+        redirect_to edit_goal_path(current_user.id)
+      end
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
