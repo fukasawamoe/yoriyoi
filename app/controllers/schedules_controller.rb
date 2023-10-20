@@ -10,25 +10,27 @@ class SchedulesController < ApplicationController
   end
 
   def create
-    #formが空であれば年月日を削除してnilになる
-    params[:schedule][:tasks_attributes].each do |_, task_attributes|
-      if task_attributes["task_time(4i)"].blank? && task_attributes["task_time(5i)"].blank?
-        task_attributes.delete("task_time(1i)")
-        task_attributes.delete("task_time(2i)")
-        task_attributes.delete("task_time(3i)")
+    if params[:schedule][:tasks_attributes]
+      #formが空であれば年月日を削除してnilになる
+      params[:schedule][:tasks_attributes].each do |_, task_attributes|
+        if task_attributes["task_time(4i)"].blank? && task_attributes["task_time(5i)"].blank?
+          task_attributes.delete("task_time(1i)")
+          task_attributes.delete("task_time(2i)")
+          task_attributes.delete("task_time(3i)")
+        end
       end
-    end
-    # タスクを時間順に並び替え
-    sorted_tasks_attributes = params[:schedule][:tasks_attributes].values.sort_by do |task_attributes|
-      task_attributes["task_time(4i)"].to_i * 60 + task_attributes["task_time(5i)"].to_i
-    end
-    
-    # ストロングパラメータに変換
-    sorted_tasks_attributes = ActionController::Parameters.new(tasks: sorted_tasks_attributes).permit!
 
-    # 並び替えたタスクのパラメータを使用してスケジュールを作成
-    @schedule = current_user.schedules.build(schedule_params.merge(tasks_attributes: sorted_tasks_attributes[:tasks]))
+      # タスクを時間順に並び替え
+      sorted_tasks_attributes = params[:schedule][:tasks_attributes].values.sort_by do |task_attributes|
+        task_attributes["task_time(4i)"].to_i * 60 + task_attributes["task_time(5i)"].to_i
+      end
 
+      # ストロングパラメータに変換
+      sorted_tasks_attributes = ActionController::Parameters.new(tasks: sorted_tasks_attributes).permit!
+
+      # 並び替えたタスクのパラメータを使用してスケジュールを作成
+      @schedule = current_user.schedules.build(schedule_params.merge(tasks_attributes: sorted_tasks_attributes[:tasks]))
+    end
     if @schedule.save
       flash[:success] = 'スケジュールを作成しました'
       redirect_to schedule_path(@schedule)
