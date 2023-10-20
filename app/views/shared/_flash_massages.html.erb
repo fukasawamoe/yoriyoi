@@ -1,7 +1,7 @@
 <% flash.each do |type, msg| %>
   <% if type == 'success' %>
     <div class="flex items-center p-4 mb-4 text-sm text-green-800 border border-green-300 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400 dark:border-green-800" role="alert">
-      <span class="sr-only"><%= msg %></span>
+      <span class="font-medium"><i class="fa-solid fa-circle-check"></i> <%= msg %></span>
     </div>
   <% elsif type == 'error' %>
     <div class="flex items-center p-4 mb-4 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 dark:border-red-800" role="alert">

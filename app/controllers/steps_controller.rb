@@ -10,6 +10,7 @@ class StepsController < ApplicationController
     @goal = current_user.goal
     @step = @goal.steps.build(step_params)
     if @step.save
+      flash[:success] = '登録完了しましたにゃ！これから一緒にがんばるにゃ〜！'
       redirect_to home_path(current_user.id)
     else
       render 'new', status: :unprocessable_entity
@@ -22,6 +23,7 @@ class StepsController < ApplicationController
   def update
     if @step.update(step_params)
       if params[:home]
+        flash[:success] = 'ステップを編集しました'
         redirect_to home_path(current_user.id)
       elsif params[:goal]
         redirect_to edit_goal_path(current_user.id)
