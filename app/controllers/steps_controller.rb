@@ -7,11 +7,10 @@ class StepsController < ApplicationController
   end
 
   def create
-    binding.pry
-    @step = Step.new(step_params)
-    @step.goal_id = current_user.goals.id
+    @goal = current_user.goal
+    @step = @goal.steps.build(step_params)
     if @step.save
-      redirect_to home_path(current_user.id)  # 目標の詳細ページへリダイレクト
+      redirect_to home_path(current_user.id)
     else
       render 'new', status: :unprocessable_entity
     end

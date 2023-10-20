@@ -4,20 +4,24 @@
       <div class="w-2/3 mx-auto m-10 text-3xl" style=" background: #ffe6e8; padding: 20px; border: 2px dashed #ffb6c1; box-shadow: 0 0 0 5px #ffe6e8; -moz-box-shadow: 0 0 0 5px #ffe6e8; -webkit-box-shadow: 0 0 0 5px #ffe6e8; font-size: 100%;">
         <h1 class="text-xl">
           <p>教えてくれてありがとにゃ！</p>
-          <p>ふむふむ...あなたの理想の自分は
+          <p>ふむふむ...キミの理想のジブンは
             <div class="list-disc list-inside flex justify-center">
-              <div class="p-3"><%= @goal.ideal_self %>にゃんだね〜〜！</div>
+              <div class="p-3 font-bold">"<%= @goal.ideal_self %>"にゃんだね〜〜！</div>
             </div>
           </p>
           <p>理想のためにはにゃに（何）を頑張ればいいかにゃ〜？</p>
         </h1>
+        <p class="p-5">
+          <div>* たとえば、" 腹筋20回 "を週に" 3 "回がんばる！のように書くのにゃ！</div>
+          <div>みっつすべて書かなくてもいいにゃ。まずはひとつだけでもがんばろ〜！</div>
+        </p>
         <div class="justify-center pt-10">
           <%= form_with model: @step, local: true do |f| %>
             <%= render 'shared/error_messages', object: @step, class:"mt-5" %>
             <% 3.times do |i| %>
               <div class="flex flex-col md:flex-row items-center justify-center p-5">
-                <div><%= f.text_field "action_#{i+1}", class:'rounded w-3/5 mt-2 md:w-3/5 text-center' %>を週に</div>
-                <div class="whitespace-nowrap"><%= f.number_field "times_set_#{i+1}", min: 1, max: 7,class:'rounded w-16 text-center mt-2' %>回がんばる!</div>
+                <div><%= f.text_field "action_#{i+1}", class:'rounded w-3/5 mt-2 md:w-3/5 text-center' %> を週に</div>
+                <div class="whitespace-nowrap"><%= f.number_field "times_set_#{i+1}", min: 1, max: 7,class:'rounded w-16 text-center mt-2' %> 回がんばる!</div>
               </div>
             <% end %>
             <%= button_tag(type:'submit', class:"bg-blue-400 py-1 px-5 w-auto rounded-lg text-white mt-20 mb-10") do %>
