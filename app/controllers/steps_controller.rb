@@ -18,6 +18,7 @@ class StepsController < ApplicationController
   end
 
   def edit
+    @goal = Goal.find_by(user_id: current_user.id)
   end
 
   def update

@@ -1,17 +1,31 @@
 <section>
   <div class="container mx-auto">
     <div class="text-center">
-      <div class="w-2/3 mx-auto m-10 text-3xl" style=" background: #ffe6e8; padding: 20px; border: 2px dashed #ffb6c1; box-shadow: 0 0 0 5px #ffe6e8; -moz-box-shadow: 0 0 0 5px #ffe6e8; -webkit-box-shadow: 0 0 0 5px #ffe6e8; font-size: 100%;">
-        <h1 class="text-xl">
-          理想のためにはにゃに（何）を頑張ればいいかにゃ〜？
-        </h1>
+      <div class="w-full mx-auto m-10 text-3xl md:w-2/3" style="background: #ffe6e8; padding: 20px; border: 2px dashed #ffb6c1; box-shadow: 0 0 0 5px #ffe6e8; -moz-box-shadow: 0 0 0 5px #ffe6e8; -webkit-box-shadow: 0 0 0 5px #ffe6e8; font-size: 100%;">
+        <div class="text-sm md:text-lg lg:text-xl">
+          <p>キミの理想のジブンは
+            <div class="list-disc list-inside flex justify-center">
+              <div class="p-3 font-bold whitespace-pre-wrap lg:whitespace-normal">"<%= @goal.ideal_self %>"
+                        にゃんだね〜〜！</div>
+            </div>
+          </p>
+          <p class="whitespace-pre-wrap lg:whitespace-normal">理想のためにはにゃに（何）を
+          頑張ればいいかにゃ〜？</p>
+        </div>
+        <div class="text-sm md:text-normal lg:text-xl">
+          <div class="pt-5 pb-2 whitespace-pre-wrap lg:whitespace-normal"> * たとえば、" 腹筋20回 "を週に" 3 "回がんばる！
+          のように書くのにゃ！</div>
+          <div class="whitespace-pre-wrap lg:whitespace-normal">
+みっつすべて書かなくてもいいにゃ
+まずはひとつだけでもがんばろ〜！</div>
+        </div>
         <div class="justify-center p-10">
           <%= form_with model: @step, local: true do |f| %>
             <%= render 'shared/error_messages', object: @step, class:"mt-5" %>
             <% 3.times do |i| %>
               <div class="flex flex-col md:flex-row items-center justify-center">
-                <div><%= f.text_field "action_#{i+1}", class:'rounded w-3/5 mt-2 md:w-3/5 text-center' %>を週に</div>
-                <div class="whitespace-nowrap"><%= f.number_field "times_set_#{i+1}", min: 1, max: 7,class:'rounded w-16 text-center mt-2' %>回がんばる</div>
+                <div><%= f.text_field "action_#{i+1}", class:'rounded w-3/4 mt-2 md:text-center' %> を週に</div>
+                <div class="whitespace-nowrap"><%= f.number_field "times_set_#{i+1}", min: 1, max: 7,class:'rounded w-16 text-center mt-2' %> 回がんばる</div>
               </div>
             <% end %>
             <div class="p-5 flex flex-col sm:flex-row justify-center items-center">
