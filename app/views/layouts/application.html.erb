@@ -13,10 +13,12 @@
     <%= javascript_include_tag "jquery" %>
   </head>
 
-  <body>
+  <body class="flex flex-col min-h-screen">
     <%= render 'shared/header' %>
     <%= render 'shared/flash_massages' %>
-    <%= yield %>
+    <div class="flex-grow">
+      <%= yield %>
+    </div>
     <%= render 'shared/footer' %>
   </body>
 </html>

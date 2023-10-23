@@ -1,15 +1,21 @@
 <main class="w-full flex justify-center">
   <%= form_with(model: schedule, local: true) do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
-    <div class="form-container rounded">
-      <div class="field p-8">
-        <%= f.text_field :name, placeholder: "スケジュール名", class: 'rounded' %>
-        <% ['日', '月', '火', '水', '木', '金', '土'].each_with_index do |day, index| %>
-          <%= check_box_tag 'schedule[day_of_week][]', index, schedule.day_of_week.include?(index), class: 'rounded' %>
-          <%= day %>
-        <% end %>
-        <%= button_tag '▼ 全選択', type: 'button', id: 'select-all', class: 'rounded bg-lime-200 px-4' %>
-        <%= button_tag '▽ 全解除', type: 'button', id: 'deselect-all', class: 'rounded bg-red-200 px-4' %>
+    <div class="form-container">
+      <div class="p-8 flex flex-col md:flex-row">
+        <%= f.text_field :name, placeholder: "スケジュール名", class: 'rounded mx-auto' %>
+        <div class="flex">
+          <% ['日', '月', '火', '水', '木', '金', '土'].each_with_index do |day, index| %>
+            <div class="my-4 mx-2 flex flex-col md:m-2 md:whitespace-nowrap">
+              <%= check_box_tag 'schedule[day_of_week][]', index, schedule.day_of_week.include?(index), class: 'rounded' %>
+              <%= day %>
+            </div>
+          <% end %>
+        </div>
+        <div class="flex justify-center items-center whitespace-nowrap">
+          <%= button_tag '▼ 全選択', type: 'button', id: 'select-all', class: 'rounded bg-lime-200 px-4 py-2 m-1' %>
+          <%= button_tag '▽ 全解除', type: 'button', id: 'deselect-all', class: 'rounded bg-red-200 px-4 py-2 m-1' %>
+        </div>
       </div>
       <div class="form-group justify-center" id="tasks-container">
         <%= f.fields_for :tasks, @tasks do |task| %>
@@ -21,7 +27,7 @@
       </div>
     </div>
 
-    <div class="flex justify-center p-8">
+    <div class="flex justify-center p-8 whitespace-nowrap">
       <button class="bg-gray-500 py-3 px-4 rounded-lg text-white m-3" type="button" id="sort-tasks-button"><i class="fa-solid fa-arrow-right-arrow-left fa-rotate-90"></i> 時間順に並び替える</button>
       <button class="bg-blue-400 py-3 px-4 rounded-lg text-white m-3" type="submit"><i class="fa-solid fa-check"></i> スケジュールを保存する</button>
     </div>
