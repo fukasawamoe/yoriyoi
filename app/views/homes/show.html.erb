@@ -8,7 +8,8 @@
         <div class="bg-lime-50 z-0 relative overflow-auto", style="box-shadow: inset 0 0 10px 3px #e5ffe5;">
           <div class="ml-10 mt-9">
             <% if @schedules.empty? %>
-              <p>スケジュールを作成してください。</p>
+              <p class="flex justify-center mx-auto mb-9">スケジュールを作成してください。</p>
+              <%= link_to %>
             <% else %>
               <% @schedules.each do |schedule| %>
                 <% schedule.tasks.each do |task| %>
