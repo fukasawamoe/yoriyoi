@@ -27,6 +27,7 @@ class StepsController < ApplicationController
         flash[:success] = 'ステップを編集しました'
         redirect_to home_path(current_user.id)
       elsif params[:goal]
+        flash[:success] = 'ステップを編集しました'
         redirect_to edit_goal_path(current_user.id)
       end
     else
