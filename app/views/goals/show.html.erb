@@ -4,15 +4,15 @@
       <p>理想のあなた</p>
     </div>
     <%= link_to raw('<i class="fa-solid fa-pencil"></i> 編集'), edit_goal_path(current_user.id), class: 'bg-yellow-200 py-2 px-3 rounded-lg whitespace-nowrap' %>
-    </div>
+  </div>
 
-  <article class="h-1/3 bg-amber-50 mb-5 flex items-center", style="box-shadow: inset 0 0 10px 3px #eaf5f9;">
+  <div class="bg-amber-50 mb-5 flex items-center", style="box-shadow: inset 0 0 10px 3px #eaf5f9;">
     <div class="m-5 text-base sm:text-lg">
-      <ul class="list-disc list-inside">
-        <li><%= goal.ideal_self %></li>
+      <ul class="list-inside my-3">
+        <li><i class="fa-brands fa-pagelines" style="color: #319674;"></i> <%= goal.ideal_self %></li>
       </ul>
     </div>
-  </article>
+  </div>
 
   <div class="px-12 w-auto p-3 bg-sky-500 rounded-tr-full rounded-tl-full flex justify-between items-center">
     <div class="flex justify-center text-base sm:text-xl text-white flex-grow whitespace-pre-wrap sm:whitespace-normal md:whitespace-pre-wrap lg:whitespace-normal">
@@ -23,13 +23,13 @@
   </div>
 
   <article class="h-full bg-amber-50 flex items-center", style="box-shadow: inset 0 0 10px 3px #eaf5f9;">
-    <div class="m-5 my-auto text-base sm:text-lg">
-      <ul class="list-disc list-inside">
+    <div class="m-5 text-base sm:text-lg">
+      <ul class="list-inside space-y-20">
         <% (1..3).each do |i| %>
           <% action = step.send("action_#{i}") %>
           <% times_set = step.send("times_set_#{i}") %>
           <% if action.present? && times_set.present? %>
-            <li class="my-10"><%= action %>を週<%= times_set %>回行う</li>
+            <li><i class="fa-solid fa-fire" style="color: #f26845;"></i>  <%= action %>を週<%= times_set %>回行う</li>
           <% end %>
         <% end %>
       </ul>
