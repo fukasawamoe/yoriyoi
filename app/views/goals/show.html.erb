@@ -7,7 +7,7 @@
     </div>
 
   <article class="h-1/3 bg-amber-50 mb-5 flex items-center", style="box-shadow: inset 0 0 10px 3px #eaf5f9;">
-    <div class="m-5">
+    <div class="m-5 text-base sm:text-lg">
       <ul class="list-disc list-inside">
         <li><%= goal.ideal_self %></li>
       </ul>
@@ -22,15 +22,14 @@
     <%= link_to raw('<i class="fa-solid fa-pencil"></i> 編集'), edit_step_path(goal.id), class: 'bg-yellow-200 py-2 px-3 rounded-lg whitespace-nowrap' %>
   </div>
 
-  <article class="h-full bg-amber-50 relative overflow-auto", style="box-shadow: inset 0 0 10px 3px #eaf5f9;">
-    <div class="text-left relative m-10">
-      <h2 class="text-xl text-gray-900 font-medium title-font mb-2">理想に向けてすること</h2>
+  <article class="h-full bg-amber-50 flex items-center", style="box-shadow: inset 0 0 10px 3px #eaf5f9;">
+    <div class="m-5 my-auto text-base sm:text-lg">
       <ul class="list-disc list-inside">
         <% (1..3).each do |i| %>
           <% action = step.send("action_#{i}") %>
           <% times_set = step.send("times_set_#{i}") %>
           <% if action.present? && times_set.present? %>
-            <li class="p-3"><%= action %>を週<%= times_set %>回行う</li>
+            <li class="my-10"><%= action %>を週<%= times_set %>回行う</li>
           <% end %>
         <% end %>
       </ul>
