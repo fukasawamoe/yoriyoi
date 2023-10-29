@@ -3,7 +3,7 @@
     <div class="flex justify-center text-xl text-white flex-grow">
       <p>理想のあなた</p>
     </div>
-    <%= link_to raw('<i class="fa-solid fa-pencil"></i> 編集'), edit_goal_path(current_user.id), class: 'bg-yellow-200 py-3 px-3 rounded-lg whitespace-nowrap' %>
+    <%= link_to raw('<i class="fa-solid fa-pencil"></i> 編集'), edit_goal_path(current_user.id), class: 'bg-yellow-200 py-2 px-3 rounded-lg whitespace-nowrap' %>
     </div>
   <article class="h-full bg-amber-50 relative overflow-auto mb-5", style="box-shadow: inset 0 0 10px 3px #eaf5f9;">
     <div class="text-left relative m-10">
@@ -14,11 +14,11 @@
     </div>
   </article>
 
-  <div class="text-xl text-white flex justify-center w-auto p-3 bg-sky-500 rounded-tr-full rounded-tl-full">
-    <p>理想を実現するためには</p>
-        <div class="text-right relative m-10">
-      <%= link_to raw('<i class="fa-solid fa-pencil"></i> 編集'), edit_step_path(goal.id), class: 'bg-yellow-200 py-3 px-3 rounded-lg whitespace-nowrap' %>
+  <div class="px-12 w-auto p-3 bg-sky-500 rounded-tr-full rounded-tl-full flex justify-between items-center">
+    <div class="flex justify-center text-xl text-white flex-grow">
+      <p>理想を実現するためには</p>
     </div>
+    <%= link_to raw('<i class="fa-solid fa-pencil"></i> 編集'), edit_step_path(goal.id), class: 'bg-yellow-200 py-2 px-3 rounded-lg whitespace-nowrap' %>
   </div>
 
   <article class="h-full bg-amber-50 relative overflow-auto", style="box-shadow: inset 0 0 10px 3px #eaf5f9;">
