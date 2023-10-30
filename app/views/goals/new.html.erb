@@ -15,7 +15,7 @@
             <%= button_tag(type:'submit', class:"whitespace-nowrap bg-blue-400 py-2 px-5 w-auto rounded-lg text-white m-2") do %>
               <i class="fa-solid fa-check"></i> 登録
             <% end %>|
-            <%= button_to raw('<i class="fa-solid fa-angles-right"></i> あとで設定する'), { action: "skip" }, method: :post, class:"whitespace-nowrap bg-blue-400 py-2 px-5 w-auto rounded-lg text-white m-2" %>
+            <%= button_to raw('<i class="fa-solid fa-angles-right"></i> あとで設定する'), skip_goals_path, class:"whitespace-nowrap bg-blue-400 py-2 px-5 w-auto rounded-lg text-white m-2" %>
           </div>
         <% end %>
       </div>

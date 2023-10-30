@@ -39,6 +39,7 @@ class GoalsController < ApplicationController
   end
 
   def skip
+    binding.pry
     @goal = Goal.new(user_id: current_user.id)
     @step = Step.new(goal_id: @goal.id)
     Goal.transaction do
