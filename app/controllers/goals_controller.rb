@@ -1,5 +1,5 @@
 class GoalsController < ApplicationController
-  before_action :set_goal, only: %i[show edit update destroy ]
+  before_action :set_goal, only: %i[update destroy]
 
   def new
     @goal = Goal.new
@@ -16,6 +16,7 @@ class GoalsController < ApplicationController
   end
 
   def edit
+    @goal = current_user.goal
   end
 
   def update
@@ -39,7 +40,6 @@ class GoalsController < ApplicationController
   end
 
   def skip
-    binding.pry
     @goal = Goal.new(user_id: current_user.id)
     @step = Step.new(goal_id: @goal.id)
     Goal.transaction do

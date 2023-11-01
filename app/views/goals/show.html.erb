@@ -8,9 +8,13 @@
 
   <div class="bg-amber-50 mb-5 flex items-center", style="box-shadow: inset 0 0 10px 3px #eaf5f9;">
     <div class="m-5 text-base sm:text-lg">
-      <ul class="list-inside my-3">
-        <li><i class="fa-brands fa-pagelines" style="color: #319674;"></i> <%= goal.ideal_self %></li>
-      </ul>
+      <% if goal.ideal_self.blank? %>
+        <p class="flex justify-center">目標が設定されていません。</p>
+      <% else %>
+        <ul class="list-inside my-3">
+          <li><i class="fa-brands fa-pagelines" style="color: #319674;"></i> <%= goal.ideal_self %></li>
+        </ul>
+      <% end %>
     </div>
   </div>
 
