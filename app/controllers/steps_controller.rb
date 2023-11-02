@@ -1,5 +1,5 @@
 class StepsController < ApplicationController
-  before_action :set_step, only: %i[show edit update destroy ]
+  before_action :set_step, only: %i[show update destroy ]
 
   def new
     @step = Step.new
@@ -18,7 +18,8 @@ class StepsController < ApplicationController
   end
 
   def edit
-    @goal = Goal.find_by(user_id: current_user.id)
+    @goal = current_user.goal
+    @step = Step.find_by(goal_id: @goal.id)
   end
 
   def update
