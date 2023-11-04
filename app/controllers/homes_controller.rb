@@ -30,9 +30,9 @@ class HomesController < ApplicationController
       format.js { render partial: 'next_task', locals: { task: @next_task } }
     end
   #Goalのview
-    @goal = Goal.find(params[:id])
+    @goal = Goal.find_by(user_id: current_user.id)
   #Stepのview
-    @step = Step.find(params[:id])
+    @step = Step.find_by(goal_id: @goal.id)
   end
 
   def edit
