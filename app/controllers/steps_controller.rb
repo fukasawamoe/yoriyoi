@@ -1,5 +1,6 @@
 class StepsController < ApplicationController
-  before_action :set_step, only: %i[show update destroy ]
+  before_action :set_step, only: %i[ update destroy ]
+  before_action :set_goal, only: %i[ create edit ]
 
   def new
     @step = Step.new
@@ -7,7 +8,6 @@ class StepsController < ApplicationController
   end
 
   def create
-    @goal = current_user.goal
     @step = @goal.steps.build(step_params)
     if @step.save
       flash[:success] = '登録完了しましたにゃ！これから一緒にがんばるにゃ〜！'
@@ -18,7 +18,6 @@ class StepsController < ApplicationController
   end
 
   def edit
-    @goal = current_user.goal
     @step = Step.find_by(goal_id: @goal.id)
   end
 
@@ -36,15 +35,16 @@ class StepsController < ApplicationController
     end
   end
 
-  def show
-  end
-
-  def delete
+  def destroy
   end
 
   private
   def set_step
     @step = Step.find(params[:id])
+  end
+
+  def set_goal
+    @goal = current_user.goal
   end
 
   def step_params

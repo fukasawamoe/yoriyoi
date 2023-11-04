@@ -1,5 +1,6 @@
 class SchedulesController < ApplicationController
   before_action :set_schedule, only: %i[ show edit update destroy ]
+  before_action :set_task, only: %i[ show edit ]
   def index
     @schedules = current_user.schedules.all
   end
@@ -39,13 +40,9 @@ class SchedulesController < ApplicationController
     end
   end
 
-  def show
-    @tasks = @schedule.tasks.order(:task_time)
-  end
+  def show; end
 
-  def edit
-    @tasks = @schedule.tasks.order(:task_time)
-  end
+  def edit; end
 
   def update
     params[:schedule][:tasks_attributes].each do |_, task_attributes|
@@ -69,16 +66,18 @@ class SchedulesController < ApplicationController
   end
 
   def destroy
-    @schedule.tasks.destroy_all
     @schedule.destroy
     redirect_to schedules_path
   end
-
 
   private
 
   def set_schedule
     @schedule = Schedule.find(params[:id])
+  end
+
+  def set_task
+    @tasks = @schedule.tasks.order(:task_time)
   end
 
   def schedule_params

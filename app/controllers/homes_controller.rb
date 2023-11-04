@@ -1,9 +1,5 @@
 class HomesController < ApplicationController
 
-
-  def create
-  end
-
   def show
   #scheduleのview
     # 現在の曜日を取得（0:日曜日, 1:月曜日, ..., 6:土曜日）
@@ -33,14 +29,5 @@ class HomesController < ApplicationController
     @goal = Goal.find_by(user_id: current_user.id)
   #Stepのview
     @step = Step.find_by(goal_id: @goal.id)
-  end
-
-  def edit
-  end
-
-  def update
-  end
-
-  def delete
   end
 end

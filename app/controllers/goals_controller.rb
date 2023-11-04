@@ -33,10 +33,7 @@ class GoalsController < ApplicationController
     end
   end
 
-  def show
-  end
-
-  def delete
+  def destroy
   end
 
   def skip

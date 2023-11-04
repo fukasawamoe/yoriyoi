@@ -5,16 +5,15 @@ Rails.application.routes.draw do
   get 'login' => 'user_sessions#new', :as => :login
   post 'login' => "user_sessions#create"
   delete 'logout' => 'user_sessions#destroy', :as => :logout
-  resources :users
-  resources :homes
-  resources :tasks
+  resources :users, only: %i[new create]
+  resources :homes, only: %i[show]
   resources :schedules
   resources :profiles
-  resources :goals do
+  resources :goals, only: %i[new create edit update destroy] do
     collection do
       post :skip
     end
   end
-  resources :steps
+  resources :steps, only: %i[new create edit update destroy]
 end
 
