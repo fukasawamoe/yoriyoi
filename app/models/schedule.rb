@@ -17,7 +17,7 @@ class Schedule < ApplicationRecord
     new_days = day_of_week
     # 既存のスケジュールと新しいスケジュールで重複する曜日があるか確認
     if (existing_days & new_days).any?
-      errors.add(:day_of_week, '各曜日につき一つだけスケジュールを作成できます')
+      errors.add(:base, '各曜日につき一つだけスケジュールを作成できます')
     end
   end
 end
