@@ -23,7 +23,7 @@ class GoalsController < ApplicationController
     if @goal.update(goal_params)
       if params[:home]
         flash[:success] ='目標を編集しました'
-        redirect_to home_path(current_user.id)
+        redirect_to home_path
       elsif params[:step]
         flash[:success] ='目標を編集しました'
         redirect_to edit_step_path(current_user.id)
@@ -44,7 +44,7 @@ class GoalsController < ApplicationController
       @step = @goal.steps.create!
     end
     flash[:success] ='まずはスケジュールを作成してみてにゃ〜'
-    redirect_to home_path(current_user.id)
+    redirect_to home_path
   rescue ActiveRecord::RecordInvalid
     render :new
   end

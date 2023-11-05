@@ -1,6 +1,6 @@
 <header class="flex flex-col h-auto sm:flex-row justify-between items-center border-y-2">
   <% if logged_in? %>
-      <%= link_to home_path(current_user.id) do %>
+      <%= link_to home_path do %>
         <%= image_tag 'yoriyoi_logo.png', class: 'object-contain h-10 m-4' %>
       <% end %>
   <% else %>
