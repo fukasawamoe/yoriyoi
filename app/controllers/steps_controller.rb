@@ -1,6 +1,6 @@
 class StepsController < ApplicationController
-  before_action :set_step, only: %i[ update destroy ]
-  before_action :set_goal, only: %i[ create edit ]
+  before_action :set_step, only: %i[ create edit update destroy]
+
 
   def new
     @step = Step.new
@@ -17,9 +17,7 @@ class StepsController < ApplicationController
     end
   end
 
-  def edit
-    @step = Step.find_by(goal_id: @goal.id)
-  end
+  def edit; end
 
   def update
     if @step.update(step_params)
@@ -28,7 +26,7 @@ class StepsController < ApplicationController
         redirect_to home_path
       elsif params[:goal]
         flash[:success] = 'ステップを編集しました'
-        redirect_to edit_goal_path(current_user.id)
+        redirect_to edit_goal_path
       end
     else
       render :edit, status: :unprocessable_entity
@@ -39,12 +37,10 @@ class StepsController < ApplicationController
   end
 
   private
-  def set_step
-    @step = Step.find(params[:id])
-  end
 
-  def set_goal
+  def set_step
     @goal = current_user.goal
+    @step = Step.find_by(goal_id: @goal.id)
   end
 
   def step_params

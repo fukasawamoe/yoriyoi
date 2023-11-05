@@ -4,7 +4,7 @@
       <div class="w-full mx-auto m-10 md:w-2/3" style="background: #ffe6e8; padding: 20px; border: 2px dashed #ffb6c1; box-shadow: 0 0 0 5px #ffe6e8; -moz-box-shadow: 0 0 0 5px #ffe6e8; -webkit-box-shadow: 0 0 0 5px #ffe6e8; font-size: 100%;">
         <div class="text-sm md:text-lg lg:text-xl">あなたがなりたい理想の自分を教えてほしいにゃ！</div>
         <div class="justify-center">
-        <%= form_with model: @goal, local: true do |f| %>
+        <%= form_with model: @goal, url: goal_path, local: true do |f| %>
           <%= f.text_field :ideal_self, placeholder: "例 : 今の体重から5キロ痩せたい...など", class: 'rounded w-full text-center mt-10 sm:w-3/4' %>
           <div class="p-5 flex flex-col sm:flex-row justify-center items-center">
             <%= button_tag(type:'submit', name:'home', class:"whitespace-nowrap bg-blue-400 py-2 px-5 w-auto rounded-lg text-white m-2") do %>

@@ -1,5 +1,5 @@
 class GoalsController < ApplicationController
-  before_action :set_goal, only: %i[update destroy]
+  before_action :set_goal, only: %i[edit update destroy]
 
   def new
     @goal = Goal.new
@@ -15,9 +15,7 @@ class GoalsController < ApplicationController
     end
   end
 
-  def edit
-    @goal = current_user.goal
-  end
+  def edit; end
 
   def update
     if @goal.update(goal_params)
@@ -26,7 +24,7 @@ class GoalsController < ApplicationController
         redirect_to home_path
       elsif params[:step]
         flash[:success] ='目標を編集しました'
-        redirect_to edit_step_path(current_user.id)
+        redirect_to edit_step_path
       end
     else
       render :edit
@@ -52,7 +50,7 @@ class GoalsController < ApplicationController
 
   private
   def set_goal
-    @goal = Goal.find(params[:id])
+    @goal = current_user.goal
   end
 
   def goal_params
