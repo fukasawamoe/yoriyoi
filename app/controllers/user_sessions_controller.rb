@@ -10,7 +10,7 @@ class UserSessionsController < ApplicationController
         redirect_to new_goal_path # 初回ログイン時のみ目標設定画面へリダイレクト
       else
         flash[:success] = 'ログインしました'
-        redirect_to home_path(current_user.id) # 2回目以降のログイン時はホーム画面へリダイレクト
+        redirect_to home_path # 2回目以降のログイン時はホーム画面へリダイレクト
       end
     else
       flash.now[:error] = 'ログインに失敗しました'

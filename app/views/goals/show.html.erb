@@ -3,7 +3,7 @@
     <div class="flex justify-center text-base sm:text-xl text-white flex-grow">
       <p>理想のあなた</p>
     </div>
-    <%= link_to raw('<i class="fa-solid fa-pencil"></i> 編集'), edit_goal_path(current_user.id), class: 'bg-yellow-200 py-2 px-3 rounded-lg whitespace-nowrap' %>
+    <%= link_to raw('<i class="fa-solid fa-pencil"></i> 編集'), edit_goal_path, class: 'bg-yellow-200 py-2 px-3 rounded-lg whitespace-nowrap' %>
   </div>
 
   <div class="bg-amber-50 mb-5 flex items-center", style="box-shadow: inset 0 0 10px 3px #eaf5f9;">
@@ -23,7 +23,7 @@
                 <p>理想を実現する
 ためには</p>
     </div>
-    <%= link_to raw('<i class="fa-solid fa-pencil"></i> 編集'), edit_step_path(goal.id), class: 'bg-yellow-200 py-2 px-3 rounded-lg whitespace-nowrap' %>
+    <%= link_to raw('<i class="fa-solid fa-pencil"></i> 編集'), edit_step_path, class: 'bg-yellow-200 py-2 px-3 rounded-lg whitespace-nowrap' %>
   </div>
 
   <article class="h-full bg-amber-50 flex items-center", style="box-shadow: inset 0 0 10px 3px #eaf5f9;">
