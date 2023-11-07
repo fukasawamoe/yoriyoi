@@ -33,6 +33,7 @@ class SchedulesController < ApplicationController
       @schedule = current_user.schedules.build(schedule_params.merge(tasks_attributes: sorted_tasks_attributes[:tasks]))
     end
     if @schedule.save
+      current_user.increment!(:schedule_count)
       flash[:success] = 'スケジュールを作成しました'
       redirect_to schedule_path(@schedule)
     else
@@ -40,7 +41,9 @@ class SchedulesController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    binding.pry;
+  end
 
   def edit; end
 
@@ -67,6 +70,7 @@ class SchedulesController < ApplicationController
 
   def destroy
     @schedule.destroy
+    current_user.decrement!(:schedule_count)
     redirect_to schedules_path
   end
 

@@ -33,7 +33,7 @@
         <% (1..3).each do |i| %>
           <% action = step.send("action_#{i}") %>
           <% times_set = step.send("times_set_#{i}") %>
-          <% if action.present? && times_set.present? %>
+          <% unless action.blank? && times_set.blank? %>
             <li><i class="fa-solid fa-fire" style="color: #f26845;"></i>  <%= action %>を週<%= times_set %>回行う</li>
             <% all_blank = false %>
           <% end %>
