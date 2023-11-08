@@ -1,0 +1,31 @@
+<main class="flex justify-center bg-blue-200">
+  <div class="block m-10">
+    <%= image_tag 'top.png', class:"object-contain" %>
+    <div class="w-auto text-xl">
+      <div class="chat chat-start mb-4 mt-10">
+        <div class="chat-bubble chat-bubble-secondary">スケジュールの管理って難しくない？</div>
+      </div>
+      <div class="chat chat-start mb-4">
+        <div class="chat-bubble chat-bubble-secondary">継続したいこともなかなか続かないし...</div>
+      </div>
+      <div class="chat chat-end mt-4">
+        <div class="chat-bubble chat-bubble-primary">こんなのはどう？</div>
+      </div>
+      <div class="chat chat-end mt-4">
+        <div class="chat-bubble chat-bubble-primary">BetterMe</div>
+      </div>
+      <div class="chat chat-end mt-4">
+        <div class="chat-bubble chat-bubble-primary">推しがあなたのスケジュールを応援、だって!!</div>
+      </div>
+      <div class="chat chat-start mt-4">
+        <div class="chat-bubble chat-bubble-secondary">推しが応援してくれたら...頑張れる気がする..かも！</div>
+      </div>
+      <div class="chat chat-end mt-4">
+        <div class="chat-bubble chat-bubble-primary">推しと一緒に、頑張ってみない？</div>
+      </div>
+        <div class="flex justify-center h-screen mt-20">
+      <button class="btn btn-info sm:btn-sm md:btn-md lg:btn-lg mr-10"><%= link_to "はじめる", sign_up_path %></button>
+      <button class="btn btn-success sm:btn-sm md:btn-md lg:btn-lg ml-10"><%= link_to "ログイン", login_path %></button>
+    </div>
+  </div>
+</main>

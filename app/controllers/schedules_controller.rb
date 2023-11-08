@@ -31,6 +31,7 @@ class SchedulesController < ApplicationController
 
       # 並び替えたタスクのパラメータを使用してスケジュールを作成
       @schedule = current_user.schedules.build(schedule_params.merge(tasks_attributes: sorted_tasks_attributes[:tasks]))
+      @schedule.schedule_count = current_user.schedules.count + 1
     end
     if @schedule.save
       flash[:success] = 'スケジュールを作成しました'
@@ -40,7 +41,7 @@ class SchedulesController < ApplicationController
     end
   end
 
-  def show; end
+  def show;end
 
   def edit; end
 
@@ -67,6 +68,7 @@ class SchedulesController < ApplicationController
 
   def destroy
     @schedule.destroy
+    current_user.decrement!(:schedule_count)
     redirect_to schedules_path
   end
 
