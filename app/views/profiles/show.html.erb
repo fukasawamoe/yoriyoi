@@ -7,12 +7,12 @@
         <%= link_to link_to raw('<i class="fa-solid fa-pencil"></i> 編集'), edit_profiles_path, class: 'bg-yellow-200 py-2 px-3 rounded-lg whitespace-nowrap float-right my-8' %>
         <table class="w-full text-lg">
           <tr>
-            <th class="px-4 py-2"><%= t(User.human_attribute_name(:email)) %></th>
-            <td class="border-b-2 border-b-red-300 px-4 py-2"><%= current_user.email %></td>
+            <th class="px-4 py-2"><%= t(User.human_attribute_name(:name)) %></th>
+            <td class="border-b-2 border-b-red-300 px-4 py-2"><%= current_user.name %></td>
           </tr>
           <tr>
-            <th class="px-4 py-2 pt-16"><%= t(User.human_attribute_name(:name)) %></th>
-            <td class="border-b-2 border-b-red-300 px-4 py-2 pt-16"><%= current_user.name %></td>
+            <th class="px-4 py-2 pt-16"><%= t(User.human_attribute_name(:email)) %></th>
+            <td class="border-b-2 border-b-red-300 px-4 py-2 pt-16"><%= current_user.email %></td>
           </tr>
         </table>
       </div>
