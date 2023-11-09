@@ -1,7 +1,7 @@
 <main class="container mx-auto flex justify-center">
   <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
     <div class="sm:mx-auto sm:w-full sm:max-w-sm">
-      <h2 class="mt-10 text-center text-2xl font-sans leading-9 tracking-tight text-gray-900">ユーザー登録</h2>
+      <h2 class="mt-10 text-center text-2xl font-sans leading-9 tracking-tight text-gray-900">ユーザー情報変更</h2>
     </div>
 
     <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
@@ -18,11 +18,11 @@
         </div>
 
         <div class="flex justify-center p-7">
-          <%= f.submit "登録する", class: " w-full bg-indigo-600 shadow-xl hover:bg-indigo-500 text-white font-bold rounded-full p-4 w-48" %>
+          <%= f.submit "更新する", class: " w-full bg-indigo-600 shadow-xl hover:bg-indigo-500 text-white font-bold rounded-full p-4 w-48" %>
         </div>
 
         <div class="flex justify-center underline">
-          <%= link_to "ログインページへ", login_path %>
+          <%= link_to "ホームに戻る", home_path %>
         </div>
       <% end %>
     </div>
