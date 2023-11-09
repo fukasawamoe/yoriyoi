@@ -33,7 +33,6 @@ class SchedulesController < ApplicationController
       @schedule = current_user.schedules.build(schedule_params.merge(tasks_attributes: sorted_tasks_attributes[:tasks]))
     end
     if @schedule.save
-      current_user.increment!(:schedule_count)
       flash[:success] = 'スケジュールを作成しました'
       redirect_to schedule_path(@schedule)
     else
@@ -76,11 +75,11 @@ class SchedulesController < ApplicationController
   private
 
   def set_schedule
-    @schedule = current_user.schedules.find_by(schedule_count: params[:schedule_count])
+    @schedule = current_user.schedules.find(params[:id])
   end
 
   def set_task
-    @schedule = current_user.schedules.find_by(schedule_count: params[:schedule_count])
+    @schedule = current_user.schedules.find(params[:id])
     @tasks = @schedule.tasks.order(:task_time)
   end
 

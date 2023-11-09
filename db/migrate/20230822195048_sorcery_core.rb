@@ -6,7 +6,6 @@ class SorceryCore < ActiveRecord::Migration[7.0]
       t.string :crypted_password
       t.string :salt
       t.boolean :first_login, default:true
-      t.integer :schedule_count, default: 0
 
       t.timestamps                null: false
     end
