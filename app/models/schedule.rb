@@ -1,4 +1,5 @@
 class Schedule < ApplicationRecord
+  include Hashid::Rails
   belongs_to :user
   has_many :tasks, inverse_of: :schedule, dependent: :destroy
   accepts_nested_attributes_for :tasks, reject_if: :all_blank, allow_destroy: true

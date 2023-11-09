@@ -40,9 +40,7 @@ class SchedulesController < ApplicationController
     end
   end
 
-  def show;
-  binding.pry
-  end
+  def show;end
 
   def edit; end
 
@@ -75,11 +73,11 @@ class SchedulesController < ApplicationController
   private
 
   def set_schedule
-    @schedule = current_user.schedules.find(params[:id])
+    @schedule = current_user.schedules.find_by_hashid(params[:id])
   end
 
   def set_task
-    @schedule = current_user.schedules.find(params[:id])
+    @schedule = current_user.schedules.find_by_hashid(params[:id])
     @tasks = @schedule.tasks.order(:task_time)
   end
 
