@@ -1,4 +1,5 @@
 class Schedule < ApplicationRecord
+  include Hashid::Rails
   belongs_to :user
   has_many :tasks, inverse_of: :schedule, dependent: :destroy
   accepts_nested_attributes_for :tasks, reject_if: :all_blank, allow_destroy: true
@@ -6,7 +7,6 @@ class Schedule < ApplicationRecord
   validates :name, presence: true,  length: { maximum: 255 }
   validates :day_of_week, presence: true
   validate :unique_day_of_week_per_user
-
 
   private
 

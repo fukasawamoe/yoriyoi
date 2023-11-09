@@ -17,7 +17,7 @@
         <ul id="menu" class="z-0 fixed top-0 left-0 w-full text-center bg-gray-100 translate-x-full transition ease-linear">
           <li class="p-3"><%= link_to raw('<i class="fa-solid fa-dove"></i> スケジュールを作成する'), new_schedule_path %></li>
           <li class="p-3"><%= link_to raw('<i class="fa-solid fa-list"></i><i class="fa-solid fa-pencil"></i> スケジュールの確認・編集'), schedules_path %></li>
-          <li class="p-3"><%= link_to raw('<i class="fa-solid fa-house-user"></i><i class="fa-solid fa-gear"></i> マイページ'), "#" %></li>
+          <li class="p-3"><%= link_to raw('<i class="fa-solid fa-house-user"></i><i class="fa-solid fa-gear"></i> マイページ'), profiles_path %></li>
           <li class="p-3"><%= link_to raw('<i class="fa-solid fa-right-from-bracket"></i> ログアウト'), logout_path, class: 'nav-link', data: { turbo_method: :delete ,turbo_confirm: 'ログアウトします' } %></li>
         </ul>
     </nav>
