@@ -38,7 +38,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_30_073933) do
     t.bigint "user_id", null: false
     t.string "name"
     t.integer "day_of_week", default: [], null: false, array: true
-    t.integer "schedule_count", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_schedules_on_user_id"
@@ -75,6 +74,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_30_073933) do
     t.string "crypted_password"
     t.string "salt"
     t.boolean "first_login", default: true
+    t.integer "schedule_count", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true

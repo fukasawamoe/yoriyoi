@@ -1,5 +1,5 @@
 class SchedulesController < ApplicationController
-  before_action :set_schedule, only: %i[ show edit update destroy ]
+  before_action :set_schedule, only: %i[ update destroy ]
   before_action :set_task, only: %i[ show edit ]
   def index
     @schedules = current_user.schedules.all
@@ -31,9 +31,9 @@ class SchedulesController < ApplicationController
 
       # 並び替えたタスクのパラメータを使用してスケジュールを作成
       @schedule = current_user.schedules.build(schedule_params.merge(tasks_attributes: sorted_tasks_attributes[:tasks]))
-      @schedule.schedule_count = current_user.schedules.count + 1
     end
     if @schedule.save
+      current_user.increment!(:schedule_count)
       flash[:success] = 'スケジュールを作成しました'
       redirect_to schedule_path(@schedule)
     else
@@ -41,7 +41,9 @@ class SchedulesController < ApplicationController
     end
   end
 
-  def show;end
+  def show;
+  binding.pry
+  end
 
   def edit; end
 
@@ -68,17 +70,17 @@ class SchedulesController < ApplicationController
 
   def destroy
     @schedule.destroy
-    current_user.decrement!(:schedule_count)
     redirect_to schedules_path
   end
 
   private
 
   def set_schedule
-    @schedule = Schedule.find(params[:id])
+    @schedule = current_user.schedules.find_by(schedule_count: params[:schedule_count])
   end
 
   def set_task
+    @schedule = current_user.schedules.find_by(schedule_count: params[:schedule_count])
     @tasks = @schedule.tasks.order(:task_time)
   end
 

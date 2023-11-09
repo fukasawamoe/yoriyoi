@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   delete 'logout' => 'user_sessions#destroy', :as => :logout
   resource :home, only: %i[show]
   resource :users, only: %i[new create]
-  resources :schedules
+  resources :schedules, param: :schedule_count
   resource :profiles
   resource :goal, only: %i[new create edit update destroy] do
     collection do

@@ -7,7 +7,6 @@ class Schedule < ApplicationRecord
   validates :day_of_week, presence: true
   validate :unique_day_of_week_per_user
 
-
   private
 
   def unique_day_of_week_per_user
