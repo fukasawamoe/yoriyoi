@@ -9,7 +9,7 @@
       <% if @current_task.nil? %>
         <p>現在はタスクが設定されていません。</p>
       <% else %>
-        <p>今は<%= @current_task.task_time.strftime("%H:%M") %> <%= @current_task.to_do %>の時間だよ</p>
+        <p><%= @response %></p>
       <% end %>
 
       <% if @next_task.nil? %>
