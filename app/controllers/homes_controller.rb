@@ -27,7 +27,7 @@ class HomesController < ApplicationController
     end
   #ai_messageのview(現在のタスクをOpenAIクライアントに渡す)
     client = OpenAiClient.new
-    @response = client.chat(current_task)
+    @response = client.chat(@current_task)
 
   #Goalのview
     @goal = Goal.find_by(user_id: current_user.id)
