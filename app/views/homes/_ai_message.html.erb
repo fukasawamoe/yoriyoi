@@ -7,15 +7,15 @@
     </div>
     <p class="leading-relaxed">
       <% if @current_task.nil? %>
-        <p>現在はタスクが設定されていません。</p>
+        <p>いまはタスクが設定されていないにゃ〜。</p>
       <% else %>
-        <p><%= @response %></p>
+        <p><%= @current_task.task_time.strftime("%H:%M") %>にゃ！<%= @response %></p>
       <% end %>
 
       <% if @next_task.nil? %>
-        <p>次の曜日のスケジュールはまだ作成されていません。</p>
+        <p>つぎの曜日のスケジュールはまだつくられていないにゃ。</p>
       <% else %>
-        <p>次は<%= @next_task.task_time.strftime("%H:%M") %>に<%= @next_task.to_do %>をするんだね！がんばって！</p>
+        <p>つぎは<%= @next_task.task_time.strftime("%H:%M") %>に<%= @next_task.to_do %>の予定にゃ〜！</p>
       <% end %>
     </p>
   </div>

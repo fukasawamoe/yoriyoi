@@ -9,7 +9,7 @@ class OpenAiClient
 
   def chat
     additional_prompt = "Please respond in Japanese and add 'にゃ' or 'にゃん' at the end of your sentences, mimicking a cute and playful tone.
-    don't use honorifics. #{@current_task.task_time.strftime("%H:%M")} #{@current_task.to_do}"
+    don't use honorifics. #{@current_task.to_do}"
 
     response = @client.chat(
       parameters: {
