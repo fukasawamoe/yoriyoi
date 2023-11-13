@@ -2,13 +2,15 @@ class OpenAiClient
   require 'openai'
   require 'dotenv'
   Dotenv.load
-  def initialize
+  def initialize(current_task)
+    @current_task = current_task
     @client = OpenAI::Client.new(access_token: ENV["OPENAI_API_KEY"])
   end
 
-  def chat(task)
+  def chat
     additional_prompt = "Please respond in Japanese and add 'にゃ' or 'にゃん' at the end of your sentences, mimicking a cute and playful tone.
-    don't use honorifics. 7:00 起床"
+    don't use honorifics. #{@current_task.task_time.strftime("%H:%M")} #{@current_task.to_do}"
+
     response = @client.chat(
       parameters: {
           model: "gpt-3.5-turbo",
