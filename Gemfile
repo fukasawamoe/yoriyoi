@@ -45,6 +45,9 @@ gem "hashid-rails", "~> 1.0"
 
 #open-ai
 gem "ruby-openai"
+
+#.env読み込み
+gem 'dotenv'
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
@@ -72,8 +75,6 @@ group :development, :test do
   gem 'pry-rails'
   gem 'byebug'
 
-  #.env読み込み
-  gem 'dotenv'
 end
 
 group :development do
