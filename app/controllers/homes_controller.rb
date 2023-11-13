@@ -26,7 +26,7 @@ class HomesController < ApplicationController
       format.js { render partial: 'next_task', locals: { task: @next_task } }
     end
   #ai_messageのview(現在のタスクをOpenAIクライアントに渡す)
-  if @schedules.present?
+  if @current_task.present?
     client = OpenAiClient.new(@current_task)
     @response = client.chat
   end
