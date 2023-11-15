@@ -26,10 +26,10 @@ class HomesController < ApplicationController
       format.js { render partial: 'next_task', locals: { task: @next_task } }
     end
   #ai_messageのview(現在のタスクをOpenAIクライアントに渡す)
-  if @current_task.present?
-    client = OpenAiClient.new(@current_task)
-    @response = client.chat
-  end
+  # if @current_task.present?
+  #   client = OpenAiClient.new(@current_task)
+  #   @response = client.chat
+  # end
   #Goalのview
     @goal = Goal.find_by(user_id: current_user.id)
   #Stepのview
