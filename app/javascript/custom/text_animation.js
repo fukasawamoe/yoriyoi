@@ -1,6 +1,6 @@
 let element = document.getElementById('textbox');
 if (element === null) {
-  //console.error("Element with id 'textbox' not found");
+  console.error("Element with id 'textbox' not found");
 } else {
   let textNodes = [];
   let originalTexts = [];

@@ -2,23 +2,25 @@
   <div class="container mx-auto">
     <div class="text-center">
       <div class="w-full mx-auto m-10 md:w-2/3" style=" background: #ffe6e8; padding: 20px; border: 2px dashed #ffb6c1; box-shadow: 0 0 0 5px #ffe6e8; -moz-box-shadow: 0 0 0 5px #ffe6e8; -webkit-box-shadow: 0 0 0 5px #ffe6e8; font-size: 100%;">
-        <div class="text-sm md:text-lg lg:text-xl">
-          <p>教えてくれてありがとにゃ！</p>
-          <p>ふむふむ...キミの理想のジブンは
-            <div class="list-disc list-inside flex justify-center">
-              <div class="p-3 font-bold whitespace-pre-wrap lg:whitespace-normal">"<%= @goal.ideal_self %>"
-                        にゃんだね〜〜！</div>
-            </div>
-          </p>
-          <p class="whitespace-pre-wrap lg:whitespace-normal">理想のためにはにゃに（何）を
-          頑張ればいいかにゃ〜？</p>
-        </div>
-        <div class="text-sm md:text-normal lg:text-xl">
-          <div class="pt-5 pb-2 whitespace-pre-wrap lg:whitespace-normal"> * たとえば、" 腹筋20回 "を週に" 3 "回がんばる！
-          のように書くのにゃ！</div>
-          <div class="whitespace-pre-wrap lg:whitespace-normal">
-みっつすべて書かなくてもいいにゃ
-まずはひとつだけでもがんばろ〜！</div>
+        <div id="textbox">
+          <div class="text-sm md:text-lg lg:text-xl">
+            <p>教えてくれてありがとにゃ！</p>
+            <p>ふむふむ...キミの理想のジブンは
+              <div class="list-disc list-inside flex justify-center">
+                <div class="p-3 font-bold whitespace-pre-wrap lg:whitespace-normal">"<%= @goal.ideal_self %>"
+                          にゃんだね〜〜！</div>
+              </div>
+            </p>
+            <p class="whitespace-pre-wrap lg:whitespace-normal">理想のためにはにゃに（何）を
+            頑張ればいいかにゃ〜？</p>
+          </div>
+          <div class="text-sm md:text-normal lg:text-xl">
+            <div class="pt-5 pb-2 whitespace-pre-wrap lg:whitespace-normal"> * たとえば、" 腹筋20回 "を週に" 3 "回がんばる！
+            のように書くのにゃ！</div>
+            <div class="whitespace-pre-wrap lg:whitespace-normal">
+  みっつすべて書かなくてもいいにゃ
+  まずはひとつだけでもがんばろ〜！</div>
+          </div>
         </div>
         <div class="justify-center pt-10">
           <%= form_with model: @step, url: step_path, local: true do |f| %>
@@ -38,5 +40,52 @@
     </div>
   </div>
 </section>
+
+
+<script>
+let element = document.getElementById('textbox');
+if (element === null) {
+  console.error("Element with id 'textbox' not found");
+} else {
+  let textNodes = [];
+  let originalTexts = [];
+  let i = 0;
+
+  // テキストノードを取得する関数
+  function getTextNodes(node) {
+    if (node !== null && node.nodeType === Node.TEXT_NODE) {
+      textNodes.push(node);
+      originalTexts.push(node.nodeValue);
+      node.nodeValue = ''; // テキストを非表示にする
+    } else {
+      for (let child of node.childNodes) {
+        getTextNodes(child);
+      }
+    }
+  }
+
+  // テキストノードを一文字ずつ表示する関数
+  function typeWriter() {
+    if (i < textNodes.length) {
+      let text = originalTexts[i];
+      let j = 0;
+      let intervalId = setInterval(function() {
+        if (j < text.length) {
+          textNodes[i].nodeValue += text.charAt(j);
+          j++;
+        } else {
+          clearInterval(intervalId);
+          i++;
+          typeWriter();
+        }
+      }, 50); // 100ミリ秒ごとに文字を表示
+    }
+  }
+
+  // テキストノードを取得してタイピングを開始
+  getTextNodes(element);
+  typeWriter();
+}
+</script>
 
 

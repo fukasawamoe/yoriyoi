@@ -1,7 +1,7 @@
 // Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
 import "@hotwired/turbo-rails"
 import "controllers"
+import "./custom/text_animation.js"
 import "@fortawesome/fontawesome-free"
 import "@nathanvda/cocoon"
-import "./custom/text_animation.js"
 import "./custom/form.js"
