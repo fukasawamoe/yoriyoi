@@ -10,7 +10,7 @@
   <% end %>
   <% if logged_in? %>
     <nav class="z-10">
-      <button id="button" type="button" class="fixed z-10 top-6 right-4">
+      <button id="header_button" type="button" class="fixed z-10 top-6 right-4">
         <i id="bars" class="fa-solid fa-bars fa-2x "></i>
         <i id="xmark" class="fa-solid fa-xmark fa-2x hidden"></i>
       </button>
@@ -31,12 +31,5 @@
 </header>
 
 
-<script>
-  button.addEventListener('click', event => {
-    bars.classList.toggle('hidden');
-    xmark.classList.toggle('hidden');
-    menu.classList.toggle('translate-x-full');
-  })
-</script>
 
 
