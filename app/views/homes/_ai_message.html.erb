@@ -9,7 +9,7 @@
       <% if @current_task.nil? %>
         <p>いまはタスクが設定されていないにゃ〜。</p>
       <% else %>
-        <p><%= @current_task.task_time.strftime("%H:%M") %>にゃ！<%= @response %></p>
+        <p><%= @current_task.task_time.strftime("%H:%M") %>にゃ！<%= @current_task.to_do %>をするにゃ</p>
       <% end %>
 
       <% if @next_task.nil? %>
@@ -21,14 +21,4 @@
   </div>
 </div>
 
-<script>
-  document.addEventListener('DOMContentLoaded', (event) => {
-    setInterval(updateNextTask, 60000); // 1分ごとに次のタスクを更新
-  });
-
-  function updateNextTask() {
-    fetch('/homes/index.js').then(response => response.text()).then(html => {
-      document.getElementById('next-task').innerHTML = html;
-    });
-  }
-</script>
+<script src="homes/ai_message.js"></script>

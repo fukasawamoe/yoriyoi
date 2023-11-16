@@ -3,4 +3,5 @@ import "@hotwired/turbo-rails"
 import "controllers"
 import "@fortawesome/fontawesome-free"
 import "@nathanvda/cocoon"
-
+import "./custom/form.js";
+import "./custom/header.js";
