@@ -3,5 +3,7 @@ import "@hotwired/turbo-rails"
 import "controllers"
 import "@fortawesome/fontawesome-free"
 import "@nathanvda/cocoon"
-import "./custom/form.js";
-import "./custom/header.js";
+import "./custom/form.js"
+import "./custom/ai_message.js"
+import "./custom/header.js"
+import "./custom/text_animation.js"
