@@ -8,33 +8,47 @@
   </div>
 </div>
 
-<div class="flex flex-wrap justify-between w-full mt-5">
-  <div>
-    <input type="checkbox" id="monday" name="day" value="monday" class="form-checkbox h-5 w-5 text-pink-500">
-    <label for="monday" class="ml-2">月曜日</label>
-  </div>
-  <div>
-    <input type="checkbox" id="tuesday" name="day" value="tuesday" class="form-checkbox h-5 w-5 text-pink-500">
-    <label for="tuesday" class="ml-2">火曜日</label>
-  </div>
-  <div>
-    <input type="checkbox" id="wednesday" name="day" value="wednesday" class="form-checkbox h-5 w-5 text-pink-500">
-    <label for="wednesday" class="ml-2">水曜日</label>
-  </div>
-  <div>
-    <input type="checkbox" id="thursday" name="day" value="thursday" class="form-checkbox h-5 w-5 text-pink-500">
-    <label for="thursday" class="ml-2">木曜日</label>
-  </div>
-  <div>
-    <input type="checkbox" id="friday" name="day" value="friday" class="form-checkbox h-5 w-5 text-pink-500">
-    <label for="friday" class="ml-2">金曜日</label>
-  </div>
-  <div>
-    <input type="checkbox" id="saturday" name="day" value="saturday" class="form-checkbox h-5 w-5 text-pink-500">
-    <label for="saturday" class="ml-2">土曜日</label>
-  </div>
-  <div>
-    <input type="checkbox" id="sunday" name="day" value="sunday" class="form-checkbox h-5 w-5 text-pink-500">
-    <label for="sunday" class="ml-2">日曜日</label>
-  </div>
+<div class="flex">
+  <input type="checkbox" id="monday" name="day" value="monday" class="form-checkbox h-5 w-5 text-pink-500 absolute opacity-0">
+  <label for="monday" class="ml-2">
+    <span class="md:hidden px-6 py-2 rounded-full border-2 border-slate-300 select-none">月</span>
+    <span class="hidden md:inline px-6 py-2 rounded-full border-2 border-slate-300 select-none">月曜日</span>
+  </label>
+  <input type="checkbox" id="tuesday" name="day" value="tuesday" class="form-checkbox h-5 w-5 text-pink-500 absolute opacity-0">
+  <label for="tuesday" class="ml-2">
+    <span class="md:hidden px-6 py-2 rounded-full border-2 border-slate-300 select-none">火</span>
+    <span class="hidden md:inline px-6 py-2 rounded-full border-2 border-slate-300 select-none">火曜日</span>
+  </label>
+  <input type="checkbox" id="wednesday" name="day" value="wednesday" class="form-checkbox h-5 w-5 text-pink-500 absolute opacity-0">
+  <label for="wednesday" class="ml-2">
+    <span class="md:hidden px-6 py-2 rounded-full border-2 border-slate-300 select-none">水</span>
+    <span class="hidden md:inline px-6 py-2 rounded-full border-2 border-slate-300 select-none">水曜日</span>
+  </label>
+  <input type="checkbox" id="thursday" name="day" value="thursday" class="form-checkbox h-5 w-5 text-pink-500 absolute opacity-0">
+  <label for="thursday" class="ml-2">
+    <span class="md:hidden px-6 py-2 rounded-full border-2 border-slate-300 select-none">木</span>
+    <span class="hidden md:inline px-6 py-2 rounded-full border-2 border-slate-300 select-none">木曜日</span>
+  </label>
+  <input type="checkbox" id="friday" name="day" value="friday" class="form-checkbox h-5 w-5 text-pink-500 absolute opacity-0">
+  <label for="friday" class="ml-2">
+    <span class="md:hidden px-6 py-2 rounded-full border-2 border-slate-300 select-none">金</span>
+    <span class="hidden md:inline px-6 py-2 rounded-full border-2 border-slate-300 select-none">金曜日</span>
+  </label>
+  <input type="checkbox" id="saturday" name="day" value="saturday" class="form-checkbox h-5 w-5 text-pink-500 absolute opacity-0">
+  <label for="saturday" class="ml-2">
+    <span class="md:hidden px-6 py-2 rounded-full border-2 border-slate-300 select-none">土</span>
+    <span class="hidden md:inline px-6 py-2 rounded-full border-2 border-slate-300 select-none">土曜日</span>
+  </label>
+  <input type="checkbox" id="sunday" name="day" value="sunday" class="form-checkbox h-5 w-5 text-pink-500 absolute opacity-0">
+  <label for="sunday" class="ml-2">
+    <span class="md:hidden px-6 py-2 rounded-full border-2 border-slate-300 select-none">日</span>
+    <span class="hidden md:inline px-6 py-2 rounded-full border-2 border-slate-300 select-none">日曜日</span>
+  </label>
 </div>
+
+<style>
+  input[type="checkbox"]:checked + label span {
+    color: #FFF;
+    background-color: #FBB;
+  }
+</style>
