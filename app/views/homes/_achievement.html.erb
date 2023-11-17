@@ -1,7 +1,55 @@
-<div class="px-2">
-  <div class="flex flex-wrap w-full bg-gray-100 py-32 px-10 relative mb-4">
-    <div class="text-center relative z-10 w-full">
-      <h2 class="text-2xl text-gray-900 font-medium title-font mb-2">達成状況(今後実装)</h2>
-    </div>
+<div class="flex flex-wrap w-full bg-yellow-50 py-10 px-10 relative my-5" style="border: dotted 2px #ff007f; padding: 1rem;" >
+  <div class="w-full my-5">達成状況</div>
+
+  <div class="grid grid-cols-3 gap-10">
+    <div class="radial-progress bg-red-100 text-primary-content border-4 border-primary" style="--value:70; --size:12rem; --thickness: 2rem;" role="progressbar">70%</div>
+    <div class="radial-progress bg-red-100 text-primary-content border-4 border-primary" style="--value:70; --size:12rem; --thickness: 2rem;" role="progressbar">70%</div>
+    <div class="radial-progress bg-red-100 text-primary-content border-4 border-primary" style="--value:70; --size:12rem; --thickness: 2rem;" role="progressbar">70%</div>
   </div>
 </div>
+
+<div class="flex flex-wrap justify-between w-full mt-5">
+  <div>
+    <input type="checkbox" id="monday" name="day" value="monday">
+    <label for="monday">月曜日</label>
+  </div>
+  <div>
+    <input type="checkbox" id="tuesday" name="day" value="tuesday">
+    <label for="tuesday">火曜日</label>
+  </div>
+  <div>
+    <input type="checkbox" id="wednesday" name="day" value="wednesday">
+    <label for="wednesday">水曜日</label>
+  </div>
+  <div>
+    <input type="checkbox" id="thursday" name="day" value="thursday">
+    <label for="thursday">木曜日</label>
+  </div>
+  <div>
+    <input type="checkbox" id="friday" name="day" value="friday">
+    <label for="friday">金曜日</label>
+  </div>
+  <div>
+    <input type="checkbox" id="saturday" name="day" value="saturday">
+    <label for="saturday">土曜日</label>
+  </div>
+  <div>
+    <input type="checkbox" id="sunday" name="day" value="sunday">
+    <label for="sunday">日曜日</label>
+  </div>
+</div>
+<style>
+input[type="checkbox"] {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: white;
+  border-radius: 5px;
+  border: 2px solid #555;
+}
+
+input[type="checkbox"]:checked {
+  background: #ff007f;
+  border: 2px solid #ff007f;
+}
+</style>
