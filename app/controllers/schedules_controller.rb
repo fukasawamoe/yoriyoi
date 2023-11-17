@@ -1,6 +1,6 @@
 class SchedulesController < ApplicationController
-  before_action :set_schedule, only: %i[ update destroy ]
-  before_action :set_task, only: %i[ show edit ]
+  before_action :set_schedule, only: %i(update destroy)
+  before_action :set_task, only: %i(show edit)
   def index
     @schedules = current_user.schedules.all
   end
@@ -12,7 +12,7 @@ class SchedulesController < ApplicationController
 
   def create
     if params[:schedule][:tasks_attributes]
-      #formが空であれば年月日を削除してnilになる
+      # formが空であれば年月日を削除してnilになる
       params[:schedule][:tasks_attributes].each do |_, task_attributes|
         if task_attributes["task_time(4i)"].blank? && task_attributes["task_time(5i)"].blank?
           task_attributes.delete("task_time(1i)")
@@ -40,7 +40,7 @@ class SchedulesController < ApplicationController
     end
   end
 
-  def show;end
+  def show; end
 
   def edit; end
 
@@ -82,7 +82,7 @@ class SchedulesController < ApplicationController
   end
 
   def schedule_params
-    params.require(:schedule).permit(:name, {day_of_week: []},
-                                    tasks_attributes:[:id, :task_time, :to_do, :memo, :goal_select, :position, :_destroy])
+    params.require(:schedule).permit(:name, { day_of_week: [] },
+                                    tasks_attributes: [:id, :task_time, :to_do, :memo, :goal_select, :position, :_destroy])
   end
 end

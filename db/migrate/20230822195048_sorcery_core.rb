@@ -5,7 +5,7 @@ class SorceryCore < ActiveRecord::Migration[7.0]
       t.string :email,            null: false, index: { unique: true }
       t.string :crypted_password
       t.string :salt
-      t.boolean :first_login, default:true
+      t.boolean :first_login, default: true
 
       t.timestamps                null: false
     end

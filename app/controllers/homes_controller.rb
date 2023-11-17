@@ -1,7 +1,6 @@
 class HomesController < ApplicationController
-
   def show
-  #scheduleのview
+    # scheduleのview
     # 現在の曜日を取得（0:日曜日, 1:月曜日, ..., 6:土曜日）
     current_day_of_week = Time.current.wday
     # ログインユーザーが作成したスケジュールを取得
@@ -20,19 +19,19 @@ class HomesController < ApplicationController
       next_day_schedules = current_user.schedules.includes(:tasks).where('day_of_week @> ARRAY[?]::integer[]', next_day_of_week)
       @next_task = next_day_schedules.map(&:tasks).flatten.min_by(&:task_time)
     end
-    #JSを読み込む
+    # JSを読み込む
     respond_to do |format|
       format.html
       format.js { render partial: 'next_task', locals: { task: @next_task } }
     end
-  #ai_messageのview(現在のタスクをOpenAIクライアントに渡す)
+  # ai_messageのview(現在のタスクをOpenAIクライアントに渡す)
   # if @current_task.present?
   #   client = OpenAiClient.new(@current_task)
   #   @response = client.chat
   # end
-  #Goalのview
+    # Goalのview
     @goal = Goal.find_by(user_id: current_user.id)
-  #Stepのview
+    # Stepのview
     @step = Step.find_by(goal_id: @goal.id)
   end
 end
