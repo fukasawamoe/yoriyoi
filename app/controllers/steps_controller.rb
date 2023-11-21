@@ -35,6 +35,14 @@ class StepsController < ApplicationController
   def destroy
   end
 
+  def achievement
+    # Goalのview
+    @goal = Goal.find_by(user_id: current_user.id)
+    # Stepのview
+    @step = Step.find_by(goal_id: @goal.id)
+    # Achievementのview
+    @achievement = achievement.find_by(step_id: @step.id)
+  end
   private
 
   def set_step
