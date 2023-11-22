@@ -35,8 +35,45 @@
           <% times_set = step.send("times_set_#{i}") %>
           <% unless action.blank? && times_set.blank? %>
             <li><i class="fa-solid fa-fire" style="color: #f26845;"></i>  <%= action %>を週<%= times_set %>回行う</li>
+            <div>
+              <div class="my-10">
+                <input type="checkbox" id="monday" name="day" value="monday" class="form-checkbox h-5 w-5 text-pink-500 absolute opacity-0">
+                <label for="monday" class="ml-2">
+                  <span class="px-6 py-2 rounded-full border-2 border-slate-300 select-none">月</span>
+                </label>
+              </div>
+              <input type="checkbox" id="tuesday" name="day" value="tuesday" class="form-checkbox h-5 w-5 text-pink-500 absolute opacity-0">
+              <label for="tuesday" class="ml-2">
+                <span class="px-6 py-2 rounded-full border-2 border-slate-300 select-none">火</span>
+              </label>
+              <input type="checkbox" id="wednesday" name="day" value="wednesday" class="form-checkbox h-5 w-5 text-pink-500 absolute opacity-0">
+              <label for="wednesday" class="ml-2">
+                <span class="px-6 py-2 rounded-full border-2 border-slate-300 select-none">水</span>
+              </label>
+              <input type="checkbox" id="thursday" name="day" value="thursday" class="form-checkbox h-5 w-5 text-pink-500 absolute opacity-0">
+              <label for="thursday" class="ml-2">
+                <span class=" px-6 py-2 rounded-full border-2 border-slate-300 select-none">木</span>
+              </label>
+              <input type="checkbox" id="friday" name="day" value="friday" class="form-checkbox h-5 w-5 text-pink-500 absolute opacity-0">
+              <label for="friday" class="ml-2">
+                <span class="px-6 py-2 rounded-full border-2 border-slate-300 select-none">金</span>
+              </label>
+              <input type="checkbox" id="saturday" name="day" value="saturday" class="form-checkbox h-5 w-5 text-pink-500 absolute opacity-0">
+              <label for="saturday" class="ml-2">
+                <span class="px-6 py-2 rounded-full border-2 border-slate-300 select-none">土</span>
+              </label>
+              <input type="checkbox" id="sunday" name="day" value="sunday" class="form-checkbox h-5 w-5 text-pink-500 absolute opacity-0">
+              <label for="sunday" class="ml-2">
+                <span class="px-6 py-2 rounded-full border-2 border-slate-300 select-none">日</span>
+              </label>
+            </div>
 
-            <%= render "achievements/form" %>
+            <style>
+              input[type="checkbox"]:checked + label span {
+                color: #FFF;
+                background-color: #FBB;
+              }
+            </style>
 
             <% all_blank = false %>
           <% end %>

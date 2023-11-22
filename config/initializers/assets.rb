@@ -5,6 +5,8 @@ Rails.application.config.assets.version = "1.0"
 
 #gem cocoon使用のため
 Rails.application.config.assets.precompile += %w(jquery.js)
+
+
 # Add additional assets to the asset load path.
 # Rails.application.config.assets.paths << Emoji.images_path
 
