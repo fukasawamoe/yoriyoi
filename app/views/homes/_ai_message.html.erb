@@ -5,7 +5,7 @@
         <%= image_tag "cat_notification.png" %>
       </div>
     </div>
-    <p class="leading-relaxed">
+    <div id="textbox" class="leading-relaxed">
       <% if @current_task.nil? %>
         <p>いまはタスクが設定されていないにゃ〜。</p>
       <% else %>
@@ -17,7 +17,7 @@
       <% else %>
         <p>つぎは<%= @next_task.task_time.strftime("%H:%M") %>に<%= @next_task.to_do %>の予定にゃ〜！</p>
       <% end %>
-    </p>
+    </div>
   </div>
 </div>
 
