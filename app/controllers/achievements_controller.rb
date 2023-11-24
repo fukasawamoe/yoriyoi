@@ -10,4 +10,11 @@ class AchievementsController < ApplicationController
     current_user.not_achieved(step)
     redirect_back fallback_location: root_path
   end
+
+  private
+
+  def set_step
+    @goal = Goal.find_by(user_id: current_user.id)
+    @step = Step.find_by(goal_id: @goal.id)
+  end
 end
