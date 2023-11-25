@@ -5,21 +5,24 @@
 <% if step.action_1.present?%>
   <div>
     <p><%= step.action_1 %></p>
-    <div class="radial-progress bg-red-100 text-primary-content border-4 border-primary" style="--value:70; --size:12rem; --thickness: 2rem;" role="progressbar">70%</div> 
+    <% calculated_value1 = (3.0/step.times_set_1 * 100).round %>
+    <div class="radial-progress bg-red-100 text-primary-content border-4 border-primary" style="--value:<%= calculated_value1 %>; --size:12rem; --thickness: 2rem;" role="progressbar"><%= calculated_value1 %>%</div> 
   </div>
 <% end %>
 
 <% if step.action_2.present?%>
   <div>
     <p><%= step.action_2 %></p>
-    <div class="radial-progress bg-red-100 text-primary-content border-4 border-primary" style="--value:70; --size:12rem; --thickness: 2rem;" role="progressbar">70%</div> 
+    <% calculated_value2 = (3.0/step.times_set_2 * 100).round %>
+    <div class="radial-progress bg-red-100 text-primary-content border-4 border-primary" style="--value:<%= calculated_value2 %>; --size:12rem; --thickness: 2rem;" role="progressbar"><%= calculated_value2 %>%</div> 
   </div>
 <% end %>
 
 <% if step.action_3.present?%>
   <div>
     <p><%= step.action_3 %></p>
-    <div class="radial-progress bg-red-100 text-primary-content border-4 border-primary" style="--value:70; --size:12rem; --thickness: 2rem;" role="progressbar">70%</div> 
+    <% calculated_value3 = (3.0/step.times_set_3 * 100).round %>
+    <div class="radial-progress bg-red-100 text-primary-content border-4 border-primary" style="--value:<%= calculated_value3 %>; --size:12rem; --thickness: 2rem;" role="progressbar"><%= calculated_value3 %>%</div> 
   </div>
 <% end %>
 </div>
