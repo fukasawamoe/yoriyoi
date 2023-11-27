@@ -1,6 +1,6 @@
 class Step < ApplicationRecord
   belongs_to :goal
-  has_one :achievements
+  has_many :achievements
 
   validate :action_and_times_set_must_be_present_together
 

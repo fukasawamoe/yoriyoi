@@ -7,7 +7,7 @@ class StepsController < ApplicationController
   end
 
   def create
-    @step = @goal.steps.build(step_params)
+    @step = @goal.step.build(step_params)
     if @step.save
       flash[:success] = '登録完了しましたにゃ！これから一緒にがんばるにゃ〜！'
       redirect_to home_path

@@ -39,7 +39,7 @@ class GoalsController < ApplicationController
     @step = Step.new(goal_id: @goal.id)
     Goal.transaction do
       @goal.save!
-      @step = @goal.steps.create!
+      @step = @goal.step.create!
     end
     flash[:success] = 'まずはスケジュールを作成してみてにゃ〜'
     redirect_to home_path
