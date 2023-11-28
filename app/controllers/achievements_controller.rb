@@ -1,13 +1,31 @@
 class AchievementsController < ApplicationController
+  before_action :set_step
+  before_action :set_achievement, only: [:show, :edit, :update, :destroy]
+
+  def index
+    @achievements = Achievement.all
+  end
+
+  def show; end
+
+  def new
+    @achievement = Achievement.new
+  end
+
   def create
-    step = Step.find(params[:step_id])
-    current_user.achievement(step)
-    redirect_back fallback_location: root_path
+    @achievement = current_user.achievements.build(achievement_params)
+    @achievement.step_id = @step.id
+
+    if @achievement.save
+      redirect_to home_path
+    else
+      render :new
+    end
   end
 
   def destroy
-    step = current_user.achievements.find(params[:id]).step
-    current_user.not_achieved(step)
+    step = current_user.achievements.find(params[:id])
+    current_user.not_achieved(achievement)
     redirect_back fallback_location: root_path
   end
 
@@ -17,4 +35,6 @@ class AchievementsController < ApplicationController
     @goal = Goal.find_by(user_id: current_user.id)
     @step = Step.find_by(goal_id: @goal.id)
   end
+
+  
 end
