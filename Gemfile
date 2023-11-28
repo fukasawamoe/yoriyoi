@@ -30,23 +30,23 @@ gem "tailwindcss-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
-#会員登録・ログイン機能
+# 会員登録・ログイン機能
 gem "sorcery"
 
-#フォーム複製機能・jQuery読み込み
+# フォーム複製機能・jQuery読み込み
 gem 'jquery-rails'
 gem 'cocoon'
 
-#タスクを時間順に並べ替える
+# タスクを時間順に並べ替える
 gem 'jquery-ui-rails'
 
-#スケジュールURLを推測できないように
+# スケジュールURLを推測できないように
 gem "hashid-rails", "~> 1.0"
 
-#open-ai
+# open-ai
 gem "ruby-openai"
 
-#.env読み込み
+# .env読み込み
 gem 'dotenv'
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
@@ -74,7 +74,7 @@ group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
   gem 'pry-rails'
   gem 'byebug'
-
+  gem 'rubocop-airbnb'
 end
 
 group :development do

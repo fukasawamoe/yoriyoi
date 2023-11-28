@@ -15,6 +15,6 @@ class User < ApplicationRecord
 
   def set_first_login
     self.first_login = true
-    self.save
+    save
   end
 end

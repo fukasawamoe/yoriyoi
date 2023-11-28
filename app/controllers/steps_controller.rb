@@ -1,6 +1,5 @@
 class StepsController < ApplicationController
-  before_action :set_step, only: %i[ create edit update destroy]
-
+  before_action :set_step, only: %i(create edit update destroy)
 
   def new
     @step = Step.new
@@ -8,7 +7,7 @@ class StepsController < ApplicationController
   end
 
   def create
-    @step = @goal.steps.build(step_params)
+    @step = @goal.step.build(step_params)
     if @step.save
       flash[:success] = '登録完了しましたにゃ！これから一緒にがんばるにゃ〜！'
       redirect_to home_path
@@ -36,6 +35,14 @@ class StepsController < ApplicationController
   def destroy
   end
 
+  def achievement
+    # Goalのview
+    @goal = Goal.find_by(user_id: current_user.id)
+    # Stepのview
+    @step = Step.find_by(goal_id: @goal.id)
+    # Achievementのview
+    @achievement = achievement.find_by(step_id: @step.id)
+  end
   private
 
   def set_step
@@ -44,6 +51,6 @@ class StepsController < ApplicationController
   end
 
   def step_params
-    params.require(:step).permit(:action_1, :action_2, :action_3, :times_set_1, :times_set_2, :times_set_3) # 必要に応じてパラメータを調整します。
+    params.require(:step).permit(:action_1, :action_2, :action_3, :times_set_1, :times_set_2, :times_set_3)
   end
 end

@@ -28,13 +28,15 @@
 
   <article class="h-full bg-amber-50 flex items-center", style="box-shadow: inset 0 0 10px 3px #eaf5f9;">
     <div class="m-5 text-base sm:text-lg">
-      <ul class="list-inside space-y-20">
+      <ul class="list-inside">
         <% all_blank = true %>
         <% (1..3).each do |i| %>
           <% action = step.send("action_#{i}") %>
           <% times_set = step.send("times_set_#{i}") %>
           <% unless action.blank? && times_set.blank? %>
             <li><i class="fa-solid fa-fire" style="color: #f26845;"></i>  <%= action %>を週<%= times_set %>回行う</li>
+            <%= render "achievements/off_button"%>
+
             <% all_blank = false %>
           <% end %>
         <% end %>
