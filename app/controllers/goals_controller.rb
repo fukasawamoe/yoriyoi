@@ -35,11 +35,11 @@ class GoalsController < ApplicationController
   end
 
   def skip
-    @goal = Goal.new(user_id: current_user.id)
-    @step = Step.new(goal_id: @goal.id)
     Goal.transaction do
+      @goal = Goal.new(user_id: current_user.id)
       @goal.save!
-      @step = @goal.step.create!
+      @step = Step.new(user_id: current_user.id, goal_id: @goal.id)
+      @step.save!
     end
     flash[:success] = 'まずはスケジュールを作成してみてにゃ〜'
     redirect_to home_path

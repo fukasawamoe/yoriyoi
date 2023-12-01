@@ -17,6 +17,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_30_073933) do
   create_table "achievements", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "step_id", null: false
+    t.integer "day_check", default: [], array: true
     t.integer "times_completed"
     t.date "completed_date"
     t.datetime "created_at", null: false
@@ -43,6 +44,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_30_073933) do
   end
 
   create_table "steps", force: :cascade do |t|
+    t.bigint "user_id", null: false
     t.bigint "goal_id", null: false
     t.string "action_1"
     t.string "action_2"
@@ -53,6 +55,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_30_073933) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["goal_id"], name: "index_steps_on_goal_id"
+    t.index ["user_id"], name: "index_steps_on_user_id"
   end
 
   create_table "tasks", force: :cascade do |t|
@@ -83,5 +86,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_30_073933) do
   add_foreign_key "goals", "users"
   add_foreign_key "schedules", "users"
   add_foreign_key "steps", "goals"
+  add_foreign_key "steps", "users"
   add_foreign_key "tasks", "schedules"
 end
