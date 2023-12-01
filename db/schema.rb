@@ -46,12 +46,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_30_073933) do
   create_table "steps", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "goal_id", null: false
-    t.string "action_1"
-    t.string "action_2"
-    t.string "action_3"
-    t.integer "times_set_1"
-    t.integer "times_set_2"
-    t.integer "times_set_3"
+    t.string "action"
+    t.integer "times_set"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["goal_id"], name: "index_steps_on_goal_id"

@@ -23,16 +23,16 @@
           </div>
         </div>
         <div class="justify-center pt-10">
-          <%= form_with model: @step, url: step_path, local: true do |f| %>
-            <%= render 'shared/error_messages', object: @step, class:"mt-5" %>
-            <% 3.times do |i| %>
-              <div class="flex flex-col md:flex-row items-center justify-center p-5">
-                <div><%= f.text_field "action_#{i+1}", class:'rounded w-3/5 mt-2 md:w-3/5 text-center' %> を週に</div>
-                <div class="whitespace-nowrap"><%= f.number_field "times_set_#{i+1}", min: 1, max: 7,class:'rounded w-16 text-center mt-2' %> 回がんばる!</div>
-              </div>
-            <% end %>
-            <%= button_tag(type:'submit', class:"bg-blue-400 py-2 px-5 w-auto rounded-lg text-white mt-20 mb-10") do %>
-              <i class="fa-solid fa-check"></i> 登録
+          <% @steps.each_with_index do |step, index| %>
+            <%= form_with model: @goal, url: goal_steps_path(@goal), local: true do |f| %>
+              <%= f.fields_for :steps do |step_form| %>
+                <%= render 'shared/error_messages', object: @steps, class:"mt-5" %>
+                <div class="flex flex-col md:flex-row items-center justify-center p-5">
+                  <div><%= step_form.text_field :action, class:'rounded w-3/5 mt-2 md:w-3/5 text-center' %> を週に</div>
+                  <div class="whitespace-nowrap"><%= step_form.number_field "times_set", min: 1, max: 7,class:'rounded w-16 text-center mt-2' %> 回がんばる!</div>
+                </div>
+              <% end %>
+              <%= f.submit raw('<i class="fa-solid fa-check"></i> 登録') class:"bg-blue-400 py-2 px-5 w-auto rounded-lg text-white mt-20 mb-10" %>
             <% end %>
           <% end %>
         </div>

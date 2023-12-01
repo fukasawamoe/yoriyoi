@@ -2,8 +2,8 @@ class StepsController < ApplicationController
   before_action :set_step, only: %i(create edit update destroy)
 
   def new
-    @step = Step.new
     @goal = Goal.find_by(user_id: current_user.id)
+    2.times { @goal.steps.build }
   end
 
   def create
@@ -51,6 +51,6 @@ class StepsController < ApplicationController
   end
 
   def step_params
-    params.require(:step).permit(:action_1, :action_2, :action_3, :times_set_1, :times_set_2, :times_set_3)
+    params.require(:step).permit(:action, :times_set)
   end
 end
