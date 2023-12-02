@@ -19,19 +19,12 @@ class StepsController < ApplicationController
     else
       render :new
     end
-
-    # @step = @goal.step.build(step_params)
-    # if @step.save
-    #   flash[:success] = '登録完了しましたにゃ！これから一緒にがんばるにゃ〜！'
-    #   redirect_to home_path
-    # else
-    #   render 'new', status: :unprocessable_entity
-    # end
   end
 
   def edit; end
 
   def update
+    binding.pry
     if @step.update(step_params)
       if params[:home]
         flash[:success] = 'ステップを編集しました'
@@ -60,7 +53,7 @@ class StepsController < ApplicationController
 
   def set_step
     @goal = current_user.goal
-    @step = Step.find_by(goal_id: @goal.id)
+    @steps = Step.where(user_id: current_user.id)
   end
 
   def step_params
