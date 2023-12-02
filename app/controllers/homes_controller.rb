@@ -32,8 +32,7 @@ class HomesController < ApplicationController
     # Goalのview
     @goal = Goal.find_by(user_id: current_user.id)
     # Stepのview
-    @step = Step.find_by(user_id: current_user.id)
-    @achievement = @step.achievements
+    @steps = Step.where(user_id: current_user.id)
   end
   def add_day_check
     @goal = Goal.find_by(user_id: current_user.id)

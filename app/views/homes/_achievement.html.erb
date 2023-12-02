@@ -2,15 +2,15 @@
   <div class="w-full my-5">達成状況</div>
 
 <div class="grid grid-cols-3 gap-10">
-<% if step.action_1.present?%>
+<% if step.action.present?%>
   <div>
-    <p><%= step.action_1 %></p>
+    <p><%= step.action %></p>
     <% calculated_value1 = (3.0/step.times_set_1 * 100).round %>
     <div class="radial-progress bg-red-100 text-primary-content border-4 border-primary" style="--value:<%= calculated_value1 %>; --size:12rem; --thickness: 2rem;" role="progressbar"><%= calculated_value1 %>%</div> 
   </div>
 <% end %>
 
-<% if step.action_2.present?%>
+<% if step.action.present?%>
   <div>
     <p><%= step.action_2 %></p>
     <% calculated_value2 = (3.0/step.times_set_2 * 100).round %>
