@@ -20,10 +20,10 @@
 まずはひとつだけでもがんばろ〜！</div>
         </div>
         <div class="justify-center p-10">
-          <%= form_with model: @goal, local: true do |f| %>
+          <%= form_with url: update_multiple_step_path, method: :put,local: true do |f| %>
             <% @steps.each do |step| %>
-              <%= f.fields_for 'step[]', step do |step_form| %>
-              <%= render 'shared/error_messages', object: step, class:"mt-5" %>
+              <%= f.fields_for "steps[#{step.id}]", step, include_id: false do |step_form| %>
+              <%= render 'shared/error_messages', object: step_form.object, class:"mt-5" %>
                 <div class="flex flex-col md:flex-row items-center justify-center">
                   <div><%= step_form.text_field :action, class:'rounded w-3/5 mt-2 md:w-3/5 text-center' %> を週に</div>
                   <div class="whitespace-nowrap"><%= step_form.number_field :times_set, min: 1, max: 7,class:'rounded w-16 text-center mt-2' %> 回がんばる!</div>

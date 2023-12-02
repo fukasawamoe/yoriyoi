@@ -21,10 +21,30 @@ class StepsController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit_multiple
+    @goal = current_user.goal
+    @steps = current_user.steps
+  end
+
+  def update_multiple
+    @goal = current_user.goal
+    @steps = Step.update(params[:steps].keys, params[:steps].values)
+
+    if @steps.all? { |step| step.errors.empty? }
+
+      if params[:home]
+        flash[:success] = 'ステップを編集しました'
+        redirect_to home_path
+      elsif params[:goal]
+        flash[:success] = 'ステップを編集しました'
+        redirect_to edit_goal_path
+      end
+    else
+      render :edit_multiple, status: :unprocessable_entity
+    end
+  end
 
   def update
-    binding.pry
     if @step.update(step_params)
       if params[:home]
         flash[:success] = 'ステップを編集しました'

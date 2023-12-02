@@ -16,6 +16,11 @@ Rails.application.routes.draw do
       post :skip
     end
   end
-  resource :step, only: %i(new create edit update destroy)
+  resource :step, only: %i(new create edit update destroy) do
+    collection do
+      get :edit_multiple
+      put :update_multiple
+    end
+  end
 end
 
