@@ -18,8 +18,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_30_073933) do
     t.bigint "user_id", null: false
     t.bigint "step_id", null: false
     t.integer "day_check", default: [], array: true
-    t.integer "times_completed"
-    t.date "completed_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["step_id"], name: "index_achievements_on_step_id"

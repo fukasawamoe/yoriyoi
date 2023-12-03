@@ -1,31 +1,19 @@
 <div class="flex flex-wrap w-full bg-yellow-50 py-10 px-10 relative my-5" style="border: dotted 2px #ff007f; padding: 1rem;" >
   <div class="w-full my-5">達成状況</div>
 
-<div class="grid grid-cols-3 gap-10">
-<% if step.action.present?%>
-  <div>
-    <p><%= step.action %></p>
-    <% calculated_value1 = (3.0/step.times_set_1 * 100).round %>
-    <div class="radial-progress bg-red-100 text-primary-content border-4 border-primary" style="--value:<%= calculated_value1 %>; --size:12rem; --thickness: 2rem;" role="progressbar"><%= calculated_value1 %>%</div> 
+  <div class = "flex">
+    <% steps.each do |step| %>
+      <div class="grid grid-cols-3 gap-10">
+        <% if step.action.present?%>
+          <div>
+            <p><%= step.action %></p>
+            <% calculated_value1 = (3.0/step.times_set * 100).round %>
+            <div class="radial-progress bg-red-100 text-primary-content border-4 border-primary" style="--value:<%= calculated_value1 %>; --size:12rem; --thickness: 2rem;" role="progressbar"><%= calculated_value1 %>%</div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
   </div>
-<% end %>
-
-<% if step.action.present?%>
-  <div>
-    <p><%= step.action_2 %></p>
-    <% calculated_value2 = (3.0/step.times_set_2 * 100).round %>
-    <div class="radial-progress bg-red-100 text-primary-content border-4 border-primary" style="--value:<%= calculated_value2 %>; --size:12rem; --thickness: 2rem;" role="progressbar"><%= calculated_value2 %>%</div> 
-  </div>
-<% end %>
-
-<% if step.action_3.present?%>
-  <div>
-    <p><%= step.action_3 %></p>
-    <% calculated_value3 = (3.0/step.times_set_3 * 100).round %>
-    <div class="radial-progress bg-red-100 text-primary-content border-4 border-primary" style="--value:<%= calculated_value3 %>; --size:12rem; --thickness: 2rem;" role="progressbar"><%= calculated_value3 %>%</div> 
-  </div>
-<% end %>
-</div>
 </div>
 
 <div class="flex">

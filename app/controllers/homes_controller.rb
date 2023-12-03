@@ -35,14 +35,12 @@ class HomesController < ApplicationController
     @steps = Step.where(user_id: current_user.id)
   end
   def add_day_check
-    @goal = Goal.find_by(user_id: current_user.id)
-    # Stepのview
-    @step = Step.find_by(goal_id: @goal.id)
-    @achievement = @step.achievements
+    @steps = Step.where(user_id: current_user.id)
+    @step_hash = {}
+    @steps.each_with_index do |step, index|
+      @step_hash[:"step_#{index}"] = step
+    end
 
-    @achievement = Achievement.find(params[:id])
-    @achievement.day_check << params[:day_check]
-    @achievement.save
-    redirect_to home_path(@achievement.step)
+    
   end
 end

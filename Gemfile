@@ -48,6 +48,10 @@ gem "ruby-openai"
 
 # .env読み込み
 gem 'dotenv'
+
+# 日本語化対応
+gem 'rails-i18n'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
