@@ -17,7 +17,7 @@ class StepsController < ApplicationController
         step.create_achievement
       end
       flash[:success] = '登録完了しましたにゃ！これから一緒にがんばるにゃ〜！'
-      redirect_to home_path
+      redirect_to home_index_path
     else
       render :new
     end
@@ -36,7 +36,7 @@ class StepsController < ApplicationController
 
       if params[:home]
         flash[:success] = 'ステップを編集しました'
-        redirect_to home_path
+        redirect_to home_index_path
       elsif params[:goal]
         flash[:success] = 'ステップを編集しました'
         redirect_to edit_goal_path
@@ -50,7 +50,7 @@ class StepsController < ApplicationController
     if @step.update(step_params)
       if params[:home]
         flash[:success] = 'ステップを編集しました'
-        redirect_to home_path
+        redirect_to home_index_path
       elsif params[:goal]
         flash[:success] = 'ステップを編集しました'
         redirect_to edit_goal_path
