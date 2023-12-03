@@ -15,13 +15,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_30_073933) do
   enable_extension "plpgsql"
 
   create_table "achievements", force: :cascade do |t|
-    t.bigint "user_id", null: false
     t.bigint "step_id", null: false
     t.integer "day_check", default: [], array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["step_id"], name: "index_achievements_on_step_id"
-    t.index ["user_id"], name: "index_achievements_on_user_id"
   end
 
   create_table "goals", force: :cascade do |t|
@@ -76,7 +74,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_30_073933) do
   end
 
   add_foreign_key "achievements", "steps"
-  add_foreign_key "achievements", "users"
   add_foreign_key "goals", "users"
   add_foreign_key "schedules", "users"
   add_foreign_key "steps", "goals"
