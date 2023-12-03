@@ -33,6 +33,11 @@ class HomesController < ApplicationController
     @goal = Goal.find_by(user_id: current_user.id)
     # Stepのview
     @steps = Step.where(user_id: current_user.id)
+    # @stepsを分解する
+    @step_hash = {}
+    @steps.each_with_index do |step, index|
+      @step_hash[:"step_#{index}"] = step
+    end
   end
   def add_day_check
     @steps = Step.where(user_id: current_user.id)

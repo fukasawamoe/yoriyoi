@@ -7,13 +7,15 @@ class StepsController < ApplicationController
   end
 
   def create
-    @goal = Goal.find_by(user_id: current_user.id)
     @steps = params[:step][:steps].values.map do |step_params|
       step_params.merge!({user_id: current_user.id})
       @goal.steps.new(step_params)
     end
     if @steps.all?(&:valid?)
-      @steps.each(&:save!)
+      @steps.each do |step|
+        step.save!
+        step.create_achievement
+      end
       flash[:success] = '登録完了しましたにゃ！これから一緒にがんばるにゃ〜！'
       redirect_to home_path
     else

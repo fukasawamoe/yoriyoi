@@ -1,7 +1,9 @@
 <div class='flex flex-wrap'>
-  <% (0..6).each do |day| %>
-    <div>
-      <%= button_to t('date.abbr_day_names')[day], add_day_check_home_path(@achievement, day: day), method: :post, class:"mx-auto m-3 bg-white border-2 py-2 px-6 rounded-full text-lg" %>
-    </div>
+  <% @step_hash.each do |step_key, step| %>
+    <% (0..6).each do |day| %>
+      <div>
+        <%= button_to t('date.abbr_day_names')[day], add_day_check_home_path(step.achievement, day: day), method: :post, class:"mx-auto m-3 bg-white border-2 py-2 px-6 rounded-full text-lg" %>
+      </div>
+    <% end %>
   <% end %>
 </div>
