@@ -60,6 +60,7 @@ class StepsController < ApplicationController
         array_day_check<<target_day
       end
       step.achievement.save!
+      
       redirect_to home_index_path
     end
   end

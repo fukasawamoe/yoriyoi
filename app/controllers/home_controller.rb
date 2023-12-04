@@ -33,14 +33,5 @@ class HomeController < ApplicationController
     @goal = Goal.find_by(user_id: current_user.id)
     # Stepのview
     @steps = Step.where(user_id: current_user.id)
-    end
-  end
-  def add_day_check
-    step = Step.find_by(id: params[:step_id], user_id: current_user.id)
-    if step && step.achievement
-      target_day = params[:day] # この値はリクエストのパラメータから取得
-      step.achievement.day_check[target_day] = !step.achievement.day_check[target_day]
-      step.achievement.save!
-binding.pry
   end
 end
