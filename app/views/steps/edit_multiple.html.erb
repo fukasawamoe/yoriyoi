@@ -20,7 +20,7 @@
 まずはひとつだけでもがんばろ〜！</div>
         </div>
         <div class="justify-center p-10">
-          <%= form_with url: update_multiple_step_path, method: :put,local: true do |f| %>
+          <%= form_with url: update_multiple_steps_path, method: :put,local: true do |f| %>
             <% @steps.each do |step| %>
               <%= f.fields_for "steps[#{step.id}]", step, include_id: false do |step_form| %>
               <%= render 'shared/error_messages', object: step_form.object, class:"mt-5" %>

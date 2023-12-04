@@ -9,7 +9,7 @@ class GoalsController < ApplicationController
     @goal = Goal.new(goal_params)
     @goal.user_id = current_user.id
     if @goal.save
-      redirect_to new_step_path
+      redirect_to new_steps_path
     else
       render 'new'
     end
@@ -24,7 +24,7 @@ class GoalsController < ApplicationController
         redirect_to home_index_path
       elsif params[:step]
         flash[:success] = '目標を編集しました'
-        redirect_to edit_step_path
+        redirect_to edit_multiple_steps_path
       end
     else
       render :edit

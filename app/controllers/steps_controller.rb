@@ -46,30 +46,17 @@ class StepsController < ApplicationController
     end
   end
 
-  def update
-    if @step.update(step_params)
-      if params[:home]
-        flash[:success] = 'ステップを編集しました'
-        redirect_to home_index_path
-      elsif params[:goal]
-        flash[:success] = 'ステップを編集しました'
-        redirect_to edit_goal_path
-      end
-    else
-      render :edit, status: :unprocessable_entity
-    end
-  end
-
   def destroy
   end
 
-  def achievement
-    # Goalのview
-    @goal = Goal.find_by(user_id: current_user.id)
-    # Stepのview
-    @step = Step.find_by(goal_id: @goal.id)
-    # Achievementのview
-    @achievement = achievement.find_by(step_id: @step.id)
+  def add_day_check
+    step = Step.find_by(id: params[:id], user_id: current_user.id)
+    if step && step.achievement
+      target_day = params[:day] # この値はリクエストのパラメータから取得
+      step.achievement.day_check[target_day.to_i] = !step.achievement.day_check[target_day.to_i]
+      step.achievement.save!
+      redirect_to home_index_path
+    end
   end
   private
 
