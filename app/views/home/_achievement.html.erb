@@ -5,9 +5,8 @@
     <% steps.each do |step| %>
       <div class="grid grid-cols-3 gap-10">
         <% if step.action.present?%>
-          <div id="achievement">
+          <div id="achievement-<%= step.id %>" class="achievement">
             <p><%= step.action %></p>
-
             <% calculated_value1 = (((step.achievement.day_check.size*0.1)/(step.times_set*0.1))* 100).round %>
             <div class="radial-progress bg-red-100 text-primary-content border-4 border-primary" style="--value:<%= calculated_value1 %>; --size:12rem; --thickness: 2rem;" role="progressbar"><%= calculated_value1 %>%</div>
           </div>
