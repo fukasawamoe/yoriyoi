@@ -1,0 +1,33 @@
+<%= turbo_stream.update "achievement_button" do %>
+  <% @steps.each do |step| %>
+    <% action = step.action %>
+    <% times_set = step.times_set %>
+    <% unless action.blank? && times_set.blank? %>
+      <li><i class="fa-solid fa-fire" style="color: #f26845;"></i>  <%= action %>を週<%= times_set %>回行う</li>
+      <div class='flex flex-wrap'>
+        <% (0..6).each do |day| %>
+          <% if step.achievement.day_check.include?(day) %>
+            <%= render "achievements/on_button", day: day, step: step %>
+          <% else %>
+            <%= render "achievements/off_button", day: day, step: step %>
+          <% end %>
+        <% end %>
+      </div>
+      <% all_blank = false %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<%= turbo_stream.update "achievement_graph" do %>
+  <% @steps.each do |step| %>
+    <div class="grid grid-cols-3 gap-10">
+      <% if step.action.present?%>
+        <div id="achievement-<%= step.id %>" class="achievement">
+          <p><%= step.action %></p>
+          <% calculated_value1 = (((step.achievement.day_check.size*0.1)/(step.times_set*0.1))* 100).round %>
+          <div class="radial-progress bg-red-100 text-primary-content border-4 border-primary" style="--value:<%= calculated_value1 %>; --size:12rem; --thickness: 2rem;" role="progressbar"><%= calculated_value1 %>%</div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>
