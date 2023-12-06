@@ -5,9 +5,7 @@ Rails.application.routes.draw do
   get 'login' => 'user_sessions#new', :as => :login
   post 'login' => "user_sessions#create"
   delete 'logout' => 'user_sessions#destroy', :as => :logout
-  resource :home, only: %i(show) do
-    post 'add_day_check', on: :member
-  end
+  resources :home, only: %i[index]
   resource :users, only: %i(new create)
   resources :schedules
   resource :profiles
@@ -16,6 +14,12 @@ Rails.application.routes.draw do
       post :skip
     end
   end
-  resource :step, only: %i(new create edit update destroy)
+  resources :steps, only: %i(new create destroy) do
+    collection do
+      get :edit_multiple
+      put :update_multiple
+    end
+    post :add_day_check, on: :member
+  end
 end
 

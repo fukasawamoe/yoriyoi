@@ -1,5 +1,5 @@
-class HomesController < ApplicationController
-  def show
+class HomeController < ApplicationController
+  def index
     # scheduleのview
     # 現在の曜日を取得（0:日曜日, 1:月曜日, ..., 6:土曜日）
     current_day_of_week = Time.current.wday
@@ -32,18 +32,6 @@ class HomesController < ApplicationController
     # Goalのview
     @goal = Goal.find_by(user_id: current_user.id)
     # Stepのview
-    @step = Step.find_by(goal_id: @goal.id)
-    @achievement = @step.achievements
-  end
-  def add_day_check
-    @goal = Goal.find_by(user_id: current_user.id)
-    # Stepのview
-    @step = Step.find_by(goal_id: @goal.id)
-    @achievement = @step.achievements
-
-    @achievement = Achievement.find(params[:id])
-    @achievement.day_check << params[:day_check]
-    @achievement.save
-    redirect_to home_path(@achievement.step)
+    @steps = Step.where(user_id: current_user.id)
   end
 end

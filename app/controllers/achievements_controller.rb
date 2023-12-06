@@ -17,7 +17,7 @@ class AchievementsController < ApplicationController
     @achievement.step_id = @step.id
 
     if @achievement.save
-      redirect_to home_path
+      redirect_to home_index_path
     else
       render :new
     end

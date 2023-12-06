@@ -1,0 +1,17 @@
+<div class="flex flex-wrap w-full bg-yellow-50 py-10 px-10 relative my-5" style="border: dotted 2px #ff007f; padding: 1rem;" >
+  <div class="w-full my-5">達成状況</div>
+
+  <div id="achievement_graph" class="flex">
+    <% steps.each do |step| %>
+      <div class="grid grid-cols-3 gap-10">
+        <% if step.action.present?%>
+          <div id="achievement-<%= step.id %>" class="achievement">
+            <p><%= step.action %></p>
+            <% calculated_value1 = (((step.achievement.day_check.size*0.1)/(step.times_set*0.1))* 100).round %>
+            <div class="radial-progress bg-red-100 text-primary-content border-4 border-primary" style="--value:<%= calculated_value1 %>; --size:12rem; --thickness: 2rem;" role="progressbar"><%= calculated_value1 %>%</div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

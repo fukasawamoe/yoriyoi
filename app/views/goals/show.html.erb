@@ -9,7 +9,7 @@
   <div class="bg-amber-50 mb-5 flex items-center", style="box-shadow: inset 0 0 10px 3px #eaf5f9;">
     <div class="m-5 text-base sm:text-lg">
       <% if goal.ideal_self.blank? %>
-        <p>目標が設定してほしいにゃ。</p>
+        <p>目標を設定してほしいにゃ。</p>
       <% else %>
         <ul class="list-inside my-3">
           <li><i class="fa-brands fa-pagelines" style="color: #319674;"></i> <%= goal.ideal_self %></li>
@@ -23,23 +23,32 @@
                 <p>理想を実現する
 ためには</p>
     </div>
-    <%= link_to raw('<i class="fa-solid fa-pencil"></i> 編集'), edit_step_path, class: 'bg-yellow-200 py-2 px-3 rounded-lg whitespace-nowrap' %>
+    <%= link_to raw('<i class="fa-solid fa-pencil"></i> 編集'), edit_multiple_steps_path, class: 'bg-yellow-200 py-2 px-3 rounded-lg whitespace-nowrap' %>
   </div>
 
   <article class="h-full bg-amber-50 flex items-center", style="box-shadow: inset 0 0 10px 3px #eaf5f9;">
     <div class="m-5 text-base sm:text-lg">
       <ul class="list-inside">
         <% all_blank = true %>
-        <% (1..3).each do |i| %>
-          <% action = step.send("action_#{i}") %>
-          <% times_set = step.send("times_set_#{i}") %>
-          <% unless action.blank? && times_set.blank? %>
-            <li><i class="fa-solid fa-fire" style="color: #f26845;"></i>  <%= action %>を週<%= times_set %>回行う</li>
-            <%= render "achievements/off_button"%>
-
-            <% all_blank = false %>
+        <div id="achievement_button">
+          <% steps.each do |step| %>
+            <% action = step.action %>
+            <% times_set = step.times_set %>
+            <% unless action.blank? && times_set.blank? %>
+              <li><i class="fa-solid fa-fire" style="color: #f26845;"></i>  <%= action %>を週<%= times_set %>回行う</li>
+              <div class='flex flex-wrap'>
+                <% (0..6).each do |day| %>
+                  <% if step.achievement.day_check.include?(day) %>
+                    <%= render "achievements/on_button", day: day, step: step %>
+                  <% else %>
+                    <%= render "achievements/off_button", day: day, step: step %>
+                  <% end %>
+                <% end %>
+              </div>
+              <% all_blank = false %>
+            <% end %>
           <% end %>
-        <% end %>
+        <div>
         <% if all_blank %>
           <p>頑張ることが設定されていないにゃ。</p>
         <% end %>

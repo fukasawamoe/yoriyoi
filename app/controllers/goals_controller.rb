@@ -9,7 +9,7 @@ class GoalsController < ApplicationController
     @goal = Goal.new(goal_params)
     @goal.user_id = current_user.id
     if @goal.save
-      redirect_to new_step_path
+      redirect_to new_steps_path
     else
       render 'new'
     end
@@ -21,10 +21,10 @@ class GoalsController < ApplicationController
     if @goal.update(goal_params)
       if params[:home]
         flash[:success] = '目標を編集しました'
-        redirect_to home_path
+        redirect_to home_index_path
       elsif params[:step]
         flash[:success] = '目標を編集しました'
-        redirect_to edit_step_path
+        redirect_to edit_multiple_steps_path
       end
     else
       render :edit
@@ -40,9 +40,10 @@ class GoalsController < ApplicationController
       @goal.save!
       @step = Step.new(user_id: current_user.id, goal_id: @goal.id)
       @step.save!
+      @step.create_achievement!
     end
     flash[:success] = 'まずはスケジュールを作成してみてにゃ〜'
-    redirect_to home_path
+    redirect_to home_index_path
   rescue ActiveRecord::RecordInvalid
     render :new
   end

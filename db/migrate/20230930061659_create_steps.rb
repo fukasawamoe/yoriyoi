@@ -3,12 +3,8 @@ class CreateSteps < ActiveRecord::Migration[7.0]
     create_table :steps do |t|
       t.references :user, null: false, foreign_key: true
       t.references :goal, null: false, foreign_key: true
-      t.string :action_1
-      t.string :action_2
-      t.string :action_3
-      t.integer :times_set_1
-      t.integer :times_set_2
-      t.integer :times_set_3
+      t.string :action
+      t.integer :times_set
 
       t.timestamps
     end

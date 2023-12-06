@@ -7,50 +7,76 @@ class StepsController < ApplicationController
   end
 
   def create
-    @step = @goal.step.build(step_params)
-    if @step.save
+    @steps = params[:step][:steps].values.map do |step_params|
+      step_params.merge!({user_id: current_user.id})
+      @goal.steps.new(step_params)
+    end
+    if @steps.all?(&:valid?)
+      @steps.each do |step|
+        step.save!
+        step.create_achievement
+      end
       flash[:success] = '登録完了しましたにゃ！これから一緒にがんばるにゃ〜！'
-      redirect_to home_path
+      redirect_to home_index_path
     else
-      render 'new', status: :unprocessable_entity
+      render :new
     end
   end
 
-  def edit; end
+  def edit_multiple
+    @goal = current_user.goal
+    @steps = current_user.steps
+  end
 
-  def update
-    if @step.update(step_params)
+  def update_multiple
+    @goal = current_user.goal
+    @steps = Step.update(params[:steps].keys, params[:steps].values)
+
+    if @steps.all? { |step| step.errors.empty? }
+
       if params[:home]
         flash[:success] = 'ステップを編集しました'
-        redirect_to home_path
+        redirect_to home_index_path
       elsif params[:goal]
         flash[:success] = 'ステップを編集しました'
         redirect_to edit_goal_path
       end
     else
-      render :edit, status: :unprocessable_entity
+      render :edit_multiple, status: :unprocessable_entity
     end
   end
 
   def destroy
   end
 
-  def achievement
-    # Goalのview
-    @goal = Goal.find_by(user_id: current_user.id)
-    # Stepのview
-    @step = Step.find_by(goal_id: @goal.id)
-    # Achievementのview
-    @achievement = achievement.find_by(step_id: @step.id)
+  def add_day_check
+    @step = Step.find_by(id: params[:id], user_id: current_user.id)
+    @steps = Step.where(user_id: current_user.id)
+    if @step && @step.achievement
+      target_day = params[:day].to_i # この値はリクエストのパラメータから取得
+      array_day_check = @step.achievement.day_check
+      if array_day_check.include?(target_day)
+        array_day_check.delete(target_day)
+      else
+        array_day_check<<target_day
+      end
+      respond_to do |format|
+        @step.achievement.save!
+
+        format.html { redirect_to home_index_path }
+        format.turbo_stream
+      end
+    end
   end
+
   private
 
   def set_step
     @goal = current_user.goal
-    @step = Step.find_by(goal_id: @goal.id)
+    @steps = Step.where(user_id: current_user.id)
   end
 
   def step_params
-    params.require(:step).permit(:action_1, :action_2, :action_3, :times_set_1, :times_set_2, :times_set_3)
+    params.require(:step).permit(:action, :times_set)
   end
 end
