@@ -9,7 +9,7 @@ class GoalsController < ApplicationController
     @goal = Goal.new(goal_params)
     @goal.user_id = current_user.id
     if @goal.save
-      redirect_to new_steps_path
+      redirect_to new_step_path
     else
       render 'new'
     end
