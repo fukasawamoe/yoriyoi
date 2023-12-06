@@ -3,6 +3,6 @@ import "@hotwired/turbo-rails"
 import "controllers"
 import "@fortawesome/fontawesome-free"
 import "@nathanvda/cocoon"
-import "custom/form";
-import "custom/header";
-import "custom/text_box";
+import "custom/form"
+import "custom/header"
+import "custom/text_box"
