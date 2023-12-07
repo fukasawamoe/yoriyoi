@@ -52,6 +52,9 @@ gem 'dotenv'
 # 日本語化対応
 gem 'rails-i18n'
 
+# 定数管理
+gem 'config'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 

@@ -20,6 +20,9 @@
         <div class="flex justify-center p-7">
           <%= f.submit "ログイン", class: " w-full bg-indigo-600 shadow-xl hover:bg-indigo-500 text-white font-bold rounded-full p-4 w-48" %>
         </div>
+        <div class="flex justify-center underline">
+          <%= link_to 'LINEでログインする', auth_at_provider_path(provider: :line) %>
+        </div>
 
         <div class="flex justify-center underline">
           <%= link_to "新しくアカウントを作成する", sign_up_path %>
