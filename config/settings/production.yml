@@ -1,0 +1,2 @@
+sorcery:
+    line_callback_url: 'https://yoriyoi-ce784c6c7328.herokuapp.com/oauth/callback?provider=line'
