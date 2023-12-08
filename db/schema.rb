@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_07_125816) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_08_142139) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -30,6 +30,19 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_07_125816) do
     t.datetime "updated_at", null: false
     t.index ["provider", "uid"], name: "index_authentications_on_provider_and_uid"
     t.index ["user_id"], name: "index_authentications_on_user_id"
+  end
+
+  create_table "characters", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "name"
+    t.string "parsonality"
+    t.string "communication_style"
+    t.string "relationship"
+    t.string "additional"
+    t.string "avatar"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_characters_on_user_id"
   end
 
   create_table "goals", force: :cascade do |t|
@@ -84,6 +97,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_07_125816) do
   end
 
   add_foreign_key "achievements", "steps"
+  add_foreign_key "characters", "users"
   add_foreign_key "goals", "users"
   add_foreign_key "schedules", "users"
   add_foreign_key "steps", "goals"

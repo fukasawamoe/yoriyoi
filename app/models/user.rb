@@ -5,6 +5,7 @@ class User < ApplicationRecord
   has_many :schedules, dependent: :destroy
   has_one :goal, dependent: :destroy
   has_many :steps, dependent: :destroy
+  has_one :character
 
   validates :password, length: { minimum: 3 }, if: -> { new_record? || changes[:crypted_password] }
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
