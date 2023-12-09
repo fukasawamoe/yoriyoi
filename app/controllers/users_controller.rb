@@ -8,6 +8,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      @user.update(first_login: false) # 初回ログイン時のみ目標設定画面へリダイレクト
       auto_login(@user)
       flash[:success] = 'ユーザー登録が完了しました'
       redirect_to new_goal_path

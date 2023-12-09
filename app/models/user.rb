@@ -16,16 +16,10 @@ class User < ApplicationRecord
   validates :name, presence: true, length: { maximum: 15 }
 
     # ユーザー作成後に呼び出されるコールバック
-  after_create :set_first_login
   after_create :assign_default_character
 
   private
 
-  # 初回ログイン時にチェックをいれる
-  def set_first_login
-    self.first_login = true
-    save
-  end
 
   # デフォルトキャラクターの属性を持つキャラクターを作成
   def assign_default_character

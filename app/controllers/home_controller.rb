@@ -20,11 +20,7 @@ class HomeController < ApplicationController
       next_day_schedules = current_user.schedules.includes(:tasks).where('day_of_week @> ARRAY[?]::integer[]', next_day_of_week)
       @next_task = next_day_schedules.map(&:tasks).flatten.min_by(&:task_time)
     end
-    # # JSを読み込む
-    # respond_to do |format|
-    #   format.html
-    #   format.js { render partial: 'next_task', locals: { task: @next_task } }
-    # end
+
   # ai_messageのview(現在のタスクをOpenAIクライアントに渡す)
   # if @current_task.present?
   #   client = OpenAiClient.new(@current_task)
