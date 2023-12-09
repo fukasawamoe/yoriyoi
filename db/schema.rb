@@ -35,7 +35,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_08_142139) do
   create_table "characters", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "name"
-    t.string "parsonality"
+    t.string "personality"
     t.string "communication_style"
     t.string "relationship"
     t.string "additional"

@@ -5,7 +5,7 @@ class User < ApplicationRecord
   has_many :schedules, dependent: :destroy
   has_one :goal, dependent: :destroy
   has_many :steps, dependent: :destroy
-  has_one :character
+  has_one :character, dependent: :destroy
 
   validates :password, length: { minimum: 3 }, if: -> { new_record? || changes[:crypted_password] }
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
@@ -15,10 +15,28 @@ class User < ApplicationRecord
   validates :email, presence: true
   validates :name, presence: true, length: { maximum: 15 }
 
+    # ユーザー作成後に呼び出されるコールバック
   after_create :set_first_login
+  after_create :assign_default_character
 
+  private
+
+  # 初回ログイン時にチェックをいれる
   def set_first_login
     self.first_login = true
     save
+  end
+
+  # デフォルトキャラクターの属性を持つキャラクターを作成
+  def assign_default_character
+    create_character(
+      name: 'ねこちゃん',
+      personality: '友達思いのやさしい',
+      communication_style: 'フレンドリー',
+      relationship: '相棒',
+      additional: 'いつもそばにいる',
+      avatar: 'cat_notification.png' # デフォルトのアバター画像ファイル名
+    )
+    binding.pry
   end
 end
