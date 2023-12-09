@@ -5,7 +5,7 @@ class UserSessionsController < ApplicationController
   def create
     @user = login(params[:email], params[:password])
     if @user
-      if @user.first_login
+      if @user.first_login?
         @user.update(first_login: false)
         redirect_to new_goal_path # 初回ログイン時のみ目標設定画面へリダイレクト
       else
@@ -14,7 +14,7 @@ class UserSessionsController < ApplicationController
       end
     else
       flash.now[:error] = 'ログインに失敗しました'
-      render action: 'new', status: :unprocessable_entity
+      render :new, status: :unprocessable_entity
     end
   end
 

@@ -9,9 +9,10 @@ Rails.application.routes.draw do
   post 'login' => "user_sessions#create"
   delete 'logout' => 'user_sessions#destroy', :as => :logout
   resources :home, only: %i[index]
-  resource :users, only: %i(new create)
+  resource :users, only: %i(edit update)
   resources :schedules
-  resource :profiles
+  resources :profiles, only: %i(index)
+  resource :characters, only: [:edit, :update]
   resource :goal, only: %i(new create edit update destroy) do
     collection do
       post :skip
