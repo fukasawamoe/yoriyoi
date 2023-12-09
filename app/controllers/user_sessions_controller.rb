@@ -14,7 +14,7 @@ class UserSessionsController < ApplicationController
       end
     else
       flash.now[:error] = 'ログインに失敗しました'
-      render action: 'new', status: :unprocessable_entity
+      render :new, status: :unprocessable_entity
     end
   end
 

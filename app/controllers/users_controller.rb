@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :set_user, only: [:edit, :update]
+
   def new
     @user = User.new
   end
@@ -14,7 +16,24 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit; end
+
+  def update
+    if @user.update(user_params)
+      binding.pry
+      flash[:success] = 'ユーザー情報を更新しました'
+      redirect_to profiles_path
+    else
+      flash.now[:error] = 'ユーザー情報の更新に失敗しました'
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   private
+
+  def set_user
+    @user = User.find(current_user.id)
+  end
 
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)

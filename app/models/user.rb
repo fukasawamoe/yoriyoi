@@ -35,8 +35,7 @@ class User < ApplicationRecord
       communication_style: 'フレンドリー',
       relationship: '相棒',
       additional: 'いつもそばにいる',
-      avatar: 'cat_notification.png' # デフォルトのアバター画像ファイル名
+      image: 'cat_notification.png' # デフォルトのアバター画像ファイル名
     )
-    binding.pry
   end
 end

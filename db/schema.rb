@@ -39,7 +39,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_08_142139) do
     t.string "communication_style"
     t.string "relationship"
     t.string "additional"
-    t.string "avatar"
+    t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_characters_on_user_id"

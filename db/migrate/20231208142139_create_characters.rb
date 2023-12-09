@@ -7,7 +7,7 @@ class CreateCharacters < ActiveRecord::Migration[7.0]
       t.string :communication_style
       t.string :relationship
       t.string :additional
-      t.string :avatar
+      t.string :image
 
       t.timestamps
     end

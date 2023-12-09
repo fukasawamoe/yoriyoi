@@ -5,7 +5,7 @@
     </div>
 
     <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-      <%= form_with model: @user, url: profiles_path, local: true, class: "space-y-6" do |f| %>
+      <%= form_with model: @user, url: users_path, local: true, class: "space-y-6" do |f| %>
         <%= render 'shared/error_messages', object: @user %>
         <div>
           <%= f.label :name, User.human_attribute_name(:name), class: "leading-7 text-sm text-gray-600" %>

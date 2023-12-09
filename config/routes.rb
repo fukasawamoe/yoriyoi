@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'characters/edit'
+  get 'characters/update'
   post "oauth/callback", to: "oauths#callback"
   get "oauth/callback", to: "oauths#callback"
   get "oauth/:provider", to: "oauths#oauth", as: :auth_at_provider
@@ -9,7 +11,7 @@ Rails.application.routes.draw do
   post 'login' => "user_sessions#create"
   delete 'logout' => 'user_sessions#destroy', :as => :logout
   resources :home, only: %i[index]
-  resource :users, only: %i(new create)
+  resource :users, only: %i(edit update)
   resources :schedules
   resource :profiles
   resource :goal, only: %i(new create edit update destroy) do

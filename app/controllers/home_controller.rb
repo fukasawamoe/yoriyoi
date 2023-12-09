@@ -35,3 +35,9 @@ class HomeController < ApplicationController
     @steps = Step.where(user_id: current_user.id)
   end
 end
+
+private
+
+def set_goal
+  @goal = Goal.find_by(user_id: current_user.id)
+end
