@@ -34,4 +34,5 @@ private
 def set_home
   @goal = Goal.find_by(user_id: current_user.id)
   @steps = Step.where(user_id: current_user.id)
+  @character = Character.find_by(user_id: current_user.id)
 end

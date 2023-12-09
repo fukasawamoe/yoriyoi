@@ -21,7 +21,6 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      binding.pry
       flash[:success] = 'ユーザー情報を更新しました'
       redirect_to profiles_path
     else

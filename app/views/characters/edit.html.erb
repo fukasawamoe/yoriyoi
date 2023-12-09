@@ -32,6 +32,16 @@
           <%= f.text_field :additional, required: true, class: "w-full bg-white rounded border border-gray-300  focus:ring-2 focus:ring-indigo-60 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" %>
         </div>
 
+        <div>
+          <%= f.label :image, "キャラクターの画像", class: "leading-7 text-sm text-gray-600" %>
+          <%= f.file_field :image, accept: 'image/jpg, image/jpeg, image/png, image/gif', id: 'image-upload' %>
+          <% if @character.image.attached? %>
+            <%= image_tag @character.image, id: 'preview', size: '300x200' %>
+          <% else %>
+            <%= image_tag 'cat_information.png', id: 'preview', size: '300x200', style: 'display: none;' %>
+          <% end %>
+        </div>
+
         <div class="flex justify-center p-7">
           <%= f.submit "更新する", class: " w-full bg-indigo-600 shadow-xl hover:bg-indigo-500 text-white font-bold rounded-full p-4 w-48" %>
         </div>
@@ -43,3 +53,4 @@
     </div>
   </div>
 </main>
+

@@ -55,6 +55,12 @@ gem 'rails-i18n'
 # 定数管理
 gem 'config'
 
+# AIimage
+gem 'image_processing'                 # (サイズ変更など)画像処理用
+gem 'cloudinary', require: true        # Cloudinary
+gem 'activestorage-cloudinary-service' # Cloudinary と Active Storage の連携をする
+gem 'active_storage_validations'       # 画像ファイルのバリデーション用
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
