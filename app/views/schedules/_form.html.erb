@@ -1,22 +1,22 @@
 <main class="m-0 sm:m-10" style="background: #ffe6e8; padding: 20px; border: 2px dashed #ffb6c1; box-shadow: 0 0 0 5px #ffe6e8; -moz-box-shadow: 0 0 0 5px #ffe6e8; -webkit-box-shadow: 0 0 0 5px #ffe6e8; font-size: 100%;">
   <%= form_with(model: schedule, local: true) do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
-    <div class="lg:w-1/2 md:w-2/3 mx-auto">
-      <div class="m-10 flex flex-col md:justify-center lg:flex-row">
-        <%= f.text_field :name, placeholder: "スケジュール名", class:'rounded w-auto py-2 justify-center lg:my-2' %>
-        <div class="flex flex-col-reverse lg:flex-row">
-          <div class="flex lg:mx-auto">
-            <% ['日', '月', '火', '水', '木', '金', '土'].each_with_index do |day, index| %>
-              <div class="my-4 md:px-4 md:mx-auto mx-auto flex flex-col md:flex-row items-center">
-                <%= check_box_tag 'schedule[day_of_week][]', index, schedule.day_of_week.include?(index), class: 'rounded' %>
-                <%= day %>
-              </div>
-            <% end %>
-          </div>
-          <div class="flex justify-center items-center whitespace-nowrap mt-10 lg:mt-0">
-            <%= button_tag '▼ 全選択', type: 'button', id: 'select-all', class: 'rounded bg-lime-200 px-4 py-2 m-1' %>
-            <%= button_tag '▽ 全解除', type: 'button', id: 'deselect-all', class: 'rounded bg-red-200 px-4 py-2 m-1' %>
-          </div>
+    <div class="md:w-2/3 mx-auto">
+      <div class="flex justify-center m-10">
+        <%= f.text_field :name, placeholder: "スケジュール名", class:'input input-bordered input-primary max-w-xs w-full lg:w-auto' %>
+      </div>
+      <div class="flex flex-col-reverse lg:flex-row lg:justify-center">
+        <div class="flex justify-center">
+          <% ['日', '月', '火', '水', '木', '金', '土'].each_with_index do |day, index| %>
+            <div class="my-4 px-2 flex items-center lg:justify-start overflow-auto">
+              <%= check_box_tag 'schedule[day_of_week][]', index, schedule.day_of_week.include?(index), class: 'checkbox checkbox-primary m-2' %>
+              <%= day %>
+            </div>
+          <% end %>
+        </div>
+        <div class="flex justify-center items-center whitespace-nowrap mt-10 lg:mt-0 lg:ml-8">
+          <%= button_tag '▼ 全選択', type: 'button', id: 'select-all', class: 'btn btn-accent mr-2' %>
+          <%= button_tag '▽ 全解除', type: 'button', id: 'deselect-all', class: 'btn btn-secondary' %>
         </div>
       </div>
     </div>
@@ -26,12 +26,12 @@
       <% end %>
     </div>
     <div class="flex justify-center p-8">
-      <%= link_to_add_association raw('<i class="fa-solid fa-circle-plus"></i> 追加'), f, :tasks, class:"bg-lime-300 py-3 p-6 rounded-lg" %>
+      <%= link_to_add_association raw('<i class="fa-solid fa-circle-plus"></i> 追加'), f, :tasks, class:"btn btn-accent" %>
     </div>
 
     <div class="flex flex-col sm:flex-row justify-center md:p-8 whitespace-nowrap">
-      <button class="bg-gray-500 py-3 px-4 rounded-lg text-white m-3" type="button" id="sort-tasks-button"><i class="fa-solid fa-arrow-right-arrow-left fa-rotate-90"></i> 時間順に並び替える</button>
-      <button class="bg-blue-400 py-3 px-4 rounded-lg text-white m-3" type="submit"><i class="fa-solid fa-check"></i> スケジュールを保存する</button>
+      <button class="btn btn-primary mr-2" type="button" id="sort-tasks-button"><i class="fa-solid fa-arrow-right-arrow-left fa-rotate-90"></i> 時間順に並び替える</button>
+      <button class="btn btn-active btn-accent" type="submit"><i class="fa-solid fa-check"></i> スケジュールを保存する</button>
     </div>
   <% end %>
 </main>

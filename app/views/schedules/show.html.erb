@@ -4,11 +4,11 @@
       <%= render 'schedule', {schedule: @schedule, tasks: @tasks} %>
 
       <div class="p-5 flex flex-col sm:flex-row justify-center items-center">
-        <%= link_to raw('<i class="fa-solid fa-pencil"></i> 編集する'), edit_schedule_path(@schedule), class: 'bg-lime-200 py-3 p-6 m-3 rounded-lg my-2 sm:my-0' %> |
-        <%= link_to raw('<i class="fa-solid fa-list"></i> スケジュール一覧へ'), schedules_path, class: 'bg-amber-300 py-3 p-6 m-3 rounded-lg my-2 sm:my-0' %> |
-        <%= link_to raw('<i class="fa-solid fa-house"></i> ホームへ'), home_index_path, class: 'bg-yellow-200 py-3 p-6 m-3 rounded-lg my-2 sm:my-0' %>
+        <%= link_to raw('<i class="fa-solid fa-pencil"></i> 編集する'), edit_schedule_path(@schedule), class: 'btn btn-accent m-3' %> |
+        <%= link_to raw('<i class="fa-solid fa-list"></i> スケジュール一覧へ'), schedules_path, class: 'btn btn-primary m-3' %> |
+        <%= link_to raw('<i class="fa-solid fa-house"></i> ホームへ'), home_index_path, class: 'btn btn-secondary m-3' %>
       </div>
-      <%= button_to raw('<i class="fa-solid fa-trash"></i> スケジュールを削除する'), @schedule, method: :delete, class: 'bg-red-400 py-3 p-6 rounded-lg m-10', data: { turbo_confirm: 'スケジュールを削除してもよろしいですか？' } %>
+      <%= button_to raw('<i class="fa-solid fa-trash"></i> スケジュールを削除する'), @schedule, method: :delete, class: 'btn btn-outline btn-error mt-10', data: { turbo_confirm: 'スケジュールを削除してもよろしいですか？' } %>
     </div>
   </div>
 </section>
