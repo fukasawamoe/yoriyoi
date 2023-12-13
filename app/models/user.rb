@@ -33,10 +33,10 @@ class User < ApplicationRecord
     default_image_url = "https://res.cloudinary.com/dkxx3dybs/image/upload/v1702127528/cat_notification_kwprga.png"
     self.create_character(
       name: 'ねこちゃん',
-      personality: '友達思いのやさしい',
-      communication_style: 'フレンドリー',
-      relationship: '相棒',
-      additional: 'いつもそばにいる'
+      personality: 'kind',
+      communication_style: 'Casual Japanese',
+      relationship: 'friend',
+      additional: ''
     )
 
     if self.character.present?
