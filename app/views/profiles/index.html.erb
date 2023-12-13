@@ -33,15 +33,15 @@
           </tr>
           <tr>
             <th class="px-4 py-2 pt-16">性格</th>
-            <td class="border-b-2 border-b-red-300 px-4 py-2 pt-16"><%= @character.personality %></td>
+            <td class="border-b-2 border-b-red-300 px-4 py-2 pt-16"><%= display_personality(@character.personality) %></td>
           </tr>
           <tr>
             <th class="px-4 py-2 pt-16">話し方のスタイル</th>
-            <td class="border-b-2 border-b-red-300 px-4 py-2 pt-16"><%= @character.communication_style %></td>
+            <td class="border-b-2 border-b-red-300 px-4 py-2 pt-16"><%= display_communication_style(@character.communication_style) %></td>
           </tr>
           <tr>
             <th class="px-4 py-2 pt-16">あなたとの関係性</th>
-            <td class="border-b-2 border-b-red-300 px-4 py-2 pt-16"><%= @character.relationship %></td>
+            <td class="border-b-2 border-b-red-300 px-4 py-2 pt-16"><%= display_relationship(@character.relationship) %></td>
           </tr>
           <tr>
             <th class="px-4 py-2 pt-16">追加の設定</th>

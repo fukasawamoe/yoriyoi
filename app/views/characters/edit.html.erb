@@ -14,22 +14,22 @@
 
         <div>
           <%= f.label :personality, "性格", class: "leading-7 text-sm text-gray-600" %>
-          <%= f.text_field :personality, required: true, class: "w-full bg-white rounded border border-gray-300  focus:ring-2 focus:ring-indigo-60 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" %>
+          <%= f.select :personality, [['明るい', 'frisky'],['優しい', 'kind'], ['厳しい', 'strict'], ['面白い', 'amusing'], ['礼儀正しい', 'polite'], ['愛情深い', 'affectionate'],['上品', 'gracious'] ], {}, required: true, class: "w-full bg-white rounded border border-gray-300  focus:ring-2 focus:ring-indigo-60 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" %>
         </div>
 
         <div>
-          <%= f.label :personality, "話し方のスタイル", class: "leading-7 text-sm text-gray-600" %>
-          <%= f.text_field :communication_style, required: true, class: "w-full bg-white rounded border border-gray-300  focus:ring-2 focus:ring-indigo-60 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" %>
+          <%= f.label :communication_style, "話し方のスタイル", class: "leading-7 text-sm text-gray-600" %>
+          <%= f.select :communication_style, [['友達口調', 'Casual Japanese'], ['敬語', 'Polite Japanese'], ['命令口調', 'tone of command'] ], {}, required: true, class: "w-full bg-white rounded border border-gray-300  focus:ring-2 focus:ring-indigo-60 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" %>
         </div>
 
         <div>
-          <%= f.label :personality, "あなたとの関係性", class: "leading-7 text-sm text-gray-600" %>
-          <%= f.text_field :relationship, required: true, class: "w-full bg-white rounded border border-gray-300  focus:ring-2 focus:ring-indigo-60 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" %>
+          <%= f.label :relationship, "あなたとの関係性", class: "leading-7 text-sm text-gray-600" %>
+          <%= f.select :relationship, [['友達', 'friend'], ['家族', 'family'], ['先輩', 'senior'], ['後輩', 'junior'], ['恋人"男性"', 'boyfriend'],['恋人"女性"', 'girlfriend'] ], {}, required: true, class: "w-full bg-white rounded border border-gray-300  focus:ring-2 focus:ring-indigo-60 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" %>
         </div>
 
         <div>
           <%= f.label :additional, "追加の設定", class: "leading-7 text-sm text-gray-600" %>
-          <%= f.text_field :additional, required: true, class: "w-full bg-white rounded border border-gray-300  focus:ring-2 focus:ring-indigo-60 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" %>
+          <%= f.text_field :additional, class: "w-full bg-white rounded border border-gray-300  focus:ring-2 focus:ring-indigo-60 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" %>
         </div>
 
         <div>

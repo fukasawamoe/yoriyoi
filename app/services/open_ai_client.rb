@@ -2,14 +2,17 @@ class OpenAiClient
   require 'openai'
   require 'dotenv'
   Dotenv.load
-  def initialize(current_task)
+  def initialize(current_task, character)
     @current_task = current_task
+    @character = character
     @client = OpenAI::Client.new(access_token: ENV["OPENAI_API_KEY"])
   end
 
   def chat
-    additional_prompt = "Please respond in Japanese and add 'にゃ' or 'にゃん' at the end of your sentences, mimicking a cute and playful tone.
-    don't use honorifics. #{@current_task.to_do}"
+    additional_prompt = "Address the task #{@current_task.to_do} by embodying the following character traits in two to three lines of Japanese, without using the user's name:
+    Personality: #{@character.personality}
+    Communication style: #{ @character.communication_style }
+    Relationship to the user: #{ @character.relationship }"
 
     response = @client.chat(
       parameters: {
