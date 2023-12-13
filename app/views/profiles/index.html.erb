@@ -4,7 +4,7 @@
     <div class="flex flex-wrap -mx-4">
       <div class="w-full lg:w-1/2 lg:mx-auto">
         <h1 class="text-2xl font-semibold mb-6 flex justify-center">ユーザー情報</h1>
-        <%= link_to link_to raw('<i class="fa-solid fa-pencil"></i> 編集'), edit_users_path, class: 'bg-yellow-200 py-2 px-3 rounded-lg whitespace-nowrap float-right my-8' %>
+        <%= link_to link_to raw('<i class="fa-solid fa-pencil"></i> 編集'), edit_users_path, class: 'btn btn-accent float-right my-8' %>
         <table class="w-full text-lg">
           <tr>
             <th class="px-4 py-2"><%= t(User.human_attribute_name(:name)) %></th>
@@ -25,7 +25,7 @@
     <div class="flex flex-wrap -mx-4">
       <div class="w-full lg:w-1/2 lg:mx-auto">
         <h1 class="text-2xl font-semibold mb-6 flex justify-center">AIキャラクター設定</h1>
-        <%= link_to link_to raw('<i class="fa-solid fa-pencil"></i> 編集'), edit_characters_path, class: 'bg-yellow-200 py-2 px-3 rounded-lg whitespace-nowrap float-right my-8' %>
+        <%= link_to link_to raw('<i class="fa-solid fa-pencil"></i> 編集'), edit_characters_path, class: 'btn btn-accent float-right my-8' %>
         <table class="w-full text-lg">
           <tr>
             <th class="px-4 py-2">おなまえ</th>
@@ -33,15 +33,15 @@
           </tr>
           <tr>
             <th class="px-4 py-2 pt-16">性格</th>
-            <td class="border-b-2 border-b-red-300 px-4 py-2 pt-16"><%= @character.personality %></td>
+            <td class="border-b-2 border-b-red-300 px-4 py-2 pt-16"><%= display_personality(@character.personality) %></td>
           </tr>
           <tr>
             <th class="px-4 py-2 pt-16">話し方のスタイル</th>
-            <td class="border-b-2 border-b-red-300 px-4 py-2 pt-16"><%= @character.communication_style %></td>
+            <td class="border-b-2 border-b-red-300 px-4 py-2 pt-16"><%= display_communication_style(@character.communication_style) %></td>
           </tr>
           <tr>
             <th class="px-4 py-2 pt-16">あなたとの関係性</th>
-            <td class="border-b-2 border-b-red-300 px-4 py-2 pt-16"><%= @character.relationship %></td>
+            <td class="border-b-2 border-b-red-300 px-4 py-2 pt-16"><%= display_relationship(@character.relationship) %></td>
           </tr>
           <tr>
             <th class="px-4 py-2 pt-16">追加の設定</th>

@@ -1,10 +1,10 @@
 <div class="nested-fields flex justify-center">
   <div class="form-group space-x-1 space-y-3 mb:space-y-0 justify-center flex flex-wrap">
     <div style="background-color: #fceff2; border-radius: 5px; border: 1px dashed #ffb6c1;font-size: 100%; padding: 20px;">
-      <%= f.time_select :task_time, { minute_step: 15, include_blank: true }, class:'rounded mb-3' %>
-      <%= f.text_field :to_do, placeholder: "タスク", class: 'rounded mb-3' %>
-      <%= f.text_field :memo, placeholder: "メモ", class: 'rounded mb-3' %>
-      <%= link_to_remove_association raw('<i class="fa-solid fa-trash"></i> 削除'), f, class: 'bg-red-400 py-2 px-4 mb-3 rounded-lg whitespace-nowrap' %>
+      <%= f.time_select :task_time, { minute_step: 15, include_blank: true }, class:'input input-bordered input-primary w-20 max-w-xs mb-3' %>
+      <%= f.text_field :to_do, placeholder: "タスク", class: 'input input-bordered input-primary max-w-xs mb-3' %>
+      <%= f.text_field :memo, placeholder: "メモ", class: 'input input-bordered input-primary max-w-xs mb-3' %>
+      <%= link_to_remove_association raw('<i class="fa-solid fa-trash"></i> 削除'), f, class: 'btn btn-outline btn-error' %>
     </div>
   </div>
 </div>

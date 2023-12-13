@@ -7,14 +7,14 @@
         <div>
           <% @schedules.each do |schedule| %>
             <div class="p-4 flex flex-col">
-              <%= link_to schedule.name , schedule, class:"bg-blue-50 hover:bg-blue-100 hover:text-blue-600 text-blue-500 rounded-lg" %>
+              <%= link_to schedule.name , schedule, class:"bg-blue-50 hover:bg-blue-100 hover:text-blue-600 text-blue-500 rounded-full" %>
             </div>
           <% end %>
         </div>
       </div>
       <div class="p-5 flex flex-col sm:flex-row justify-center items-center">
-        <%= link_to raw('<i class="fa-solid fa-dove"></i> 新しくスケジュールを作成する'), new_schedule_path, class: 'bg-yellow-200 py-3 p-6 m-3 rounded-lg' %> |
-        <%= link_to raw('<i class="fa-solid fa-house"></i> ホームへ'), home_index_path, class: 'bg-yellow-200 py-3 p-6 m-3 rounded-lg my-2 sm:my-0' %>
+        <%= link_to raw('<i class="fa-solid fa-dove"></i> 新しくスケジュールを作成する'), new_schedule_path, class: 'btn btn-accent m-3' %> |
+        <%= link_to raw('<i class="fa-solid fa-house"></i> ホームへ'), home_index_path, class: 'btn btn-secondary m-3' %>
       </div>
     </div>
   </div>

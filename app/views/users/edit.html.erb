@@ -9,19 +9,19 @@
         <%= render 'shared/error_messages', object: @user %>
         <div>
           <%= f.label :name, User.human_attribute_name(:name), class: "leading-7 text-sm text-gray-600" %>
-          <%= f.text_field :name, required: true, class: "w-full bg-white rounded border border-gray-300  focus:ring-2 focus:ring-indigo-60 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" %>
+          <%= f.text_field :name, required: true, class: "input input-bordered input-accent w-full max-w-xs" %>
         </div>
 
         <div>
           <%= f.label :email, User.human_attribute_name(:email), class: "leading-7 text-sm text-gray-600" %>
-          <%= f.email_field :email, required: true, class: "w-full bg-white rounded border border-gray-300  focus:ring-2 focus:ring-indigo-60 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" %>
+          <%= f.email_field :email, required: true, class: "input input-bordered input-accent w-full max-w-xs" %>
         </div>
 
         <div class="flex justify-center p-7">
-          <%= f.submit "更新する", class: " w-full bg-indigo-600 shadow-xl hover:bg-indigo-500 text-white font-bold rounded-full p-4 w-48" %>
+          <%= f.submit "更新する", class: "btn btn-accent w-full" %>
         </div>
 
-        <div class="flex justify-center underline">
+        <div class="flex justify-center link link-warning">
           <%= link_to "ホームに戻る", home_index_path %>
         </div>
       <% end %>
