@@ -21,11 +21,11 @@ class HomeController < ApplicationController
       @next_task = next_day_schedules.map(&:tasks).flatten.min_by(&:task_time)
     end
 
-  # ai_messageのview(現在のタスクをOpenAIクライアントに渡す)
-  if @current_task.present?
-    client = OpenAiClient.new(@current_task, @character)
-    @response = client.chat
-  end
+    # ai_messageのview(現在のタスクをOpenAIクライアントに渡す)
+    # if @current_task.present?
+    #   client = OpenAiClient.new(@current_task, @character)
+    #   @response = client.chat
+    # end
   end
 end
 

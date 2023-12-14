@@ -15,10 +15,10 @@ class OauthsController < ApplicationController
         reset_session
         auto_login(@user)
         flash[:success] = 'ログインしました'
-        redirect_to home_index_path
+        redirect_to new_goal_path
       rescue StandardError
         flash[:error] = 'ログインに失敗しました'
-        redirect_to root_path
+        redirect_to login_path
       end
     end
   end
@@ -26,6 +26,6 @@ class OauthsController < ApplicationController
   private
 
   def auth_params
-    params.permit(:code, :provider, :error, :state)
+    params.permit(:name, :code, :provider, :error, :state)
   end
 end

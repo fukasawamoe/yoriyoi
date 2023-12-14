@@ -222,9 +222,12 @@ Rails.application.config.sorcery.configure do |config|
   config.line.key = ENV['LINE_CHANNEL_ID'] || Rails.application.credentials.dig(:line, :channel_id)
   config.line.secret = ENV['LINE_CHANNEL_SECRET'] || Rails.application.credentials.dig(:line, :channel_secret)
   config.line.callback_url = Settings.sorcery[:line_callback_url]
-  config.line.scope = "profile"
-  # config.line.bot_prompt = "normal"
-  # config.line.user_info_mapping = {name: 'displayName'}
+  config.line.scope = "profile openid email"
+  config.line.bot_prompt = "aggressive"
+  config.line.user_info_mapping = {
+    name: 'displayName',
+    email: 'userId'
+  }
 
   
   # For information about Discord API
@@ -543,7 +546,7 @@ Rails.application.config.sorcery.configure do |config|
     # Class which holds the various external provider data for this user.
     # Default: `nil`
     #
-    # user.authentications_class =
+    user.authentications_class = Authentication
 
     # User's identifier in the `authentications` class.
     # Default: `:user_id`
