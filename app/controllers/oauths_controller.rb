@@ -6,6 +6,8 @@ class OauthsController < ApplicationController
 
   def callback
     provider = auth_params[:provider]
+    # 'login_from'メソッドを使い、以前に保存された認証データからユーザーをログインさせます。
+    # 成功すれば、@user変数にユーザー情報が格納されます。
     if (@user = login_from(provider))
       flash[:success] = 'ログインしました'
       redirect_to home_index_path

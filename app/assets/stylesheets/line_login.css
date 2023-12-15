@@ -1,0 +1,16 @@
+.button-img {
+  display: inline-block;
+  background-image: url('btn_login_base.png');
+  width: 150px;  /* ボタンの画像の幅に合わせて設定 */
+  height: 44px;  /* ボタンの画像の高さに合わせて設定 */
+  border: none;  /* ボタンの枠線をなくす場合 */
+  cursor: pointer;  /* ホバー時にカーソルが指になるように */
+}
+
+.button-img:hover {
+  background-image: url('btn_login_hover.png');
+}
+
+.button-img:active {
+  background-image: url('btn_login_press.png');
+}
