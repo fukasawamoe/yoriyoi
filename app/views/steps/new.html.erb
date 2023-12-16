@@ -1,7 +1,7 @@
 <section>
   <div class="container mx-auto">
     <div class="text-center">
-      <div class="w-full mx-auto m-10 md:w-2/3" style=" background: #ffe6e8; padding: 20px; border: 2px dashed #ffb6c1; box-shadow: 0 0 0 5px #ffe6e8; -moz-box-shadow: 0 0 0 5px #ffe6e8; -webkit-box-shadow: 0 0 0 5px #ffe6e8; font-size: 100%;">
+      <div class="w-full mx-auto" style=" background: #ffe6e8; padding: 20px; border: 2px dashed #ffb6c1; box-shadow: 0 0 0 5px #ffe6e8; -moz-box-shadow: 0 0 0 5px #ffe6e8; -webkit-box-shadow: 0 0 0 5px #ffe6e8; font-size: 100%;">
         <div id="textbox">
           <div class="text-sm md:text-lg lg:text-xl">
             <p>教えてくれてありがとにゃ！</p>
@@ -27,11 +27,11 @@
             <%= render 'shared/error_messages', object: @step, class:"mt-5" %>
             <% 3.times do |i| %>
               <div class="flex flex-col md:flex-row items-center justify-center p-5">
-                <div><%= f.text_field "steps[#{i}][action]", class:'rounded w-3/5 mt-2 md:w-3/5 text-center' %> を週に</div>
-                <div class="whitespace-nowrap"><%= f.number_field "steps[#{i}][times_set]", min: 1, max: 7,class:'rounded w-16 text-center mt-2' %> 回がんばる!</div>
+                <div><%= f.text_field "steps[#{i}][action]", class:'input input-bordered max-w-xs' %> を週に</div>
+                <div class="whitespace-nowrap"><%= f.number_field "steps[#{i}][times_set]", min: 1, max: 7,class:'input input-bordered w-20 text-center' %> 回がんばる!</div>
               </div>
             <% end %>
-            <%= button_tag(type:'submit', class:"bg-blue-400 py-2 px-5 w-auto rounded-lg text-white mt-20 mb-10") do %>
+            <%= button_tag(type:'submit', class:"btn btn-accent mt-10") do %>
               <i class="fa-solid fa-check"></i> 登録
             <% end %>
           <% end %>

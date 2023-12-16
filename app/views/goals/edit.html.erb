@@ -5,12 +5,12 @@
         <div class="text-sm md:text-lg lg:text-xl">キミがなりたい理想のジブンを教えてほしいにゃ！</div>
         <div class="justify-center">
         <%= form_with model: @goal, url: goal_path, local: true do |f| %>
-          <%= f.text_field :ideal_self, placeholder: "例 : 今の体重から5キロ痩せたい...など", class: 'rounded w-full text-center mt-10 sm:w-3/4' %>
+          <%= f.text_field :ideal_self, placeholder: "例 : 今の体重から5キロ痩せたい...など", class: 'input input-bordered w-full max-w-lg mt-10' %>
           <div class="p-5 flex flex-col sm:flex-row justify-center items-center">
-            <%= button_tag(type:'submit', name:'home', class:"whitespace-nowrap bg-blue-400 py-2 px-5 w-auto rounded-lg text-white m-2") do %>
+            <%= button_tag(type:'submit', name:'home', class: "btn btn-accent m-2") do %>
               <i class="fa-solid fa-check"></i> 登録
             <% end %>|
-            <%= button_tag(type:'submit', name:'step', class:"whitespace-nowrap bg-orange-500 py-2 px-5 w-auto rounded-lg text-white m-2") do %>
+            <%= button_tag(type:'submit', name:'step', class:"btn btn-secondary m-2") do %>
               <i class="fa-solid fa-fire"></i> 頑張ることリストの作成
             <% end %>
           </div>
@@ -18,7 +18,7 @@
       </div>
     </div>
     <div class="p-5 flex flex-col sm:flex-row justify-center items-center">
-      <%= link_to raw('<i class="fa-solid fa-house"></i> ホームへ'), home_index_path, class: 'whitespace-nowrap bg-yellow-200 py-3 p-6 m-3 rounded-lg my-2' %>
+      <%= link_to raw('<i class="fa-solid fa-house"></i> ホームへ'), home_index_path, class: 'btn btn-outline btn-secondary mt-10' %>
     </div>
   </div>
 </section>
