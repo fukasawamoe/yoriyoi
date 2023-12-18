@@ -1,0 +1,9 @@
+.stripe-marker {
+  background-image: repeating-linear-gradient(-45deg,
+    #fcf69f 0, #fcf69f 2px,
+    transparent 2px, transparent 4px
+  );
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  background-size: 100% 0.5em;
+}
