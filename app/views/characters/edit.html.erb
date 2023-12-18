@@ -8,33 +8,33 @@
       <%= form_with model: @character, url: characters_path, local: true, class: "space-y-6" do |f| %>
         <%= render 'shared/error_messages', object: @character %>
         <div>
-          <%= f.label :name, "おなまえ", class: "leading-7 text-sm text-gray-600" %>
-          <%= f.text_field :name, required: true, class: "w-full bg-white rounded border border-gray-300  focus:ring-2 focus:ring-indigo-60 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" %>
+          <%= f.label :name, "おなまえ　", class: "leading-7 text-sm text-gray-600" %>
+          <%= f.text_field :name, required: true, class: "input input-bordered input-secondary w-full max-w-xs" %>
         </div>
 
         <div>
-          <%= f.label :personality, "性格", class: "leading-7 text-sm text-gray-600" %>
-          <%= f.select :personality, [['明るい', 'frisky'],['優しい', 'kind'], ['厳しい', 'strict'], ['面白い', 'amusing'], ['礼儀正しい', 'polite'], ['愛情深い', 'affectionate'],['上品', 'gracious'] ], {}, required: true, class: "w-full bg-white rounded border border-gray-300  focus:ring-2 focus:ring-indigo-60 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" %>
+          <%= f.label :personality, "　性　格　", class: "leading-7 text-sm text-gray-600" %>
+          <%= f.select :personality, [['明るい', 'frisky'],['優しい', 'kind'], ['厳しい', 'strict'], ['面白い', 'amusing'], ['礼儀正しい', 'polite'], ['愛情深い', 'affectionate'],['上品', 'gracious'] ], {}, required: true, class: "input input-bordered input-secondary w-full max-w-xs" %>
         </div>
 
         <div>
           <%= f.label :communication_style, "話し方のスタイル", class: "leading-7 text-sm text-gray-600" %>
-          <%= f.select :communication_style, [['友達口調', 'Casual Japanese'], ['敬語', 'Polite Japanese'], ['命令口調', 'tone of command'] ], {}, required: true, class: "w-full bg-white rounded border border-gray-300  focus:ring-2 focus:ring-indigo-60 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" %>
+          <%= f.select :communication_style, [['友達口調', 'Casual Japanese'], ['敬語', 'Polite Japanese'], ['命令口調', 'tone of command'] ], {}, required: true, class: "input input-bordered input-secondary w-full max-w-xs" %>
         </div>
 
         <div>
           <%= f.label :relationship, "あなたとの関係性", class: "leading-7 text-sm text-gray-600" %>
-          <%= f.select :relationship, [['友達', 'friend'], ['家族', 'family'], ['先輩', 'senior'], ['後輩', 'junior'], ['恋人"男性"', 'boyfriend'],['恋人"女性"', 'girlfriend'] ], {}, required: true, class: "w-full bg-white rounded border border-gray-300  focus:ring-2 focus:ring-indigo-60 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" %>
+          <%= f.select :relationship, [['友達', 'friend'], ['家族', 'family'], ['先輩', 'senior'], ['後輩', 'junior'], ['恋人"男性"', 'boyfriend'],['恋人"女性"', 'girlfriend'] ], {}, required: true, class: "input input-bordered input-secondary w-full max-w-xs" %>
         </div>
 
         <div>
           <%= f.label :additional, "追加の設定", class: "leading-7 text-sm text-gray-600" %>
-          <%= f.text_field :additional, class: "w-full bg-white rounded border border-gray-300  focus:ring-2 focus:ring-indigo-60 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" %>
+          <%= f.text_field :additional, class: "input input-bordered input-secondary w-full max-w-xs" %>
         </div>
 
         <div>
           <%= f.label :image, "キャラクターの画像", class: "leading-7 text-sm text-gray-600" %>
-          <%= f.file_field :image, accept: 'image/jpg, image/jpeg, image/png, image/gif', id: 'image-upload' %>
+          <%= f.file_field :image, accept: 'image/jpg, image/jpeg, image/png, image/gif', id: 'image-upload', class: 'file-input file-input-bordered file-input-secondary w-full max-w-xs' %>
           <% if @character.image.attached? %>
             <%= image_tag @character.image, id: 'preview', size: '300x200' %>
           <% else %>
@@ -43,7 +43,7 @@
         </div>
 
         <div class="flex justify-center p-7">
-          <%= f.submit "更新する", class: "btn btn-accent w-full w-full" %>
+          <%= f.submit "更新する", class: "btn btn-secondary w-full w-full" %>
         </div>
 
         <div class="flex justify-center link link-success">

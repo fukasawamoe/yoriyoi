@@ -1,7 +1,7 @@
 <section>
   <div class="container mx-auto">
     <div class="text-center">
-      <div class="w-full mx-auto m-10 md:w-2/3" style="background: #ffe6e8; padding: 20px; border: 2px dashed #ffb6c1; box-shadow: 0 0 0 5px #ffe6e8; -moz-box-shadow: 0 0 0 5px #ffe6e8; -webkit-box-shadow: 0 0 0 5px #ffe6e8; font-size: 100%;">
+      <div class="box51 w-full mx-auto m-10 md:w-2/3">
         <div class="chat chat-start flex items-end justify-start">
           <div>
             <%= image_tag "cat_information.png", class: 'w-24 rounded-full ring' %>
@@ -11,7 +11,7 @@
 
         <div class="justify-center">
         <%= form_with model: @goal, url: goal_path, local: true do |f| %>
-          <%= f.text_field :ideal_self, placeholder: "例 : 今の体重から5キロ痩せたい...など", class: 'input input-bordered w-full max-w-lg mt-10' %>
+          <%= f.text_field :ideal_self, placeholder: "例 : 今の体重から5キロ痩せたい...など", class: 'input input-bordered w-full max-w-lg mt-10 text-center' %>
           <div class="p-5 flex flex-col sm:flex-row justify-center items-center">
             <%= button_tag(type:'submit', name:'home', class: "btn btn-accent m-2") do %>
               <i class="fa-solid fa-check"></i> 登録

@@ -1,9 +1,9 @@
-<main class="m-0 sm:m-10" style="background: #ffe6e8; padding: 20px; border: 2px dashed #ffb6c1; box-shadow: 0 0 0 5px #ffe6e8; -moz-box-shadow: 0 0 0 5px #ffe6e8; -webkit-box-shadow: 0 0 0 5px #ffe6e8; font-size: 100%;">
+<main class="box51 m-0 sm:m-10" >
   <%= form_with(model: schedule, local: true) do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
     <div class=" mx-auto">
       <div class="flex justify-center m-10">
-        <%= f.text_field :name, placeholder: "スケジュール名", class:'input input-bordered input-primary w-3/4 lg:w-1/2' %>
+        <%= f.text_field :name, placeholder: "スケジュール名", class:'input input-bordered input-primary w-3/4 lg:w-1/2 text-center' %>
       </div>
       <div class="flex flex-col-reverse lg:flex-row lg:justify-center">
         <div class="flex justify-center">
