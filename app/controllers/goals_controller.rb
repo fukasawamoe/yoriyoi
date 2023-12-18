@@ -38,9 +38,12 @@ class GoalsController < ApplicationController
     Goal.transaction do
       @goal = Goal.new(user_id: current_user.id)
       @goal.save!
-      @step = Step.new(user_id: current_user.id, goal_id: @goal.id)
-      @step.save!
-      @step.create_achievement!
+
+      3.times do
+        @step = Step.new(user_id: current_user.id, goal_id: @goal.id)
+        @step.save!
+        @step.create_achievement!
+      end
     end
     flash[:success] = 'まずはスケジュールを作成してみてにゃ〜'
     redirect_to home_index_path

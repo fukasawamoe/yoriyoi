@@ -19,7 +19,7 @@
             <% @steps.each do |step| %>
               <%= f.fields_for "steps[#{step.id}]", step, include_id: false do |step_form| %>
               <%= render 'shared/error_messages', object: step_form.object, class:"mt-5" %>
-                <div class="flex flex-col md:flex-row items-center justify-center">
+                <div class="flex flex-col md:flex-row items-center justify-center p-5">
                   <div><%= step_form.text_field :action, class:'input input-bordered max-w-xs' %> を週に</div>
                   <div class="whitespace-nowrap"><%= step_form.number_field :times_set, min: 1, max: 7,class:'input input-bordered w-20 text-center' %> 回がんばる!</div>
                 </div>
