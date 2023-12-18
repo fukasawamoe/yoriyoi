@@ -4,7 +4,7 @@
       <%= render 'schedule', {schedule: @schedule, tasks: @tasks} %>
 
       <div class="p-5 flex flex-col sm:flex-row justify-center items-center">
-        <%= link_to raw('<i class="fa-solid fa-pencil"></i> 編集する'), edit_schedule_path(@schedule), class: 'btn btn-accent m-3' %> |
+        <%= link_to raw('<i class="fa-solid fa-pencil"></i> 編集する'), edit_schedule_path(@schedule), class: 'btn bg-yellow-100 m-3' %> |
         <%= link_to raw('<i class="fa-solid fa-list"></i> スケジュール一覧へ'), schedules_path, class: 'btn btn-primary m-3' %> |
         <%= link_to raw('<i class="fa-solid fa-house"></i> ホームへ'), home_index_path, class: 'btn btn-secondary m-3' %>
       </div>

@@ -1,27 +1,28 @@
 <div class="flex flex-wrap w-full bg-red-50 py-10 px-10 relative my-5" style="border: dotted 2px #ff007f; padding: 1rem;" >
   <div class="text-center w-full">
-    <div class="avatar">
-      <div class="w-24 rounded-full ring ring-info ring-offset-base-100 ring-offset-2">
-        <%= image_tag @character.image %>
+
+    <div class="chat chat-start flex items-end justify-start">
+      <div>
+        <%= image_tag @character.image, class: 'w-24 rounded-full ring' %>
       </div>
-    </div>
-    <div id="textbox" class="leading-relaxed">
-      <% if @current_task.nil? %>
-        <p>いまはタスクが設定されていないにゃ〜。</p>
-      <% else %>
-        <p><%= @current_task.task_time.strftime("%H:%M") %> <%= @response %></p>
+      <div id="textbox" class="chat-bubble bg-white w-full mx-auto m-5 text-lg">
+        <% if @current_task.nil? %>
+          <p>いまはタスクが設定されていないにゃ〜。</p>
+        <% else %>
+          <p><%= @current_task.task_time.strftime("%H:%M") %> <%= @response %></p>
         <%
 =begin%>
- <p><%= @current_task.task_time.strftime("%H:%M") %> <%= @current_task.to_do %>をするにゃ</p> 
+ <p><%= @current_task.task_time.strftime("%H:%M") %> <%= @current_task.to_do %>をするにゃ</p>
 <%
 =end%>
-      <% end %>
+        <% end %>
 
-      <% if @next_task.nil? %>
-        <p>つぎの曜日のスケジュールはまだつくられていないにゃ。</p>
-      <% else %>
-        <p>つぎは<%= @next_task.task_time.strftime("%H:%M") %>に<%= @next_task.to_do %>の予定にゃ〜！</p>
-      <% end %>
+        <% if @next_task.nil? %>
+          <p>つぎの曜日のスケジュールはまだつくられていないにゃ。</p>
+        <% else %>
+          <p>つぎは<%= @next_task.task_time.strftime("%H:%M") %>に<%= @next_task.to_do %>の予定にゃ〜！</p>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
