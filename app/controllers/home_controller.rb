@@ -22,10 +22,10 @@ class HomeController < ApplicationController
     end
 
     # ai_messageのview(現在のタスクをOpenAIクライアントに渡す)
-    if @current_task.present?
-      client = OpenAiClient.new(@current_task, @character)
-      @response = client.chat
-    end
+    # if @current_task.present?
+    #   client = OpenAiClient.new(@current_task, @character)
+    #   @response = client.chat
+    # end
   end
 end
 
