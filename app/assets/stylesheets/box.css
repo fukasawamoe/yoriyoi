@@ -27,7 +27,7 @@
 
 /*背景ストライプ(ピンク)*/
 .box58{
-	margin: 2em auto;
-	padding:2em;/*内側余白*/
+	margin: 0.1em auto;
+	padding:1em;/*内側余白*/
 	background: repeating-linear-gradient(-45deg, #faf5f3, #faf5f3 5px, #fff 0, #fff 10px);
 }
