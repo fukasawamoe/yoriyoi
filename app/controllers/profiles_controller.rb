@@ -1,4 +1,5 @@
 class ProfilesController < ApplicationController
+  before_action :require_login
   before_action :set_profile, only: %i(index)
 
   def index; end

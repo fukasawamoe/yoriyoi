@@ -1,4 +1,5 @@
 class HomeController < ApplicationController
+  before_action :require_login
   before_action :set_home, only: %i(index)
   def index
     # scheduleのview

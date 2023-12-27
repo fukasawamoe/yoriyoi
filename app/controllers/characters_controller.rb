@@ -1,4 +1,5 @@
 class CharactersController < ApplicationController
+  before_action :require_login
   before_action :set_character, only: [:edit, :update]
 
   def edit; end

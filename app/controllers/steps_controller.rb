@@ -1,4 +1,5 @@
 class StepsController < ApplicationController
+  before_action :require_login
   before_action :set_step, only: %i(create edit update destroy)
 
   def new

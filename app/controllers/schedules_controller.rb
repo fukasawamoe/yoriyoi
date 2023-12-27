@@ -1,4 +1,5 @@
 class SchedulesController < ApplicationController
+  before_action :require_login
   before_action :set_schedule, only: %i(update destroy)
   before_action :set_task, only: %i(show edit)
   def index
