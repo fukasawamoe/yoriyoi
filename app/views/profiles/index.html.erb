@@ -12,7 +12,7 @@
           </tr>
           <tr>
             <th class="px-4 py-2 pt-16"><%= t(User.human_attribute_name(:email)) %></th>
-            <td class="border-b-2 border-b-red-300 px-4 py-2 pt-16"><%= @user.email %></td>
+            <td class="border-b-2 border-b-red-300 px-4 py-2 pt-16"><%= truncate(@user.email, length: 15) %></td>
           </tr>
         </table>
       </div>
