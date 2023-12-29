@@ -61,6 +61,9 @@ gem 'cloudinary', require: true        # Cloudinary
 gem 'activestorage-cloudinary-service' # Cloudinary と Active Storage の連携をする
 gem 'active_storage_validations'       # 画像ファイルのバリデーション用
 
+# OGP設定
+gem "meta-tags"
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
