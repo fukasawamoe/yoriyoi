@@ -1,7 +1,7 @@
 class Step < ApplicationRecord
   belongs_to :user
   belongs_to :goal
-  has_one :achievement
+  has_many :achievements
 
   validate :action_and_times_set_must_be_present_together
 
@@ -9,7 +9,11 @@ class Step < ApplicationRecord
     if action.present? != times_set.present?
       errors.add(:base, "頑張ること・回数は両方入力してください")
     end
-      # if send("action_#{i + 1}").present? != send("times_set_#{i + 1}").present?
-        # errors.add(:base, "頑張ること・回数は両方入力してください")
+  end
+
+  def create_achievements!
+    (0..6).each do |n|
+      achievements.create!(daily: Date.today - n)
+    end
   end
 end

@@ -5,7 +5,6 @@ class CreateTasks < ActiveRecord::Migration[7.0]
       t.datetime :task_time
       t.string :to_do
       t.text :memo
-      t.boolean :goal_select, default: false
       t.integer :position
 
       t.timestamps

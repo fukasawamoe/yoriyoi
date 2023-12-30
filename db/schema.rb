@@ -16,7 +16,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_09_110201) do
 
   create_table "achievements", force: :cascade do |t|
     t.bigint "step_id", null: false
-    t.integer "day_check", default: [], array: true
+    t.boolean "check", default: false, null: false
+    t.date "daily", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["step_id"], name: "index_achievements_on_step_id"
@@ -106,7 +107,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_09_110201) do
     t.datetime "task_time"
     t.string "to_do"
     t.text "memo"
-    t.boolean "goal_select", default: false
     t.integer "position"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -43,10 +43,10 @@ class GoalsController < ApplicationController
       3.times do
         @step = Step.new(user_id: current_user.id, goal_id: @goal.id)
         @step.save!
-        @step.create_achievement!
+        @step.create_achievements!
       end
     end
-    flash[:success] = 'まずはスケジュールを作成してみてにゃ〜'
+    flash[:success] = 'まずはスケジュールを作成してみてにゃ'
     redirect_to home_index_path
   rescue ActiveRecord::RecordInvalid
     render :new
