@@ -1,6 +1,8 @@
 class HomeController < ApplicationController
   before_action :require_login
   before_action :set_home, only: %i(index)
+  before_action :create_daily_achievements, only: :index
+
   def index
     # scheduleのview
     # 現在の曜日を取得（0:日曜日, 1:月曜日, ..., 6:土曜日）
@@ -28,12 +30,21 @@ class HomeController < ApplicationController
     #   @response = client.chat
     # end
   end
-end
 
-private
 
-def set_home
-  @goal = Goal.find_by(user_id: current_user.id)
-  @steps = Step.where(user_id: current_user.id)
-  @character = Character.find_by(user_id: current_user.id)
+  private
+
+  def set_home
+    @goal = Goal.find_by(user_id: current_user.id)
+    @steps = Step.where(user_id: current_user.id)
+    @character = Character.find_by(user_id: current_user.id)
+  end
+
+  def create_daily_achievements
+    current_user.steps.includes(:achievements).each do |step|
+      unless step.achievements.exists?(daily: Date.current)
+        step.achievements.create!(daily: Date.current)
+      end
+    end
+  end
 end

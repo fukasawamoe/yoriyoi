@@ -15,7 +15,7 @@ class StepsController < ApplicationController
     if @steps.all?(&:valid?)
       @steps.each do |step|
         step.save!
-        step.create_achievement
+        step.create_achievements!
       end
       flash[:success] = '登録完了しましたにゃ！これから一緒にがんばるにゃ〜！'
       redirect_to home_index_path

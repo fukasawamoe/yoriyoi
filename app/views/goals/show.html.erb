@@ -32,8 +32,8 @@
             <% unless action.blank? && times_set.blank? %>
               <li><i class="fa-solid fa-fire" style="color: #f26845;"></i>  <%= action %>を週<%= times_set %>回行う</li>
               <div class='flex flex-wrap'>
-                <% (0..6).each do |day| %>
-                  <% if step.achievement.day_check.include?(day) %>
+                <% step.achievements.where(daily:(Time.current.beginning_of_day - 6.days)..Time.current.end_of_day).each do |day| %>
+                  <% if day.check? %>
                     <%= render "achievements/on_button", day: day, step: step %>
                   <% else %>
                     <%= render "achievements/off_button", day: day, step: step %>

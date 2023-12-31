@@ -35,6 +35,4 @@ class AchievementsController < ApplicationController
     @goal = Goal.find_by(user_id: current_user.id)
     @step = Step.find_by(goal_id: @goal.id)
   end
-
-  
 end
