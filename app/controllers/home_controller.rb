@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
   before_action :require_login
   before_action :set_home, only: %i(index)
-  before_action :create_daily_achievements, only: :index
+  # before_action :create_daily_achievements, only: :index
 
   def index
     # scheduleのview
@@ -40,11 +40,11 @@ class HomeController < ApplicationController
     @character = Character.find_by(user_id: current_user.id)
   end
 
-  def create_daily_achievements
-    current_user.steps.includes(:achievements).each do |step|
-      unless step.achievements.exists?(daily: Date.current)
-        step.achievements.create!(daily: Date.current)
-      end
-    end
-  end
+  # def create_daily_achievements
+  #   current_user.steps.includes(:achievements).each do |step|
+  #     unless step.achievements.exists?(daily: Date.current)
+  #       step.achievements.create!(daily: Date.current)
+  #     end
+  #   end
+  # end
 end

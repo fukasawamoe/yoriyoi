@@ -64,6 +64,9 @@ gem 'active_storage_validations'       # 画像ファイルのバリデーショ
 # OGP設定
 gem "meta-tags"
 
+# cron設定
+gem 'whenever', require: false
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
