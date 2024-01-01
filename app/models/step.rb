@@ -12,7 +12,7 @@ class Step < ApplicationRecord
   end
 
   def create_achievements!
-    (0..6).each do |n|
+    6.downto(0) do |n|
       achievements.create!(daily: Date.today - n)
     end
   end
