@@ -23,7 +23,7 @@ Rails.application.routes.draw do
       get :edit_multiple
       put :update_multiple
     end
-    post :add_day_check, on: :member
+    post :day_check, on: :member
   end
 end
 

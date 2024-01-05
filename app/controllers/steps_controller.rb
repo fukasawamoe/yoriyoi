@@ -50,9 +50,8 @@ class StepsController < ApplicationController
   def destroy
   end
 
-  def add_day_check
+  def day_check
     @step = Step.find_by(id: params[:id], user_id: current_user.id)
-    @steps = Step.where(user_id: current_user.id)
     if @step && @step.achievement
       target_day = params[:day].to_i # この値はリクエストのパラメータから取得
       array_day_check = @step.achievement.day_check

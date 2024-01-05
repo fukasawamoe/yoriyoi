@@ -19,7 +19,7 @@ set :output, "#{Rails.root}/log/cron.log"
 
 #定期実行したい処理を記入
 every :day, at: '0:00 am' do
-  rake 'create_achevements_data:create_achievement_dayly_data'
+  rake 'create_achievements_data:create_achievement_dayly_data'
 end
 
 # Learn more: http://github.com/javan/whenever

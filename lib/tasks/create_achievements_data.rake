@@ -1,4 +1,4 @@
-namespace :create_achevements_data do
+namespace :create_achievements_data do
   desc '毎日、0時にachievementの当日の日付データを作成する' # desc で処理の説明文を記入する
   task create_achievement_daily_data: :environment do # taskの名前を付ける。 environmentはDBへアクセスする場合に追記する。今回だとstateカラムの中身が変わるので必要。
     User.find_each do |user|
