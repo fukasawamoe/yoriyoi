@@ -52,16 +52,14 @@ class StepsController < ApplicationController
 
   def day_check
     @step = Step.find_by(id: params[:id], user_id: current_user.id)
-    if @step && @step.achievement
-      target_day = params[:day].to_i # この値はリクエストのパラメータから取得
-      array_day_check = @step.achievement.day_check
-      if array_day_check.include?(target_day)
-        array_day_check.delete(target_day)
-      else
-        array_day_check<<target_day
-      end
+    @achievements = @step.achievements
+    @achievement = @achievements.find(params[:id])
+    if @achievement.check == false
+      @achievement.update(check: true)
+    else
+      @achievement.update(check: false)
       respond_to do |format|
-        @step.achievement.save!
+        @achievement.save!
 
         format.html { redirect_to home_index_path }
         format.turbo_stream
