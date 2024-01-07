@@ -51,19 +51,20 @@ class StepsController < ApplicationController
   end
 
   def day_check
+    @steps = current_user.steps.all
     @step = Step.find_by(id: params[:id], user_id: current_user.id)
-    @achievements = @step.achievements
-    @achievement = @achievements.find(params[:id])
+    @achievement = @step.achievements.find(params[:achievement_id])
     if @achievement.check == false
       @achievement.update(check: true)
     else
       @achievement.update(check: false)
-      respond_to do |format|
-        @achievement.save!
+    end
+    @achievement.save!
+    respond_to do |format|
+      @achievement.save!
 
-        format.html { redirect_to home_index_path }
-        format.turbo_stream
-      end
+      format.html { redirect_to home_index_path }
+      format.turbo_stream
     end
   end
 
