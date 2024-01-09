@@ -1,4 +1,4 @@
-<%= turbo_stream.update "achievement_button" do %>
+<%= turbo_stream.replace "achievement_button" do %>
   <% @steps.each do |step| %>
     <% action = step.action %>
     <% times_set = step.times_set %>
@@ -17,4 +17,3 @@
     <% end %>
   <% end %>
 <% end %>
-
