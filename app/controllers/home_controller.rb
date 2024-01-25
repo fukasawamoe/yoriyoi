@@ -29,6 +29,8 @@ class HomeController < ApplicationController
     #   client = OpenAiClient.new(@current_task, @character)
     #   @response = client.chat
     # end
+
+    @true_counts = Achievement.joins(:step).where(steps: { user_id: current_user.id }, daily: Date.today - 6.days..Date.today, check: true).count
   end
 
 

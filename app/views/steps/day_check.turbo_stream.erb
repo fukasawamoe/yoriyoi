@@ -1,19 +1,29 @@
-<%= turbo_stream.replace "achievement_button" do %>
-  <% @steps.each do |step| %>
-    <% action = step.action %>
-    <% times_set = step.times_set %>
-    <% unless action.blank? && times_set.blank? %>
-      <li><i class="fa-solid fa-fire" style="color: #f26845;"></i>  <%= action %>を週<%= times_set %>回行う</li>
-      <div class='flex flex-wrap'>
-        <% step.achievements.where(daily:(Time.current.beginning_of_day - 6.days)..Time.current.end_of_day).each do |day| %>
-          <% if day.check? %>
-            <%= render "achievements/on_button", day: day, step: step %>
-          <% else %>
-            <%= render "achievements/off_button", day: day, step: step %>
-          <% end %>
-        <% end %>
-      </div>
-      <% all_blank = false %>
+<%= turbo_stream.replace "achievement_#{params[:achievement_id]}" do %>
+  <div id="achievement_<%= @achievement.id %>">
+    <% if @achievement.check? %>
+      <%= render "achievements/on_button", achievement: @achievement, step: @step %>
+    <% else %>
+      <%= render "achievements/off_button", achievement: @achievement, step: @step %>
     <% end %>
+  </div>
+<% end %>
+
+<%= turbo_stream.update "achievement_graph" do %>
+  <% @steps.each do |step| %>
+    <div class="grid grid-cols-3 gap-10">
+      <% if step.action.present?%>
+        <div id="achievement-<%= step.id %>" class="achievement">
+          <p><%= step.action %></p>
+          <% true_count = step.achievements.where(daily: Date.today - 6.days..Date.today, check: true).count %>
+          <% total_count = step.achievements.where(daily: Date.today - 6.days..Date.today).count %>
+          <% calculated_value = total_count > 0 ? (true_count.to_f / total_count * 100).round : 0 %>
+          <div class="m-5 radial-progress bg-red-100 text-primary-content border-4 border-primary" style="--value:<%= calculated_value %>; --size:12rem; --thickness: 2rem;" role="progressbar"><%= calculated_value %>%</div>
+        </div>
+      <% end %>
+    </div>
   <% end %>
 <% end %>
+
+
+
+
