@@ -12,10 +12,10 @@
   <% @steps.each do |step| %>
     <div class="grid grid-cols-3 gap-10">
       <% if step.action.present?%>
-        <div id="achievement-<%= step.id %>" class="achievement">
-          <p><%= step.action %></p>
-          <% true_count = step.achievements.where(daily: Date.today - 6.days..Date.today, check: true).count %>
-          <% total_count = step.achievements.where(daily: Date.today - 6.days..Date.today).count %>
+        <div id="achievement-<%= @step.id %>" class="achievement">
+          <p><%= @step.action %></p>
+          <% true_count = @step.achievements.where(daily: Date.today - 6.days..Date.today, check: true).count %>
+          <% total_count = @step.achievements.where(daily: Date.today - 6.days..Date.today).count %>
           <% calculated_value = total_count > 0 ? (true_count.to_f / total_count * 100).round : 0 %>
           <div class="m-5 radial-progress bg-red-100 text-primary-content border-4 border-primary" style="--value:<%= calculated_value %>; --size:12rem; --thickness: 2rem;" role="progressbar"><%= calculated_value %>%</div>
         </div>
