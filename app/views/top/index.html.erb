@@ -1,31 +1,50 @@
 <main class="flex justify-center bg-local" style="background-image: url(<%= asset_path('back-ground.png') %>);">
   <div class="block m-10">
-    <%= image_tag 'top.png', class:"object-contain" %>
-    <div class="w-auto text-xl">
-      <div class="chat chat-start mb-4 mt-10">
-        <div class="chat-bubble chat-bubble-secondary">スケジュールの管理って難しくない？</div>
+    <%= image_tag 'top.png', class:"object-contain rounded-lg p-10" %>
+    <div class="max-w-md pb-24 mx-auto">
+      <div class="text-center border-dotted border-t-8 py-20">
+        <h1 class="text-2xl title-font text-gray-900 mb-4">Yori yoiの使い方</h1>
+        <div class="text-base leading-relaxed mx-auto text-gray-500">
+          <p>　Yori yoiは、あなたが作成したスケジュールに合わせて、　あなたが設定した性格のAIがスケジュール通知を行ったり、　　応援メッセージをくれるサービスです。</p>
+        </div>
+        <div class="flex mt-6 justify-center">
+          <div class="w-16 h-1 rounded-full bg-fitting-pink inline-flex"></div>
+        </div>
       </div>
-      <div class="chat chat-start mb-4">
-        <div class="chat-bubble chat-bubble-secondary">継続したいこともなかなか続かないし...</div>
+      <div class="flex flex-wrap">
+        <div class="mb-6 p-4 flex flex-col text-center items-center">
+          <div class="flex-grow">
+            <h2 class="text-gray-900 text-lg title-font font-medium mb-3">その1. なりたい自分の設定をしよう</h2>
+            <p class="leading-relaxed text-base text-gray-500">　まずはユーザー登録後になりたい自分を設定して、　　理想の自分になるための行動を考えてみましょう！</p>
+          </div>
+          <div class="inline-flex items-center justify-center justify-center p-10 flex-shrink-0">
+            <%= image_tag 'How_to_use1.gif', class:"rounded-lg" %>
+          </div>
+        </div>
+        <div class="mb-6 p-4 flex flex-col text-center items-center">
+          <div class="inline-flex items-center justify-center mb-5 flex-shrink-0">
+
+          </div>
+          <div class="flex-grow">
+            <h2 class="text-gray-900 text-lg title-font font-medium mb-3">その2. スケジュールを登録してみよう</h2>
+            <p class="leading-relaxed text-base text-gray-500">　日々のルーティーンを中心に自分のスケジュールを登録してみましょう</p>
+          </div>
+        </div>
+        <div class="mb-6 p-4 flex flex-col text-center items-center">
+          <div class="inline-flex items-center justify-center mb-5 flex-shrink-0">
+
+          </div>
+          <div class="flex-grow">
+            <h2 class="font-kaisei text-gray-900 text-lg title-font font-medium mb-3">その3. AIキャラクターを設定してみよう</h2>
+            <p class="leading-relaxed text-base text-gray-500">　ユーザー登録を済ませたら、ページ右上の　　　　　「マイページ・各種設定」から、好きな性格・関係性・　褒め型・叱咤激励型か、など自分の好きなAIキャラクターを作成してみましょう。</p>
+            <p class="leading-relaxed text-base text-gray-500">　ホームページに戻ると現在のスケジュールと応援の一言がもらえるので一緒に頑張りましょう！</p>
+          </div>
+        </div>
       </div>
-      <div class="chat chat-end mt-4">
-        <div class="chat-bubble chat-bubble-primary">こんなのはどう？</div>
+      <div class="flex justify-center my-10">
+        <button class="btn btn-info sm:btn-sm md:btn-md lg:btn-lg mr-10"><%= link_to "はじめる", sign_up_path %></button>
+        <button class="btn btn-success sm:btn-sm md:btn-md lg:btn-lg ml-10"><%= link_to "ログイン", login_path %></button>
       </div>
-      <div class="chat chat-end mt-4">
-        <div class="chat-bubble chat-bubble-primary">BetterMe</div>
-      </div>
-      <div class="chat chat-end mt-4">
-        <div class="chat-bubble chat-bubble-primary">推しがあなたのスケジュールを応援、だって!!</div>
-      </div>
-      <div class="chat chat-start mt-4">
-        <div class="chat-bubble chat-bubble-secondary">推しが応援してくれたら...頑張れる気がする..かも！</div>
-      </div>
-      <div class="chat chat-end mt-4">
-        <div class="chat-bubble chat-bubble-primary">推しと一緒に、頑張ってみない？</div>
-      </div>
-        <div class="flex justify-center my-10">
-      <button class="btn btn-info sm:btn-sm md:btn-md lg:btn-lg mr-10"><%= link_to "はじめる", sign_up_path %></button>
-      <button class="btn btn-success sm:btn-sm md:btn-md lg:btn-lg ml-10"><%= link_to "ログイン", login_path %></button>
     </div>
   </div>
 </main>

@@ -2,11 +2,11 @@
   <div class="flex-1">
     <% if logged_in? %>
       <%= link_to home_index_path do %>
-        <%= image_tag 'yoriyoi_logo.png', size: '142x40', class: 'ml-3' %>
+        <%= image_tag 'yoriyoi_logo.png', draggable: "false", size: '142x40', class: 'ml-3' %>
       <% end %>
     <% else %>
       <%= link_to root_path do %>
-        <%= image_tag 'yoriyoi_logo.png', size: '142x40', class: 'ml-3' %>
+        <%= image_tag 'yoriyoi_logo.png', draggable: "false", size: '142x40', class: 'ml-3' %>
       <% end %>
     <% end %>
   </div>
