@@ -12,7 +12,8 @@ class OpenAiClient
     additional_prompt = "Address the task #{@current_task.to_do} by embodying the following character traits in two to three lines of Japanese, without using the user's name:
     Personality: #{@character.personality}
     Communication style: #{ @character.communication_style }
-    Relationship to the user: #{ @character.relationship }"
+    Relationship to the user: #{ @character.relationship }
+    Additional settings: #{ @character.additional }"
 
     response = @client.chat(
       parameters: {
