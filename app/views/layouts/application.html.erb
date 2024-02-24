@@ -18,10 +18,6 @@
     <%= render 'shared/header' %>
     <%= render 'shared/flash_massages' %>
     <div class="flex-grow">
-      <div id="loading" style="display: none;">
-        <%= image_tag "waiting.gif", size: '300x300'%>
-      </div>
-
       <%= yield %>
     </div>
     <%= render 'shared/footer' %>

@@ -25,10 +25,10 @@ class HomeController < ApplicationController
     end
 
     # ai_messageのview(現在のタスクをOpenAIクライアントに渡す)
-    # if @current_task.present?
-    #   client = OpenAiClient.new(@current_task, @character)
-    #   @response = client.chat
-    # end
+    if @current_task.present?
+      client = OpenAiClient.new(@current_task, @character)
+      @response = client.chat
+    end
 
     @true_counts = Achievement.joins(:step).where(steps: { user_id: current_user.id }, daily: Date.today - 6.days..Date.today, check: true).count
   end
@@ -41,12 +41,4 @@ class HomeController < ApplicationController
     @steps = Step.where(user_id: current_user.id)
     @character = Character.find_by(user_id: current_user.id)
   end
-
-  # def create_daily_achievements
-  #   current_user.steps.includes(:achievements).each do |step|
-  #     unless step.achievements.exists?(daily: Date.current)
-  #       step.achievements.create!(daily: Date.current)
-  #     end
-  #   end
-  # end
 end
