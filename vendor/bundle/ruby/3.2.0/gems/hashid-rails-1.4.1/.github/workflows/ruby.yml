@@ -1,0 +1,51 @@
+name: build
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    name: Ruby ${{ matrix.ruby }} on Rails ${{ matrix.rails }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        ruby: ["2.5", "2.6"]
+        rails: ["4.2", "5.0", "5.1", "5.2", "6.0"]
+        include:
+          - ruby: "2.7"
+            rails: "6.0"
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Install Ruby (${{ matrix.ruby }})
+      uses: actions/setup-ruby@v1
+      with:
+        ruby-version: ${{ matrix.ruby }}
+
+    - name: Install SQLite
+      run: sudo apt install -y libsqlite3-dev
+
+    - name: Cache Ruby Gems
+      uses: actions/cache@v2
+      with:
+        path: vendor/bundle
+        key: ruby-${{ matrix.ruby }}-rails-${{ matrix.rails }}-gems-${{ hashFiles('hashid-rails.gemspec', 'Appraisals') }}
+        restore-keys: |
+          ruby-${{ matrix.ruby }}-rails-${{ matrix.rails }}-gems-
+
+    - name: Install Ruby dependencies
+      run: |
+        bundle config set path ../vendor/bundle
+        bundle install --gemfile gemfiles/rails_${{ matrix.rails }}.gemfile --jobs 4 --retry 3
+
+    - name: Test with RSpec
+      env:
+        BUNDLE_GEMFILE: gemfiles/rails_${{ matrix.rails }}.gemfile
+      run: bundle exec appraisal rails-${{ matrix.rails }} rspec
+
+    - name: Publish Test Coverage
+      uses: paambaati/codeclimate-action@v2.6.0
+      env:
+        CC_TEST_REPORTER_ID: 37aee70bb2e818f3bf4d2af88ea4a4355393901ba98b3876c244d42ed20fdbe1
+      with:
+        coverageCommand: true
