@@ -24,12 +24,12 @@ class StepsController < ApplicationController
     end
   end
 
-  def edit_multiple
+  def edit
     @goal = current_user.goal
     @steps = current_user.steps
   end
 
-  def update_multiple
+  def update
     @goal = current_user.goal
     @steps = Step.update(params[:steps].keys, params[:steps].values)
 

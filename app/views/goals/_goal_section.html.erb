@@ -1,0 +1,15 @@
+<div class="box75 w-full">
+  <div class="box-title">理想のあなた</div>
+  <div class="m-5 text-base sm:text-lg">
+    <div class="flex justify-end right-0">
+      <%= link_to raw('<i class="fa-solid fa-pencil"></i>'), edit_goal_path, class: 'btn bg-yellow-100' %>
+    </div>
+    <% if goal.ideal_self.blank? %>
+      <p>目標を設定してほしいにゃ。</p>
+    <% else %>
+      <ul class="list-inside my-3">
+        <li><i class="fa-brands fa-pagelines" style="color: #319674;"></i> <%= goal.ideal_self %></li>
+      </ul>
+    <% end %>
+  </div>
+</div>

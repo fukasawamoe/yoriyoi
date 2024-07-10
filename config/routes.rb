@@ -20,8 +20,8 @@ Rails.application.routes.draw do
   end
   resources :steps, only: %i(new create destroy) do
     collection do
-      get :edit_multiple
-      put :update_multiple
+      get :edit
+      put :update
     end
     post :day_check, on: :member
   end

@@ -1,0 +1,23 @@
+<% action = step.action %>
+<% times_set = step.times_set %>
+<% unless action.blank? && times_set.blank? %>
+  <li><i class="fa-solid fa-fire" style="color: #f26845;"></i>  <%= action %>を週<%= times_set %>回行う</li>
+  <div class="flex flex-col lg:flex-row lg:justify-center">
+    <div class="flex justify-center flex-wrap">
+      <% step.achievements.where(daily:(Time.current.beginning_of_day - 6.days)..Time.current.end_of_day).order(daily: :asc).each do |achievement| %>
+        <div class="flex items-center space-x-2">
+          <div id="achievement_<%= achievement.id %>">
+            <% if achievement.check? %>
+              <%= render "achievements/on_button", achievement: achievement, step: step %>
+            <% else %>
+              <%= render "achievements/off_button", achievement: achievement, step: step %>
+            <% end %>
+          </div>
+          <% if achievement.daily == Time.current.to_date %>
+            <div class="tooltip tooltip-open tooltip-right" data-tip="今日だよ"></div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>

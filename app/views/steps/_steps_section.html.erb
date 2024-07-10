@@ -1,0 +1,28 @@
+<div class="box75 w-full">
+  <div class="box-title">理想を実現するためには</div>
+  <div class="m-5 text-base sm:text-lg">
+    <div class="flex justify-end right-0">
+      <%= link_to raw('<i class="fa-solid fa-pencil"></i>'), edit_steps_path, class: 'btn bg-yellow-100' %>
+    </div>
+  </div>
+
+  <% all_blank = steps.all? { |step| step.action.blank? && step.times_set.blank? } %>
+
+  <% if all_blank %>
+    <p class="m-5 text-base sm:text-lg">頑張ることが設定されていないにゃ。</p>
+  <% else %>
+    <div class="m-5 text-base sm:text-lg">
+      <div>
+        <p class="underline">今日のチャレンジが終わったら</p>
+        <p class="underline">日付ボタンを押してチェックしよう！</p>
+        <p class="m-5"><%= "*#{Date.today - 6.days}から#{Date.today}まで" %></p>
+      </div>
+    </div>
+
+    <div class="text-base sm:text-lg">
+      <ul class="list-inside">
+        <%= render partial: "steps/step_item", collection: steps, as: :step %>
+      </ul>
+    </div>
+  <% end %>
+</div>
