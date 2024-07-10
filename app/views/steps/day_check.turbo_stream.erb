@@ -8,16 +8,34 @@
   </div>
 <% end %>
 
-<%= turbo_stream.update "achievement_graph" do %>
-  <% @steps.each do |step| %>
+<% @steps.each do |step| %>
+  <%= turbo_stream.update "achievement-#{step.id}" do %>
     <div class="grid grid-cols-3 gap-10">
-      <% if step.action.present?%>
-        <div id="achievement-<%= @step.id %>" class="achievement">
-          <p><%= @step.action %></p>
-          <% true_count = @step.achievements.where(daily: Date.today - 6.days..Date.today, check: true).count %>
-          <% total_count = @step.achievements.where(daily: Date.today - 6.days..Date.today).count %>
+      <% if step.action.present? %>
+        <div id="achievement-<%= step.id %>" class="achievement">
+          <% true_count = step.achievements.where(daily: Date.today - 6.days..Date.today, check: true).count %>
+          <% total_count = step.achievements.where(daily: Date.today - 6.days..Date.today).count %>
           <% calculated_value = total_count > 0 ? (true_count.to_f / total_count * 100).round : 0 %>
           <div class="m-5 radial-progress bg-red-100 text-primary-content border-4 border-primary" style="--value:<%= calculated_value %>; --size:12rem; --thickness: 2rem;" role="progressbar"><%= calculated_value %>%</div>
+        <div>
+          <% if calculated_value >= 100 %>
+            <button class="btn" onclick="my_modal_5.showModal()">頑張りを共有する</button>
+            <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+              <div class="modal-box">
+                <h3 class="font-bold text-lg">頑張ったにゃ〜！</h3>
+                <p class="py-4">今週の努力目標を達成したにゃ！すごい！！この調子で頑張っていこうね</p>
+                <p class="py-4">この頑張りをみんなに見てもらおう！</p>
+                <%= link_to "Xでシェアする", @twitter_share_url, class: "backdrop-blur-sm underline hover:bg-pink-600 text-white font-bold py-2 px-4 rounded text-center", target: "_blank" %>
+                <div class="modal-action">
+                  <form method="dialog">
+                    <!-- if there is a button in form, it will close the modal -->
+                    <button class="btn">とじる</button>
+                  </form>
+                </div>
+              </div>
+            </dialog>
+          <% end %>
+        </div>
         </div>
       <% end %>
     </div>

@@ -5,12 +5,15 @@
         <% steps.each do |step| %>
           <div class="grid grid-cols-3 gap-10">
             <% if step.action.present?%>
+            <div>
+              <p class="m-5"><%= "*#{Date.today - 6.days}から#{Date.today}まで" %></p>
+              <p class='stripe-marker text-center'><%= step.action %></p>
+            </div>
               <div id="achievement-<%= step.id %>" class="achievement">
-                <p class="m-5"><%= "*#{Date.today - 6.days}から#{Date.today}まで" %></p>
-                <p class='stripe-marker text-center'><%= step.action %></p>
                 <%= true_count = step.achievements.where(daily: Date.today - 6.days..Date.today, check: true).count %>
                 <% total_count = 7 %>
                 <% calculated_value = total_count > 0 ? (true_count.to_f / total_count * 100).round : 0 %>
+                <div>
                 <% if calculated_value >= 100 %>
                   <button class="btn" onclick="my_modal_5.showModal()">頑張りを共有する</button>
                   <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
