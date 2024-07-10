@@ -10,7 +10,7 @@ class Step < ApplicationRecord
   validate :custom_action_presence
   validate :custom_times_set_presence
 
-  #step作成と同時にachivementモデルも作成する
+  #step作成と同時にachivementモデルも作成する(当日含め過去7日分)
   def create_achievements!
     6.downto(0) do |n|
       achievements.create!(daily: Date.today - n)
