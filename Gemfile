@@ -64,6 +64,9 @@ gem 'active_storage_validations'       # 画像ファイルのバリデーショ
 # OGP設定
 gem "meta-tags"
 
+# 動的OGP
+gem 'carrierwave'
+
 # cron設定
 gem 'whenever', require: false
 
