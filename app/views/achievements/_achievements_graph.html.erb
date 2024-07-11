@@ -1,41 +1,42 @@
+<!-- app/views/achievements/_achievements_graph.html.erb -->
 <main class="w-full px-5 xl:px-40 mx-auto">
-  <div class="flex flex-wrap w-full py-10 px-10 relative my-5" style="border: dotted 2px #f7e9e8; padding: 1rem;" >
+  <div class="flex flex-wrap w-full py-10 px-10 relative my-5" style="border: dotted 2px #f7e9e8; padding: 1rem;">
     <div class="box75 w-full">
       <div class="box-title">達成状況</div>
-        <div id="achievement_graph" class="flex">
-    <% steps.each do |step| %>
-      <div class="mx-auto">
-        <% if step.action.present? %>
-          <div>
-            <p class="m-5"><%= "*#{Date.today - 6.days}から#{Date.today}まで" %></p>
-            <p class='stripe-marker text-center'><%= step.action %></p>
-            <div id="achievement-<%= step.id %>" class="achievement">
-              <%= true_count = step.achievements.where(daily: Date.today - 6.days..Date.today, check: true).count %>
-              <% total_count = 7 %>
-              <% calculated_value = total_count > 0 ? (true_count.to_f / total_count * 100).round : 0 %>
-              <% if calculated_value >= 100 %>
-                <button class="btn" onclick="my_modal_5.showModal()">頑張りを共有する</button>
-                <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
-                  <div class="modal-box">
-                    <h3 class="font-bold text-lg">頑張ったにゃ〜！</h3>
-                    <p class="py-4">今週の努力目標を達成したにゃ！すごい！！この調子で頑張っていこうね</p>
-                    <p class="py-4">この頑張りをみんなに見てもらおう！</p>
-                    <%= link_to "Xでシェアする", @twitter_share_url, class: "backdrop-blur-sm underline hover:bg-pink-600 text-white font-bold py-2 px-4 rounded text-center", target: "_blank" %>
-                    <div class="modal-action">
-                      <form method="dialog">
-                        <button class="btn">とじる</button>
-                      </form>
-                    </div>
-                  </div>
-                </dialog>
-              <% end %>
-              <div class="m-5 radial-progress bg-red-100 text-primary-content border-4 border-primary" style="--value:<%= calculated_value %>; --size:12rem; --thickness: 2rem;" role="progressbar"><%= calculated_value %>%</div>
-            </div>
+      <div id="achievement_graph" class="flex">
+        <% @steps.each_with_index do |step, index| %>
+          <div class="mx-auto">
+            <% if step.action.present? %>
+              <div>
+                <p class="m-5"><%= "*#{Date.today - 6.days}から#{Date.today}まで" %></p>
+                <p class='stripe-marker text-center'><%= step.action %></p>
+                <div id="achievement-<%= step.id %>" class="achievement">
+                  <% true_count = step.achievements.where(daily: Date.today - 6.days..Date.today, check: true).count %>
+                  <% total_count = step.achievements.where(daily: Date.today - 6.days..Date.today).count %>
+                  <% calculated_value = total_count > 0 ? (true_count.to_f / total_count * 100).round : 0 %>
+                  <div class="m-5 radial-progress bg-red-100 text-primary-content border-4 border-primary" style="--value:<%= calculated_value %>; --size:12rem; --thickness: 2rem;" role="progressbar"><%= calculated_value %>%</div>
+                  <% if calculated_value >= 100 %>
+                    <button class="btn" onclick="document.getElementById('my_modal_<%= index %>').showModal()">頑張りを共有する</button>
+                    <dialog id="my_modal_<%= index %>" class="modal modal-bottom sm:modal-middle">
+                      <div class="modal-box">
+                        <h3 class="font-bold text-lg">頑張ったにゃ〜！</h3>
+                        <p class="py-4">今週の努力目標を達成したにゃ！すごい！！この調子で頑張っていこうね</p>
+                        <p class="py-4">この頑張りをみんなに見てもらおう！</p>
+                        <%= link_to "Xでシェアする", @twitter_share_url, class: "backdrop-blur-sm underline hover:bg-pink-600 text-white font-bold py-2 px-4 rounded text-center", target: "_blank" %>
+                        <div class="modal-action">
+                          <form method="dialog">
+                            <button class="btn">とじる</button>
+                          </form>
+                        </div>
+                      </div>
+                    </dialog>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
           </div>
         <% end %>
       </div>
-    <% end %>
-  </div>
     </div>
   </div>
 </main>
