@@ -25,7 +25,7 @@ class GoalsController < ApplicationController
         redirect_to home_index_path
       elsif params[:step]
         flash[:success] = '目標を編集しました'
-        redirect_to edit_multiple_steps_path
+        redirect_to edit_steps_path
       end
     else
       render :edit
