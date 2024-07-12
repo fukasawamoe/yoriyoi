@@ -13,7 +13,8 @@
     <div class="mx-auto">
       <% if step.action.present? %>
         <div id="achievement-<%= step.id %>" class="achievement">
-          <% percentage = calculate_achievement_percentage(step) %>
+          <% times_set = step.times_set %>
+          <% percentage = calculate_achievement_percentage(step, times_set) %>
           <div class="flex flex-col items-center">
             <% if percentage >= 100 %>
               <button class="btn mt-5" onclick="document.getElementById('my_modal_<%= index %>').showModal()">頑張りを共有する</button>
@@ -22,7 +23,7 @@
                   <h3 class="font-bold text-lg">頑張ったにゃ〜！</h3>
                   <p class="py-4">今週の努力目標を達成したにゃ！すごい！！この調子で頑張っていこうね</p>
                   <p class="py-4">この頑張りをみんなに見てもらおう！</p>
-                  <%= link_to "Xでシェアする", @twitter_share_url, class: "backdrop-blur-sm underline hover:bg-pink-600 text-white font-bold py-2 px-4 rounded text-center", target: "_blank" %>
+                  <%= link_to "Xでシェアする", @twitter_share_url, class: "backdrop-blur-sm underline hover:bg-pink-600 font-bold py-2 px-4 rounded text-center", target: "_blank" %>
                   <div class="modal-action">
                     <form method="dialog">
                       <button class="btn">とじる</button>
@@ -31,7 +32,7 @@
                 </div>
               </dialog>
             <% else %>
-              <div class="mt-3" style="height: 3.5rem;"></div> <!-- ボタンの高さと同じ空白要素 -->
+              <div class="mt-3" style="height: 3.5rem;"></div>
             <% end %>
           </div>
           <div class="flex flex-col items-center">
