@@ -31,6 +31,7 @@ class HomeController < ApplicationController
     end
 
     @true_counts = Achievement.joins(:step).where(steps: { user_id: current_user.id }, daily: Date.today - 6.days..Date.today, check: true).count
+    @user = current_user
   end
 
 
