@@ -51,6 +51,7 @@ class StepsController < ApplicationController
   end
 
   def day_check
+    @user = current_user
     @steps = current_user.steps.all
     @step = Step.find_by(id: params[:id], user_id: current_user.id)
     @achievement = @step.achievements.find(params[:achievement_id])

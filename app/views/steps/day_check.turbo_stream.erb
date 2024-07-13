@@ -21,9 +21,16 @@
               <dialog id="my_modal_<%= index %>" class="modal modal-bottom sm:modal-middle">
                 <div class="modal-box">
                   <h3 class="font-bold text-lg">頑張ったにゃ〜！</h3>
-                  <p class="py-4">今週の努力目標を達成したにゃ！すごい！！この調子で頑張っていこうね</p>
-                  <p class="py-4">この頑張りをみんなに伝えよう！</p>
-                  <%= link_to "Xでシェアする", @twitter_share_url, class: "backdrop-blur-sm underline hover:bg-pink-600 font-bold py-2 px-4 rounded text-center", target: "_blank" %>
+                  <p class="pt-8">今週の努力目標を達成したにゃ！すごい！！</p>
+                  <p class="pt-4">この調子で頑張っていこうね</p>
+                  <p class="pt-6 pb-8">頑張りをみんなに伝えよう！</p>
+                  <div>
+                    <%= link_to "https://twitter.com/share?url=#{CGI.escape('https://yoriyoi-ce784c6c7328.herokuapp.com/')}&text=#{CGI.escape("#{@user.name}が#{step.action}を頑張ったよ！！\nみんなで#{@user.name}を褒めよう!\n\n目標:#{step.action}を週に#{step.times_set}回行う\n\n達成状況:#{percentage}%\n")}", target: '_blank', class: "text-lg" do %>
+                      <span class="bg-amber-200 px-1">
+                        <i class="fab fa-twitter font-bold" style='color: #3399FF;'></i>シェアする<i class="fa-brands fa-x-twitter"></i>
+                      </span>
+                    <% end %>
+                  </div>
                   <div class="modal-action">
                     <form method="dialog">
                       <button class="btn">とじる</button>
