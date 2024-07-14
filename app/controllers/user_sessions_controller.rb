@@ -9,11 +9,11 @@ class UserSessionsController < ApplicationController
         @user.update(first_login: false)
         redirect_to new_goal_path # 初回ログイン時のみ目標設定画面へリダイレクト
       else
-        flash[:success] = 'ログインしました'
+        flash[:notice] = 'ログインしました'
         redirect_to home_index_path # 2回目以降のログイン時はホーム画面へリダイレクト
       end
     else
-      flash.now[:error] = 'ログインに失敗しました'
+      flash.now[:alert] = 'ログインに失敗しました'
       render :new, status: :unprocessable_entity
     end
   end

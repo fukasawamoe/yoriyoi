@@ -1,6 +1,6 @@
 class AchievementsController < ApplicationController
   before_action :set_step
-  before_action :set_achievement, only: [:show, :edit, :update, :destroy]
+  before_action :set_achievement, only: [:show, :edit, :update]
 
   def index
     @achievements = Achievement.all
@@ -13,7 +13,9 @@ class AchievementsController < ApplicationController
   end
 
   def create
+    # 現在のユーザーに関連付けられた新しい達成項目を作成
     @achievement = current_user.achievements.build(achievement_params)
+    # set_stepの@stepを使用して設定
     @achievement.step_id = @step.id
 
     if @achievement.save
@@ -21,12 +23,6 @@ class AchievementsController < ApplicationController
     else
       render :new
     end
-  end
-
-  def destroy
-    step = current_user.achievements.find(params[:id])
-    current_user.not_achieved(achievement)
-    redirect_back fallback_location: root_path
   end
 
   private

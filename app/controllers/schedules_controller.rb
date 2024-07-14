@@ -34,7 +34,7 @@ class SchedulesController < ApplicationController
       @schedule = current_user.schedules.build(schedule_params.merge(tasks_attributes: sorted_tasks_attributes[:tasks]))
     end
     if @schedule.save
-      flash[:success] = 'スケジュールを作成しました'
+      flash[:notice] = 'スケジュールを作成しました'
       redirect_to schedule_path(@schedule)
     else
       render :new, status: :unprocessable_entity
@@ -59,7 +59,7 @@ class SchedulesController < ApplicationController
       @schedule.tasks.order(:task_time).each.with_index(1) do |task, index|
         task.update_column(:position, index)
       end
-      flash[:success] = 'スケジュールを更新しました'
+      flash[:notice] = 'スケジュールを更新しました'
       redirect_to schedule_path(@schedule)
     else
       render :edit

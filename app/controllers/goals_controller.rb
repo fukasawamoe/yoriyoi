@@ -1,6 +1,6 @@
 class GoalsController < ApplicationController
   before_action :require_login
-  before_action :set_goal, only: %i(edit update destroy)
+  before_action :set_goal, only: %i(edit update)
 
   def new
     @goal = Goal.new
@@ -21,18 +21,15 @@ class GoalsController < ApplicationController
   def update
     if @goal.update(goal_params)
       if params[:home]
-        flash[:success] = '目標を編集しました'
+        flash[:notice] = '目標を編集しました'
         redirect_to home_index_path
       elsif params[:step]
-        flash[:success] = '目標を編集しました'
+        flash[:notice] = '目標を編集しました'
         redirect_to edit_steps_path
       end
     else
       render :edit
     end
-  end
-
-  def destroy
   end
 
   def skip
@@ -46,7 +43,7 @@ class GoalsController < ApplicationController
         @step.create_achievements!
       end
     end
-    flash[:success] = 'まずはスケジュールを作成してみてにゃ'
+    flash[:notice] = 'まずはスケジュールを作成してみてにゃ'
     redirect_to home_index_path
   rescue ActiveRecord::RecordInvalid
     render :new

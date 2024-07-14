@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   resources :schedules
   resources :profiles, only: %i(index)
   resource :characters, only: [:edit, :update]
-  resource :goal, only: %i(new create edit update destroy) do
+  resource :goal, only: %i(new create edit update) do
     collection do
       post :skip
     end

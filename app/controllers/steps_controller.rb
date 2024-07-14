@@ -17,7 +17,7 @@ class StepsController < ApplicationController
         step.save!
         step.create_achievements!
       end
-      flash[:success] = '登録完了しましたにゃ！これから一緒にがんばるにゃ〜！'
+      flash[:notice] = '登録完了しましたにゃ！これから一緒にがんばるにゃ〜！'
       redirect_to home_index_path
     else
       render :new
@@ -36,10 +36,10 @@ class StepsController < ApplicationController
     if @steps.all? { |step| step.errors.empty? }
 
       if params[:home]
-        flash[:success] = 'ステップを編集しました'
+        flash[:notice] = 'ステップを編集しました'
         redirect_to home_index_path
       elsif params[:goal]
-        flash[:success] = 'ステップを編集しました'
+        flash[:notice] = 'ステップを編集しました'
         redirect_to edit_goal_path
       end
     else

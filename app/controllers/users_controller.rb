@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     if @user.save
       @user.update(first_login: false) # 初回ログイン時のみ目標設定画面へリダイレクト
       auto_login(@user)
-      flash[:success] = 'ユーザー登録が完了しました'
+      flash[:notice] = 'ユーザー登録が完了しました'
       redirect_to new_goal_path
     else
       render :new, status: :unprocessable_entity
@@ -21,10 +21,10 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      flash[:success] = 'ユーザー情報を更新しました'
+      flash[:notice] = 'ユーザー情報を更新しました'
       redirect_to profiles_path
     else
-      flash.now[:error] = 'ユーザー情報の更新に失敗しました'
+      flash.now[:alert] = 'ユーザー情報の更新に失敗しました'
       render :edit, status: :unprocessable_entity
     end
   end

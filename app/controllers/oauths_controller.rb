@@ -9,17 +9,17 @@ class OauthsController < ApplicationController
     # 'login_from'メソッドを使い、以前に保存された認証データからユーザーをログインさせます。
     # 成功すれば、@user変数にユーザー情報が格納されます。
     if (@user = login_from(provider))
-      flash[:success] = 'ログインしました'
+      flash[:notice] = 'ログインしました'
       redirect_to home_index_path
     else
       begin
         @user = create_from(provider)
         reset_session
         auto_login(@user)
-        flash[:success] = 'ログインしました'
+        flash[:notice] = 'ログインしました'
         redirect_to new_goal_path
       rescue StandardError
-        flash[:error] = 'ログインに失敗しました'
+        flash[:alert] = 'ログインに失敗しました'
         redirect_to login_path
       end
     end

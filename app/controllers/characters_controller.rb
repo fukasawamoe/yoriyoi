@@ -6,10 +6,10 @@ class CharactersController < ApplicationController
 
   def update
     if @character.update(character_params)
-      flash[:success] = 'AIキャラクターを更新しました'
+      flash[:notice] = 'AIキャラクターを更新しました'
       redirect_to profiles_path
     else
-      flash.now[:error] = 'AIキャラクターの更新に失敗しました'
+      flash.now[:alert] = 'AIキャラクターの更新に失敗しました'
       render :edit, status: :unprocessable_entity
     end
   end
