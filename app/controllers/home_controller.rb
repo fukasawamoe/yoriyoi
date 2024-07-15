@@ -1,35 +1,27 @@
 class HomeController < ApplicationController
   before_action :require_login
   before_action :set_home, only: %i(index)
-  # before_action :create_daily_achievements, only: :index
+  include HomeHelper
 
   def index
     # scheduleのview
-    # 現在の曜日を取得（0:日曜日, 1:月曜日, ..., 6:土曜日）
-    current_day_of_week = Time.current.wday
-    # ログインユーザーが作成したスケジュールを取得
-    @schedules = current_user.schedules.includes(:tasks).where('day_of_week @> ARRAY[?]::integer[]', current_day_of_week)
-    # 現在の時間を取得
-    current_time = Time.current.strftime("%H:%M")
-
-    # 現在のタスクと次のタスクを取得
-    tasks = @schedules.map(&:tasks).flatten.sort_by(&:task_time)
-    @current_task = tasks.select { |task| task.task_time.strftime("%H:%M") <= current_time }.last
-    @next_task = tasks.select { |task| task.task_time.strftime("%H:%M") > current_time }.first
+    @schedules = current_day_schedules(current_user)
+    @current_task, @next_task = current_and_next_tasks(@schedules)
 
     # 次のタスクが存在しない場合、次の曜日の最初のタスクを取得
     if @next_task.nil?
-      next_day_of_week = (current_day_of_week + 1) % 7
-      next_day_schedules = current_user.schedules.includes(:tasks).where('day_of_week @> ARRAY[?]::integer[]', next_day_of_week)
+      next_day_schedules = next_day_schedules(current_user)
       @next_task = next_day_schedules.map(&:tasks).flatten.min_by(&:task_time)
     end
 
     # ai_messageのview(現在のタスクをOpenAIクライアントに渡す)
+    # OpenAiClientはChat GPTのAPIを使用して、現在のタスクに基づいた応答を生成する
     if @current_task.present?
       client = OpenAiClient.new(@current_task, @character)
       @response = client.chat
     end
 
+    # @true_countsはachievementのグラフの計算に使用される
     @true_counts = Achievement.joins(:step).where(steps: { user_id: current_user.id }, daily: Date.today - 6.days..Date.today, check: true).count
     @user = current_user
   end
