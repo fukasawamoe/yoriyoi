@@ -10,7 +10,7 @@ class GoalsController < ApplicationController
     @goal = Goal.new(goal_params)
     @goal.user_id = current_user.id
     if @goal.save
-      redirect_to new_step_path
+      redirect_to new_step_path #初回のみ/steps/new
     else
       render 'new'
     end
@@ -26,6 +26,8 @@ class GoalsController < ApplicationController
       elsif params[:step]
         flash[:notice] = '目標を編集しました'
         redirect_to edit_steps_path
+      else
+        render :edit
       end
     else
       render :edit
@@ -34,13 +36,13 @@ class GoalsController < ApplicationController
 
   def skip
     Goal.transaction do
-      @goal = Goal.new(user_id: current_user.id)
-      @goal.save!
+      goal = Goal.new(user_id: current_user.id)
+      goal.save!
 
       3.times do
-        @step = Step.new(user_id: current_user.id, goal_id: @goal.id)
-        @step.save!
-        @step.create_achievements!
+        step = Step.new(user_id: current_user.id, goal_id: @goal.id)
+        step.save!
+        step.create_achievements!
       end
     end
     flash[:notice] = 'まずはスケジュールを作成してみてにゃ'
