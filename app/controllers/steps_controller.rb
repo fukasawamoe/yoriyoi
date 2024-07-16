@@ -8,7 +8,7 @@ class StepsController < ApplicationController
   end
 
   def create
-    @goal = Goal.find(params[:goal_id])
+    @goal = Goal.find_by(user_id: current_user.id)
     @steps = params[:step][:steps].values.map do |step_params|
       step_params.merge!({user_id: current_user.id})
       @goal.steps.new(step_params)
