@@ -4,7 +4,8 @@ class Step < ApplicationRecord
   has_many :achievements, dependent: :destroy
 
   # 0より大きい整数を確認
-  validates :times_set, numericality: { only_integer: true, greater_than: 0 }
+  # actionが入力されている場合のみ適用
+  validates :times_set, numericality: { only_integer: true, greater_than: 0 }, if: :action_present?
 
   # actionとtimes_setは両方データが入っているか確認
   validate :custom_action_presence
@@ -29,6 +30,10 @@ class Step < ApplicationRecord
     if action.present? && times_set.blank?
       errors.add(:base, "回数を入力してください")
     end
+  end
+
+  def action_present?
+    action.present?
   end
 
   # バリデーションメッセージにメッセージにカラム名を非表示

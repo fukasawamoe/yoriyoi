@@ -1,6 +1,6 @@
 class StepsController < ApplicationController
   before_action :require_login
-  before_action :set_step, only: %i(create edit update destroy)
+  before_action :set_step, only: %i(create edit update)
 
   def new
     @step = Step.new
@@ -34,20 +34,15 @@ class StepsController < ApplicationController
     @steps = Step.update(params[:steps].keys, params[:steps].values)
 
     if @steps.all? { |step| step.errors.empty? }
-
+      flash[:notice] = 'ステップを編集しました'
       if params[:home]
-        flash[:notice] = 'ステップを編集しました'
         redirect_to home_index_path
       elsif params[:goal]
-        flash[:notice] = 'ステップを編集しました'
         redirect_to edit_goal_path
       end
     else
       render :edit, status: :unprocessable_entity
     end
-  end
-
-  def destroy
   end
 
   def day_check
