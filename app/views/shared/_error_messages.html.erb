@@ -2,7 +2,9 @@
 	<div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
     <ul class="flex flex-col mb-0">
       <% object.errors.each do |error| %>
-        <li><%= error.full_message %></li>
+        <% if error.full_message.present? %>
+          <li><%= error.full_message %></li>
+        <% end %>
       <% end %>
     </ul>
   </div>
