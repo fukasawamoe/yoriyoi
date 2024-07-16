@@ -43,7 +43,7 @@ class StepsController < ApplicationController
         redirect_to edit_goal_path
       end
     else
-      render :edit_multiple, status: :unprocessable_entity
+      render :edit, status: :unprocessable_entity
     end
   end
 

@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :require_login, only: [:edit, :update]
   before_action :set_user, only: [:edit, :update]
 
   def new
@@ -7,14 +8,19 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    if @user.save
-      @user.update(first_login: false) # 初回ログイン時のみ目標設定画面へリダイレクト
-      auto_login(@user)
-      flash[:notice] = 'ユーザー登録が完了しました'
-      redirect_to new_goal_path
-    else
-      render :new, status: :unprocessable_entity
+    ActiveRecord::Base.transaction do
+      if @user.save
+        # 初回ログイン時のみ目標設定画面へリダイレクト
+        @user.update!(first_login: false) # `update!`を使用してエラーが発生した場合に例外を投げる
+        auto_login(@user)
+        flash[:notice] = 'ユーザー登録が完了しました'
+        redirect_to new_goal_path
+      else
+        render :new, status: :unprocessable_entity
+      end
     end
+  rescue ActiveRecord::RecordInvalid
+    render :new, status: :unprocessable_entity
   end
 
   def edit; end

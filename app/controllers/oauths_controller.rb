@@ -1,5 +1,6 @@
 class OauthsController < ApplicationController
 
+  # LINEログイン
   def oauth
     login_at(auth_params[:provider])
   end
