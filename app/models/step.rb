@@ -5,7 +5,7 @@ class Step < ApplicationRecord
 
   # 0より大きい整数を確認
   # actionが入力されている場合のみ適用
-  validates :times_set, numericality: { only_integer: true, greater_than: 0 }, if: :action_present?
+  validates :times_set, numericality: { only_integer: true, greater_than: 0, message: "" }, if: :action_present?
 
   # actionとtimes_setは両方データが入っているか確認
   validate :custom_action_presence
