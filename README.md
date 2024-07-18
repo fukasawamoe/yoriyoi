@@ -1,4 +1,4 @@
-![見出しを追加.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/01551d13-469c-4ee8-b4ad-3ff78e810a41/1ade2904-7721-40e6-a6d0-ce0d89ed0b28/%E8%A6%8B%E5%87%BA%E3%81%97%E3%82%92%E8%BF%BD%E5%8A%A0.png)
+[![Image from Gyazo](https://i.gyazo.com/e5fafc35ce5be774180c2ea23ea3a12c.png)](https://gyazo.com/e5fafc35ce5be774180c2ea23ea3a12c)
 
 ## **Yoriyoi | より良い習慣づけアシストサービス**
 
