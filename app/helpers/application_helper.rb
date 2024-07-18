@@ -14,7 +14,7 @@ module ApplicationHelper
         title: :title,
         description: :description,
         type: 'website',
-        url: request.original_url,
+        url: 'https://yoriyoi-life.net/',
         image: image_url('ogp.png'),
         local: 'ja-JP'
       },
