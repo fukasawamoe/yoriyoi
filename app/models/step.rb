@@ -35,9 +35,4 @@ class Step < ApplicationRecord
   def action_present?
     action.present?
   end
-
-  # バリデーションメッセージにメッセージにカラム名を非表示
-  def self.human_attribute_name(attr, options = {})
-    ""
-  end
 end

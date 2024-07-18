@@ -7,8 +7,8 @@ class Schedule < ApplicationRecord
   # 同フォーム内で複数モデルを取り扱う スケジュールを作成または更新する際に、関連するタスクも一緒に作成または更新
   accepts_nested_attributes_for :tasks, reject_if: :all_blank, allow_destroy: true
 
-  validates :name, presence: true,  length: { maximum: 255 }
-  validates :day_of_week, presence: true
+  validates :name, presence: {message: "スケジュール名を入力してください"},  length: { maximum: 255 }
+  validates :day_of_week, presence: {message: "曜日を選択してください"}
   # ユーザーが同じ曜日に複数のスケジュールを作成できないようにする
   validate :unique_day_of_week_per_user
 

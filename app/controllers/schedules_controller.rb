@@ -12,31 +12,38 @@ class SchedulesController < ApplicationController
   end
 
   def create
-    if params[:schedule][:tasks_attributes]
-      # formが空であれば年月日を削除してnilになる
-      params[:schedule][:tasks_attributes].each do |_, task_attributes|
-        if task_attributes["task_time(4i)"].blank? && task_attributes["task_time(5i)"].blank?
-          task_attributes.delete("task_time(1i)")
-          task_attributes.delete("task_time(2i)")
-          task_attributes.delete("task_time(3i)")
-        end
+    # tasks_attributes をハッシュから配列に変換
+    tasks_attributes_array = params[:schedule][:tasks_attributes].values
+
+    tasks_attributes_array.each do |task_attributes|
+      if task_attributes["task_time(4i)"].blank? || task_attributes["task_time(5i)"].blank?
+        @schedule = current_user.schedules.build(schedule_params)
+        @schedule.errors.add(:base, 'タスクを行う時間を入力してください')
+        render :new, status: :unprocessable_entity
+        return
       end
-
-      # タスクを時間順に並び替え
-      sorted_tasks_attributes = params[:schedule][:tasks_attributes].values.sort_by do |task_attributes|
-        task_attributes["task_time(4i)"].to_i * 60 + task_attributes["task_time(5i)"].to_i
-      end
-
-      # ストロングパラメータに変換
-      sorted_tasks_attributes = ActionController::Parameters.new(tasks: sorted_tasks_attributes).permit!
-
-      # 並び替えたタスクのパラメータを使用してスケジュールを作成
-      @schedule = current_user.schedules.build(schedule_params.merge(tasks_attributes: sorted_tasks_attributes[:tasks]))
     end
+
+    # 配列をソート
+    sorted_tasks_attributes = tasks_attributes_array.sort_by do |task_attributes|
+      task_time_hour = task_attributes["task_time(4i)"].to_i
+      task_time_minute = task_attributes["task_time(5i)"].to_i
+      task_time_hour * 60 + task_time_minute
+    end
+
+    # ソートされた配列を再度ハッシュ形式に変換
+    sorted_tasks_hash = sorted_tasks_attributes.each_with_index.map { |attrs, index| [index.to_s, attrs] }.to_h
+
+    # 新しいパラメータとしてマージ
+    merged_params = schedule_params.merge(tasks_attributes: sorted_tasks_hash)
+
+    @schedule = current_user.schedules.build(merged_params)
+
     if @schedule.save
       flash[:notice] = 'スケジュールを作成しました'
       redirect_to schedule_path(@schedule)
     else
+      flash.now[:alert] = 'スケジュールの作成に失敗しました。'
       render :new, status: :unprocessable_entity
     end
   end
@@ -47,10 +54,10 @@ class SchedulesController < ApplicationController
 
   def update
     params[:schedule][:tasks_attributes].each do |_, task_attributes|
-      if task_attributes["task_time(4i)"].blank? && task_attributes["task_time(5i)"].blank?
-        task_attributes.delete("task_time(1i)")
-        task_attributes.delete("task_time(2i)")
-        task_attributes.delete("task_time(3i)")
+      if task_attributes["task_time(4i)"].blank? || task_attributes["task_time(5i)"].blank?
+        @schedule.errors.add(:base, 'タスクを行う時間を入力してください')
+        render :edit, status: :unprocessable_entity
+        return
       end
     end
 
@@ -62,7 +69,7 @@ class SchedulesController < ApplicationController
       flash[:notice] = 'スケジュールを更新しました'
       redirect_to schedule_path(@schedule)
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
@@ -83,7 +90,7 @@ class SchedulesController < ApplicationController
   end
 
   def schedule_params
-    params.require(:schedule).permit(:name, { day_of_week: [] },
+    params.require(:schedule).permit(:name, day_of_week: [],
                                     tasks_attributes: [:id, :task_time, :to_do, :memo, :goal_select, :position, :_destroy])
   end
 end
