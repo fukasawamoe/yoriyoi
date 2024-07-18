@@ -12,6 +12,15 @@
     <%= javascript_importmap_tags %>
     <%= javascript_include_tag "jquery" %>
     <%= display_meta_tags(default_meta_tags) %>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q51RPE3LDE"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-Q51RPE3LDE');
+    </script>
   </head>
 
   <body class="flex flex-col min-h-screen">
