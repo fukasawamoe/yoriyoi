@@ -8,22 +8,22 @@
       <%= form_with model: @user, url: sign_up_path, local: true, class: "space-y-6" do |f| %>
         <%= render 'shared/error_messages', object: @user %>
         <div>
-          <%= f.label :name, User.human_attribute_name(:name), class: "leading-7 text-sm text-gray-600" %>
+          <%= f.label :name, t('activerecord.attributes.user.name'), class: "leading-7 text-sm text-gray-600" %>
           <%= f.text_field :name, required: true, class: "input input-bordered input-accent w-full max-w-xs" %>
         </div>
 
         <div>
-          <%= f.label :email, User.human_attribute_name(:email), class: "leading-7 text-sm text-gray-600" %>
+          <%= f.label :email, t('activerecord.attributes.user.email'), class: "leading-7 text-sm text-gray-600" %>
           <%= f.email_field :email, required: true, class: "input input-bordered input-accent w-full max-w-xs" %>
         </div>
 
         <div>
-          <%= f.label :password, User.human_attribute_name(:password), class: "leading-7 text-sm text-gray-600" %>
+          <%= f.label :password, t('activerecord.attributes.user.password'), class: "leading-7 text-sm text-gray-600" %>
           <%= f.password_field :password, required: true, class: "input input-bordered input-accent w-full max-w-xs" %>
         </div>
 
         <div>
-          <%= f.label :password_confirmation, User.human_attribute_name(:password_confirmation), class: "leading-7 text-sm text-gray-600" %>
+          <%= f.label :password_confirmation, t('activerecord.attributes.user.password_confirmation'), class: "leading-7 text-sm text-gray-600" %>
           <%= f.password_field :password_confirmation, required: true, class: "input input-bordered input-accent w-full max-w-xs" %>
         </div>
 

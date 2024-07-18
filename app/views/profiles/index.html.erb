@@ -7,11 +7,11 @@
         <%= link_to link_to raw('<i class="fa-solid fa-pencil"></i> 編集'), edit_users_path, class: 'btn bg-yellow-100 float-right my-8' %>
         <table class="w-full text-lg">
           <tr>
-            <th class="px-4 py-2"><%= t(User.human_attribute_name(:name)) %></th>
+            <th class="px-4 py-2"><%= t('activerecord.attributes.user.name') %></th>
             <td class="border-b-2 border-b-red-300 px-4 py-2"><%= @user.name %></td>
           </tr>
           <tr>
-            <th class="px-4 py-2 pt-16"><%= t(User.human_attribute_name(:email)) %></th>
+            <th class="px-4 py-2 pt-16"><%= t('activerecord.attributes.user.email') %></th>
             <td class="border-b-2 border-b-red-300 px-4 py-2 pt-16"><%= truncate(@user.email, length: 15) %></td>
           </tr>
         </table>

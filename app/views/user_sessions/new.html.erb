@@ -8,12 +8,12 @@
       <%= form_with url: login_path, model: @user, local: true, class: "space-y-6" do |f| %>
 
         <div>
-          <%= f.label :email, User.human_attribute_name(:email), class: "leading-7 text-sm text-gray-600" %>
+          <%= f.label :email, t('activerecord.attributes.user.email'), class: "leading-7 text-sm text-gray-600" %>
           <%= f.email_field :email, required: true, class: "input input-bordered input-accent w-full max-w-xs" %>
         </div>
 
         <div>
-          <%= f.label :password, User.human_attribute_name(:password), class: "leading-7 text-sm text-gray-600" %>
+          <%= f.label :password, t('activerecord.attributes.user.password'), class: "leading-7 text-sm text-gray-600" %>
           <%= f.password_field :password, required: true, class: "input input-bordered input-accent w-full max-w-xs" %>
         </div>
 

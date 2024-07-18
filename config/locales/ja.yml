@@ -1,4 +1,11 @@
 ja:
-  errors:
+  activerecord:
+    attributes:
+      user:
+        name: 'ユーザー名'
+        email: 'メールアドレス'
+        password: 'パスワード'
+        password_confirmation: 'パスワード確認'
+    errors:
     messages:
       not_authenticated: 'ログインしてください'

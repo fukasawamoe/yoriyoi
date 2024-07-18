@@ -19,6 +19,7 @@ class SchedulesController < ApplicationController
       if task_attributes["task_time(4i)"].blank? || task_attributes["task_time(5i)"].blank?
         @schedule = current_user.schedules.build(schedule_params)
         @schedule.errors.add(:base, 'タスクを行う時間を入力してください')
+        flash.now[:alert] = 'スケジュールの作成に失敗しました。'
         render :new, status: :unprocessable_entity
         return
       end
