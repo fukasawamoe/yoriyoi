@@ -40,7 +40,7 @@ class GoalsController < ApplicationController
       goal.save!
 
       3.times do
-        step = Step.new(user_id: current_user.id, goal_id: @goal.id)
+        step = Step.new(user_id: current_user.id, goal_id: goal.id)
         step.save!
         step.create_achievements!
       end
