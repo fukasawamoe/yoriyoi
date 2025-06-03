@@ -16,10 +16,10 @@ class HomeController < ApplicationController
 
     # ai_messageのview(現在のタスクをOpenAIクライアントに渡す)
     # OpenAiClientはChat GPTのAPIを使用して、現在のタスクに基づいた応答を生成する
-    if @current_task.present?
-      client = OpenAiClient.new(@current_task, @character)
-      @response = client.chat
-    end
+    # if @current_task.present?
+    #   client = OpenAiClient.new(@current_task, @character)
+    #   @response = client.chat
+    # end
 
     # @true_countsはachievementのグラフの計算に使用される
     @true_counts = Achievement.joins(:step).where(steps: { user_id: current_user.id }, daily: Date.today - 6.days..Date.today, check: true).count
