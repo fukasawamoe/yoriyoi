@@ -10,7 +10,7 @@
           <p>いまはタスクが設定されていないにゃ〜。</p>
         <% else %>
           <%# API使う場合はコメントアウトはずす %>
-          <%# <p><%= @current_task.task_time.strftime("%H:%M") %> <%= @response %></p> %>
+          <%# <p><%= @current_task.task_time.strftime("%H:%M") %> <%= @response %></p>
           <p><%= "#{@current_task.task_time.strftime("%H:%M")} #{@current_task.to_do}の時間にゃ！一緒についてるからね！がんばろう〜！" %></p>
         <% end %>
 
